@@ -46,6 +46,30 @@ results_df = pd.read_csv('results.csv')
 rankings_df = pd.read_csv('fifa_mens_rank.csv')
 shootouts_df = pd.read_csv('shootouts.csv')
 fixtures_df = pd.read_csv('FIFA2026_schedule_Fixtures.csv')
+eafc_df = pd.read_csv('eafc26_wc_team_summary.csv')
+
+# Apply name cleaning to EAFC data and build lookup dictionary
+eafc_df['Nation'] = eafc_df['Nation'].apply(clean_name)
+eafc_stats = {}
+for idx, row in eafc_df.iterrows():
+    eafc_stats[row['Nation']] = {
+        'Top11_OVR': float(row['Top11_OVR']),
+        'Attack_Score': float(row['Attack_Score']),
+        'Defense_Score': float(row['Defense_Score']),
+        'Penalty_Score': float(row['Penalty_Score'])
+    }
+
+def get_squad_features(team, rank):
+    stats = eafc_stats.get(team)
+    if stats:
+        return stats['Top11_OVR'], stats['Attack_Score'], stats['Defense_Score'], stats['Penalty_Score']
+    else:
+        # Fallback using regression formulas derived from WC team data
+        top11_ovr = np.clip(85.67 - 0.1827 * rank, 55.0, 88.5)
+        atk_score = np.clip(76.43 - 0.1265 * rank, 50.0, 83.0)
+        def_score = np.clip(70.69 - 0.0891 * rank, 50.0, 82.0)
+        pen_score = np.clip(58.0 - 0.1 * rank, 40.0, 75.0)
+        return top11_ovr, atk_score, def_score, pen_score
 
 # Apply name cleaning
 results_df['home_team'] = results_df['home_team'].apply(clean_name)
@@ -159,6 +183,10 @@ for idx, row in results_df.iterrows():
         h_form_att, h_form_def = get_form(h)
         a_form_att, a_form_def = get_form(a)
         
+        # Get squad features
+        h_ovr, h_atk, h_def, h_pen = get_squad_features(h, h_rank)
+        a_ovr, a_atk, a_def, a_pen = get_squad_features(a, a_rank)
+        
         neutral = 1 if str(row['neutral']).upper() == 'TRUE' else 0
         is_friendly = 1 if row['tournament'] == 'Friendly' else 0
         
@@ -166,6 +194,9 @@ for idx, row in results_df.iterrows():
             'team': h, 'opp': a, 'is_home': 1 - neutral,
             'rank_diff': (h_rank - a_rank) / 100.0,
             'point_diff': (h_pts - a_pts) / 500.0,
+            'squad_atk_self': (h_atk - 75.0) / 10.0,
+            'squad_def_opp': (a_def - 70.0) / 10.0,
+            'squad_ovr_diff': (h_ovr - a_ovr) / 10.0,
             'form_attack_self': h_form_att, 'form_defense_opp': a_form_def,
             'is_friendly': is_friendly, 'goals': hs
         })
@@ -173,6 +204,9 @@ for idx, row in results_df.iterrows():
             'team': a, 'opp': h, 'is_home': 0,
             'rank_diff': (a_rank - h_rank) / 100.0,
             'point_diff': (a_pts - h_pts) / 500.0,
+            'squad_atk_self': (a_atk - 75.0) / 10.0,
+            'squad_def_opp': (h_def - 70.0) / 10.0,
+            'squad_ovr_diff': (a_ovr - h_ovr) / 10.0,
             'form_attack_self': a_form_att, 'form_defense_opp': h_form_def,
             'is_friendly': is_friendly, 'goals': as_
         })
@@ -213,7 +247,7 @@ class PurePoissonRegression:
         linear = np.clip(linear, -10.0, 5.0)
         return np.exp(linear)
 
-features_cols = ['is_home', 'rank_diff', 'point_diff', 'form_attack_self', 'form_defense_opp', 'is_friendly']
+features_cols = ['is_home', 'rank_diff', 'point_diff', 'squad_atk_self', 'squad_def_opp', 'squad_ovr_diff', 'form_attack_self', 'form_defense_opp', 'is_friendly']
 X_df = train_df[features_cols]
 y_df = train_df['goals']
 
@@ -326,18 +360,23 @@ def get_latest_form(team):
 for team_a in all_wc_teams:
     rank_a, pts_a = get_rank_and_points(team_a, latest_date)
     att_a, def_a = get_latest_form(team_a)
+    ovr_a, atk_a, def_a_sq, pen_a = get_squad_features(team_a, rank_a)
     
     for team_b in all_wc_teams:
         if team_a == team_b:
             continue
         rank_b, pts_b = get_rank_and_points(team_b, latest_date)
         att_b, def_b = get_latest_form(team_b)
+        ovr_b, atk_b, def_b_sq, pen_b = get_squad_features(team_b, rank_b)
         
         # Scenario 1: neutral = 1
         precalc_features.append([
             0.0,  # is_home
             (rank_a - rank_b) / 100.0,
             (pts_a - pts_b) / 500.0,
+            (atk_a - 75.0) / 10.0,
+            (def_b_sq - 70.0) / 10.0,
+            (ovr_a - ovr_b) / 10.0,
             att_a,
             def_b,
             0.0  # is_friendly
@@ -349,6 +388,9 @@ for team_a in all_wc_teams:
             1.0,  # is_home
             (rank_a - rank_b) / 100.0,
             (pts_a - pts_b) / 500.0,
+            (atk_a - 75.0) / 10.0,
+            (def_b_sq - 70.0) / 10.0,
+            (ovr_a - ovr_b) / 10.0,
             att_a,
             def_b,
             0.0  # is_friendly
@@ -779,6 +821,30 @@ notebook_content = {
     "rankings_df = pd.read_csv('fifa_mens_rank.csv')\n",
     "shootouts_df = pd.read_csv('shootouts.csv')\n",
     "fixtures_df = pd.read_csv('FIFA2026_schedule_Fixtures.csv')\n",
+    "eafc_df = pd.read_csv('eafc26_wc_team_summary.csv')\n",
+    "\n",
+    "# Apply name cleaning to EAFC data and build lookup dictionary\n",
+    "eafc_df['Nation'] = eafc_df['Nation'].apply(clean_name)\n",
+    "eafc_stats = {}\n",
+    "for idx, row in eafc_df.iterrows():\n",
+    "    eafc_stats[row['Nation']] = {\n",
+    "        'Top11_OVR': float(row['Top11_OVR']),\n",
+    "        'Attack_Score': float(row['Attack_Score']),\n",
+    "        'Defense_Score': float(row['Defense_Score']),\n",
+    "        'Penalty_Score': float(row['Penalty_Score'])\n",
+    "    }\n",
+    "\n",
+    "def get_squad_features(team, rank):\n",
+    "    stats = eafc_stats.get(team)\n",
+    "    if stats:\n",
+    "        return stats['Top11_OVR'], stats['Attack_Score'], stats['Defense_Score'], stats['Penalty_Score']\n",
+    "    else:\n",
+    "        # Fallback using regression formulas derived from WC team data\n",
+    "        top11_ovr = np.clip(85.67 - 0.1827 * rank, 55.0, 88.5)\n",
+    "        atk_score = np.clip(76.43 - 0.1265 * rank, 50.0, 83.0)\n",
+    "        def_score = np.clip(70.69 - 0.0891 * rank, 50.0, 82.0)\n",
+    "        pen_score = np.clip(58.0 - 0.1 * rank, 40.0, 75.0)\n",
+    "        return top11_ovr, atk_score, def_score, pen_score\n",
     "print(\"Datasets loaded successfully.\")"
    ]
   },
@@ -931,18 +997,22 @@ notebook_content = {
     "        a_rank, a_pts = get_rank_and_points(a, date)\n",
     "        h_form_att, h_form_def = get_form(h)\n",
     "        a_form_att, a_form_def = get_form(a)\n",
+    "        h_ovr, h_atk, h_def, h_pen = get_squad_features(h, h_rank)\n",
+    "        a_ovr, a_atk, a_def, a_pen = get_squad_features(a, a_rank)\n",
     "        neutral = 1 if str(row['neutral']).upper() == 'TRUE' else 0\n",
     "        is_friendly = 1 if row['tournament'] == 'Friendly' else 0\n",
     "        \n",
     "        training_rows.append({\n",
     "            'team': h, 'opp': a, 'is_home': 1 - neutral,\n",
     "            'rank_diff': (h_rank - a_rank) / 100.0, 'point_diff': (h_pts - a_pts) / 500.0,\n",
+    "            'squad_atk_self': (h_atk - 75.0) / 10.0, 'squad_def_opp': (a_def - 70.0) / 10.0, 'squad_ovr_diff': (h_ovr - a_ovr) / 10.0,\n",
     "            'form_attack_self': h_form_att, 'form_defense_opp': a_form_def,\n",
     "            'is_friendly': is_friendly, 'goals': hs\n",
     "        })\n",
     "        training_rows.append({\n",
     "            'team': a, 'opp': h, 'is_home': 0,\n",
     "            'rank_diff': (a_rank - h_rank) / 100.0, 'point_diff': (a_pts - h_pts) / 500.0,\n",
+    "            'squad_atk_self': (a_atk - 75.0) / 10.0, 'squad_def_opp': (h_def - 70.0) / 10.0, 'squad_ovr_diff': (a_ovr - h_ovr) / 10.0,\n",
     "            'form_attack_self': a_form_att, 'form_defense_opp': h_form_def,\n",
     "            'is_friendly': is_friendly, 'goals': as_\n",
     "        })\n",
@@ -996,7 +1066,7 @@ notebook_content = {
     "        linear = np.clip(linear, -10.0, 5.0)\n",
     "        return np.exp(linear)\n",
     "\n",
-    "features_cols = ['is_home', 'rank_diff', 'point_diff', 'form_attack_self', 'form_defense_opp', 'is_friendly']\n",
+    "features_cols = ['is_home', 'rank_diff', 'point_diff', 'squad_atk_self', 'squad_def_opp', 'squad_ovr_diff', 'form_attack_self', 'form_defense_opp', 'is_friendly']\n",
     "X_df = train_df[features_cols]\n",
     "y_df = train_df['goals']\n",
     "\n",
@@ -1092,13 +1162,15 @@ notebook_content = {
     "for team_a in all_wc_teams:\n",
     "    rank_a, pts_a = get_rank_and_points(team_a, latest_date)\n",
     "    att_a, def_a = get_latest_form(team_a)\n",
+    "    ovr_a, atk_a, def_a_sq, pen_a = get_squad_features(team_a, rank_a)\n",
     "    for team_b in all_wc_teams:\n",
     "        if team_a == team_b: continue\n",
     "        rank_b, pts_b = get_rank_and_points(team_b, latest_date)\n",
     "        att_b, def_b = get_latest_form(team_b)\n",
-    "        precalc_features.append([0.0, (rank_a - rank_b)/100.0, (pts_a - pts_b)/500.0, att_a, def_b, 0.0])\n",
+    "        ovr_b, atk_b, def_b_sq, pen_b = get_squad_features(team_b, rank_b)\n",
+    "        precalc_features.append([0.0, (rank_a - rank_b)/100.0, (pts_a - pts_b)/500.0, (atk_a - 75.0)/10.0, (def_b_sq - 70.0)/10.0, (ovr_a - ovr_b)/10.0, att_a, def_b, 0.0])\n",
     "        precalc_keys.append((team_a, team_b, 1))\n",
-    "        precalc_features.append([1.0, (rank_a - rank_b)/100.0, (pts_a - pts_b)/500.0, att_a, def_b, 0.0])\n",
+    "        precalc_features.append([1.0, (rank_a - rank_b)/100.0, (pts_a - pts_b)/500.0, (atk_a - 75.0)/10.0, (def_b_sq - 70.0)/10.0, (ovr_a - ovr_b)/10.0, att_a, def_b, 0.0])\n",
     "        precalc_keys.append((team_a, team_b, 0))\n",
     "\n",
     "precalc_preds = model.predict(np.array(precalc_features))\n",
