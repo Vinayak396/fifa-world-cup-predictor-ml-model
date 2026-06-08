@@ -140,9 +140,56 @@ def get_rank_and_points(team, date):
 # 6. FEATURE ENGINEERING & TRAINING DATA PREPARATION
 print("Preparing training data...")
 results_df = results_df.sort_values('date').reset_index(drop=True)
-team_match_history = {}
-form_span = 10
+team_match_history = {}   # stores (goals_for, goals_against, date, tournament)
 training_rows = []
+training_weights = []  # sample weights for each training row
+
+# --- Match importance weights for form calculation ---
+MATCH_WEIGHTS = {
+    'FIFA World Cup': 2.0,
+    'Confederations Cup': 1.8,
+    'Copa America': 1.7,
+    'UEFA Euro': 1.7,
+    'African Cup of Nations': 1.7,
+    'AFC Asian Cup': 1.7,
+    'CONCACAF Gold Cup': 1.7,
+    'UEFA Nations League': 1.2,
+    'FIFA World Cup qualification': 1.5,
+    'UEFA Euro qualification': 1.5,
+    'Copa America qualification': 1.5,
+    'AFC Asian Cup qualification': 1.5,
+    'CONCACAF Nations League': 1.2,
+    'Friendly': 0.1,
+}
+FORM_HALF_LIFE_DAYS = 365.0   # for team form (1-year decay)
+TRAIN_HALF_LIFE_DAYS = 1460.0  # for training sample weights (4-year decay)
+TRAIN_CUTOFF = pd.to_datetime('2016-01-01')
+WC_TARGET_DATE = pd.to_datetime('2026-06-01')
+
+def match_importance(tournament):
+    """Return importance multiplier for a given tournament string."""
+    for key in MATCH_WEIGHTS:
+        if key.lower() in str(tournament).lower():
+            return MATCH_WEIGHTS[key]
+    return 0.8  # default for unknown competitive matches
+
+def get_form(team, current_date):
+    """Exponential time-decayed, importance-weighted form (goals for/against)."""
+    hist = team_match_history.get(team, [])
+    if not hist:
+        return 1.2, 1.2
+    total_att_w = total_def_w = total_w = 0.0
+    for gf, ga, m_date, m_tourn in hist:
+        days_ago = max(0.0, (current_date - m_date).days)
+        time_decay = 2.0 ** (-days_ago / FORM_HALF_LIFE_DAYS)
+        imp = match_importance(m_tourn)
+        w = time_decay * imp
+        total_att_w += gf * w
+        total_def_w += ga * w
+        total_w += w
+    if total_w == 0.0:
+        return 1.2, 1.2
+    return total_att_w / total_w, total_def_w / total_w
 
 historical_matches = results_df[
     (results_df['date'] >= '1993-08-01') & 
@@ -159,6 +206,7 @@ for idx, row in results_df.iterrows():
     date = row['date']
     h, a = row['home_team'], row['away_team']
     h_score_raw, a_score_raw = row['home_score'], row['away_score']
+    tournament = row.get('tournament', 'Friendly')
     
     is_historical = True
     try:
@@ -168,60 +216,60 @@ for idx, row in results_df.iterrows():
             is_historical = False
     except (ValueError, TypeError):
         is_historical = False
-        
-    def get_form(team):
-        hist = team_match_history.get(team, [])
-        if not hist:
-            return 1.2, 1.2
-        recent = hist[-form_span:]
-        return np.mean([x[0] for x in recent]), np.mean([x[1] for x in recent])
 
     if is_historical and date >= pd.to_datetime('1993-08-01'):
         hs, as_ = int(hs), int(as_)
         h_rank, h_pts = get_rank_and_points(h, date)
         a_rank, a_pts = get_rank_and_points(a, date)
-        h_form_att, h_form_def = get_form(h)
-        a_form_att, a_form_def = get_form(a)
+        # Use decayed form with current match date as reference
+        h_form_att, h_form_def = get_form(h, date)
+        a_form_att, a_form_def = get_form(a, date)
         
         # Get squad features
         h_ovr, h_atk, h_def, h_pen = get_squad_features(h, h_rank)
         a_ovr, a_atk, a_def, a_pen = get_squad_features(a, a_rank)
         
         neutral = 1 if str(row['neutral']).upper() == 'TRUE' else 0
-        is_friendly = 1 if row['tournament'] == 'Friendly' else 0
+        is_friendly = 1 if str(tournament).lower() == 'friendly' else 0
+        imp = match_importance(tournament)
         
-        training_rows.append({
-            'team': h, 'opp': a, 'is_home': 1 - neutral,
-            'rank_diff': (h_rank - a_rank) / 100.0,
-            'point_diff': (h_pts - a_pts) / 500.0,
-            'squad_atk_self': (h_atk - 75.0) / 10.0,
-            'squad_def_opp': (a_def - 70.0) / 10.0,
-            'squad_ovr_diff': (h_ovr - a_ovr) / 10.0,
-            'form_attack_self': h_form_att, 'form_defense_opp': a_form_def,
-            'is_friendly': is_friendly, 'goals': hs
-        })
-        training_rows.append({
-            'team': a, 'opp': h, 'is_home': 0,
-            'rank_diff': (a_rank - h_rank) / 100.0,
-            'point_diff': (a_pts - h_pts) / 500.0,
-            'squad_atk_self': (a_atk - 75.0) / 10.0,
-            'squad_def_opp': (h_def - 70.0) / 10.0,
-            'squad_ovr_diff': (a_ovr - h_ovr) / 10.0,
-            'form_attack_self': a_form_att, 'form_defense_opp': h_form_def,
-            'is_friendly': is_friendly, 'goals': as_
-        })
+        # Only include competitive matches from 2016+ in training
+        if date >= TRAIN_CUTOFF and is_friendly == 0:
+            # Recency-based sample weight: decays over 4 years toward WC date
+            days_to_wc = max(0.0, (WC_TARGET_DATE - date).days)
+            row_weight = 2.0 ** (-days_to_wc / TRAIN_HALF_LIFE_DAYS) * imp
+            
+            training_rows.append({
+                'team': h, 'opp': a, 'is_home': 1 - neutral,
+                'rank_diff': (h_rank - a_rank) / 100.0,
+                'point_diff': (h_pts - a_pts) / 500.0,
+                'squad_atk_self': (h_atk - 75.0) / 10.0,
+                'squad_def_opp': (a_def - 70.0) / 10.0,
+                'squad_ovr_diff': (h_ovr - a_ovr) / 10.0,
+                'form_attack_self': h_form_att, 'form_defense_opp': a_form_def,
+                'is_friendly': is_friendly, 'goals': hs
+            })
+            training_weights.append(row_weight)
+            training_rows.append({
+                'team': a, 'opp': h, 'is_home': 0,
+                'rank_diff': (a_rank - h_rank) / 100.0,
+                'point_diff': (a_pts - h_pts) / 500.0,
+                'squad_atk_self': (a_atk - 75.0) / 10.0,
+                'squad_def_opp': (h_def - 70.0) / 10.0,
+                'squad_ovr_diff': (a_ovr - h_ovr) / 10.0,
+                'form_attack_self': a_form_att, 'form_defense_opp': h_form_def,
+                'is_friendly': is_friendly, 'goals': as_
+            })
+            training_weights.append(row_weight)
         
     if is_historical:
-        hs, as_ = int(hs), int(as_)
+        hs_int, as_int = int(hs), int(as_)
         if h not in team_match_history: team_match_history[h] = []
         if a not in team_match_history: team_match_history[a] = []
-        team_match_history[h].append((hs, as_))
-        team_match_history[a].append((as_, hs))
+        team_match_history[h].append((hs_int, as_int, date, tournament))
+        team_match_history[a].append((as_int, hs_int, date, tournament))
 
-train_df = pd.DataFrame(training_rows)
-print(f"Constructed {len(train_df)} training rows.")
-
-# 7. IMPLEMENT PURE NUMPY POISSON REGRESSION
+# 7. IMPLEMENT PURE NUMPY POISSON REGRESSION (with sample weights)
 class PurePoissonRegression:
     def __init__(self, lr=0.001, iterations=1500):
         self.lr = lr
@@ -229,16 +277,21 @@ class PurePoissonRegression:
         self.weights = None
         self.bias = None
         
-    def fit(self, X, y):
+    def fit(self, X, y, sample_weights=None):
         N, D = X.shape
         self.weights = np.zeros(D)
         self.bias = 0.0
+        if sample_weights is None:
+            sample_weights = np.ones(N)
+        # Normalize weights so they sum to N (keeps gradient magnitudes comparable)
+        w = sample_weights / sample_weights.sum() * N
         for i in range(self.iterations):
             linear = np.dot(X, self.weights) + self.bias
             linear = np.clip(linear, -10.0, 5.0)
             lambdas = np.exp(linear)
-            dw = np.dot(X.T, (lambdas - y)) / N
-            db = np.mean(lambdas - y)
+            residuals = lambdas - y
+            dw = np.dot(X.T, w * residuals) / N
+            db = np.sum(w * residuals) / N
             self.weights -= self.lr * dw
             self.bias -= self.lr * db
             
@@ -246,6 +299,10 @@ class PurePoissonRegression:
         linear = np.dot(X, self.weights) + self.bias
         linear = np.clip(linear, -10.0, 5.0)
         return np.exp(linear)
+
+train_df = pd.DataFrame(training_rows)
+weights_arr = np.array(training_weights, dtype=np.float64)
+print(f"Constructed {len(train_df)} training rows (competitive matches, 2016+).")
 
 features_cols = ['is_home', 'rank_diff', 'point_diff', 'squad_atk_self', 'squad_def_opp', 'squad_ovr_diff', 'form_attack_self', 'form_defense_opp', 'is_friendly']
 X_df = train_df[features_cols]
@@ -260,13 +317,14 @@ train_idx, val_idx = indices[:split_idx], indices[split_idx:]
 
 X_train = X_df.iloc[train_idx].to_numpy(dtype=np.float64)
 y_train = y_df.iloc[train_idx].to_numpy(dtype=np.float64)
+w_train = weights_arr[train_idx]
 X_val = X_df.iloc[val_idx].to_numpy(dtype=np.float64)
 y_val = y_df.iloc[val_idx].to_numpy(dtype=np.float64)
 
-# Fit custom model
-print("Training custom Poisson Regression model...")
-model = PurePoissonRegression(lr=0.01, iterations=1500)
-model.fit(X_train, y_train)
+# Fit custom model with sample weights
+print("Training custom Poisson Regression model (with recency + importance weighting)...")
+model = PurePoissonRegression(lr=0.01, iterations=2000)
+model.fit(X_train, y_train, sample_weights=w_train)
 
 # Evaluate model
 y_pred = model.predict(X_val)
@@ -277,10 +335,10 @@ r2 = 1.0 - (ss_res / ss_tot)
 print(f"Validation MAE (Custom Poisson): {mae:.4f}")
 print(f"Validation R2 Score (Custom Poisson): {r2:.4f}")
 
-# Train on the entire dataset
+# Train on the entire dataset with full weights
 X_all = X_df.to_numpy(dtype=np.float64)
 y_all = y_df.to_numpy(dtype=np.float64)
-model.fit(X_all, y_all)
+model.fit(X_all, y_all, sample_weights=weights_arr)
 print("Model coefficients:", model.weights, "Bias:", model.bias)
 
 # 8. EXTRACT WORLD CUP 2026 GROUPS
@@ -351,11 +409,8 @@ precalc_features = []
 precalc_keys = []
 
 def get_latest_form(team):
-    hist = team_match_history.get(team, [])
-    if not hist:
-        return 1.2, 1.2
-    recent = hist[-form_span:]
-    return np.mean([x[0] for x in recent]), np.mean([x[1] for x in recent])
+    """Get form at tournament start using the same exponential decay as training."""
+    return get_form(team, latest_date)
 
 for team_a in all_wc_teams:
     rank_a, pts_a = get_rank_and_points(team_a, latest_date)
@@ -433,8 +488,14 @@ def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
         rank_b, _ = get_rank_and_points(team_b, latest_date)
         wr_a = get_shootout_win_rate(team_a)
         wr_b = get_shootout_win_rate(team_b)
+        _, _, _, pen_a = get_squad_features(team_a, rank_a)
+        _, _, _, pen_b = get_squad_features(team_b, rank_b)
         
-        p_win_a = 0.5 + 0.2 * (wr_a - wr_b) + 0.05 * ((rank_b - rank_a) / (rank_b + rank_a))
+        # Combined: historical win rate (40%) + FIFA rank (10%) + EA FC Penalty score (50%)
+        p_win_a = (0.5
+            + 0.15 * (wr_a - wr_b)
+            + 0.15 * (pen_a - pen_b) / 100.0
+            + 0.05 * ((rank_b - rank_a) / max(rank_b + rank_a, 1)))
         p_win_a = np.clip(p_win_a, 0.35, 0.65)
         
         if np.random.random() < p_win_a:
