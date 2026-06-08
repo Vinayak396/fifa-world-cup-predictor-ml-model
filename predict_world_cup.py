@@ -401,7 +401,42 @@ for g in sorted(group_teams.keys()):
 all_wc_teams = sorted(list(team_groups.keys()))
 print(f"Total participating teams matched: {len(all_wc_teams)}")
 
-# 9. BATCH PRE-PREDICT ALL PAIRINGS FOR PERFORMANCE
+# 9a. COMPUTE GROUP DRAW DIFFICULTY (for knockout lambda adjustment)
+# For each team: avg EA FC OVR of their 3 group opponents.
+# Harder group → team gets a slight knockout lambda BOOST (battle-tested).
+# Easier group → team gets a slight knockout lambda PENALTY.
+print("Computing group draw difficulty scores...")
+_latest_d = pd.to_datetime('2026-06-01')  # temp, latest_date defined later
+team_group_difficulty = {}
+for t in all_wc_teams:
+    g = team_groups[t]
+    opponents = [other for other in group_teams[g] if other != t]
+    opp_ovrs = []
+    for opp in opponents:
+        rank_opp, _ = get_rank_and_points(opp, _latest_d)
+        ovr_opp, _, _, _ = get_squad_features(opp, rank_opp)
+        opp_ovrs.append(ovr_opp)
+    team_group_difficulty[t] = float(np.mean(opp_ovrs)) if opp_ovrs else 75.0
+
+_diff_vals = list(team_group_difficulty.values())
+_diff_min, _diff_max = min(_diff_vals), max(_diff_vals)
+_diff_range = _diff_max - _diff_min
+
+# Multiplier range: easiest group → 0.97, hardest group → 1.03
+GROUP_BOOST_RANGE = 0.06  # total swing: ±3%
+
+def get_group_difficulty_multiplier(team):
+    """Lambda multiplier for knockout rounds based on group opponent strength."""
+    if _diff_range < 1e-6:
+        return 1.0
+    normalized = (team_group_difficulty[team] - _diff_min) / _diff_range
+    return 1.0 - GROUP_BOOST_RANGE / 2 + normalized * GROUP_BOOST_RANGE
+
+# Print group difficulty summary for verification
+print("\nGroup draw difficulty multipliers (knockout adjustment):")
+for t in sorted(all_wc_teams, key=lambda x: team_group_difficulty[x]):
+    print(f"  {t:<22} group_opp_avg_OVR={team_group_difficulty[t]:.1f}  "
+          f"KO_multiplier={get_group_difficulty_multiplier(t):.3f}")
 print("Pre-calculating expected goals for all possible team pairings...")
 latest_date = pd.to_datetime('2026-06-01')
 
@@ -468,6 +503,11 @@ def get_cached_lambdas(team_a, team_b, neutral):
 # 10. SIMULATOR LOGIC FUNCTIONS
 def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
     lambda_a, lambda_b = get_cached_lambdas(team_a, team_b, neutral)
+    
+    # Apply group difficulty multiplier in knockout rounds
+    if is_knockout:
+        lambda_a *= get_group_difficulty_multiplier(team_a)
+        lambda_b *= get_group_difficulty_multiplier(team_b)
     
     goals_a = np.random.poisson(lambda_a)
     goals_b = np.random.poisson(lambda_b)
