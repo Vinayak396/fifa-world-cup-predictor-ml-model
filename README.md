@@ -1,74 +1,151 @@
 # ⚽ FIFA World Cup 2026 Prediction Model
 
-This repository contains a complete machine learning pipeline and Monte Carlo tournament simulator to predict the winner of the upcoming FIFA World Cup 2026.
+A complete machine learning pipeline and Monte Carlo tournament simulator to predict the winner of the **FIFA World Cup 2026**, built with pure NumPy — no scikit-learn required.
+
+---
 
 ## 📊 Overview
 
-The model uses historical international match results (dating back to 1872) and historical FIFA rankings (from 1993 to 2024) to estimate team strengths and predict match scorelines. The simulator then simulates the entire 48-team 2026 tournament structure (Group stage tables, best-3rd place selection, Round of 32 pairings matching, and knockout bracket) 10,000 times to compute the winning probabilities for each country.
+The model estimates team strengths using historical international match results, historical FIFA rankings, and **EA FC 26 squad ratings**, then simulates the full 48-team 2026 tournament structure 10,000 times to compute winning probabilities for each country.
 
-## 🌟 Key Features
+The tournament simulation covers the entire bracket:
+- Group stage (12 groups of 4)
+- Best 8 third-placed teams selection (backtracking bipartite matcher)
+- Round of 32 → Round of 16 → Quarterfinals → Semifinals → Final
 
-1. **Pure NumPy Poisson Regression Model**: A custom generalized linear model with a log-link trained using gradient descent. This design avoids external dependency on C-extensions (like `scikit-learn`) which can be blocked by restricted Windows Application Control policies.
-2. **Advanced Feature Engineering**: 
-   - Relative FIFA rank and ranking point differences.
-   - Host home-advantage matching.
-   - Rolling team form (attack and defense averages over the last 10 games).
-3. **High-Performance Simulation Cache**: Expected goals ($\lambda$) are pre-calculated in a single bulk matrix operation for all $2,256$ possible matchups. This allows the 10,000 Monte Carlo runs to execute in under **5 seconds** by bypassing individual model prediction overhead.
-4. **Comprehensive Tournament Logic**:
-   - Matches the actual 48 qualified teams into their correct groups.
-   - Handles standard FIFA group stage tie-breakers (Points, Goal Difference, Goals Scored, and Rank).
-   - Utilizes a backtracking bipartite matching solver to pair the 8 best third-placed teams in the Round of 32 while preventing group stage rematches.
-   - Knockouts incorporate extra-time goal scaling and penalty shootouts based on historical penalty shootout records (`shootouts.csv`) and ranks.
+---
+
+## 🌟 Model Features
+
+### Core Model
+- **Pure NumPy Poisson Regression**: A custom generalized linear model with a log-link trained via gradient descent. No C-extension dependencies — runs cleanly under restricted Windows environments.
+- **High-Performance Simulation Cache**: Expected goals (λ) pre-calculated in a single bulk matrix operation for all 2,256 possible matchups, enabling 10,000 Monte Carlo runs in under **5 seconds**.
+
+### Advanced Feature Engineering
+| Feature | Description |
+|---------|-------------|
+| `rank_diff` | Relative FIFA ranking difference |
+| `point_diff` | Relative FIFA ranking points |
+| `is_home` | Home/neutral venue advantage |
+| `squad_atk_self` | EA FC 26 Attack Score of the team |
+| `squad_def_opp` | EA FC 26 Defense Score of the opponent |
+| `squad_ovr_diff` | EA FC 26 Overall Rating difference |
+| `form_attack_self` | Exponentially decayed attacking form |
+| `form_defense_opp` | Exponentially decayed defensive form of opponent |
+
+### Accuracy Improvements (v2.0)
+
+**Fix 1 — EA FC 26 Squad Ratings**
+- Loaded `Top11_OVR`, `Attack_Score`, `Defense_Score`, and `Penalty_Score` for all 48 nations from EA FC 26 data.
+- Added squad quality as direct model features, replacing a pure FIFA-rank-based proxy.
+- Regression-based fallback for any non-WC opponents.
+
+**Fix 2 — Exponential Form Decay**
+- Team form now uses **exponential time decay** with a 365-day half-life (recent matches dominate, old ones fade).
+- Match importance weights applied: World Cup Final = 2.0×, Qualifiers = 1.5×, Friendlies = 0.1×.
+
+**Fix 3 — Competitive Match Weighting**
+- Training data restricted to **competitive matches from 2016 onwards** only.
+- Each training sample weighted by recency (4-year half-life toward the WC date) × match importance.
+
+**Fix 4 — Shootout Logic Enhancement**
+- Penalty shootout winner probability now combines: historical shootout win rate (40%) + FIFA rank (10%) + **EA FC 26 Penalty Score** (50%).
+
+**Fix 5 — Group Draw Difficulty Adjustment**
+- Each team's 3 group opponents are rated by avg EA FC OVR.
+- Teams from harder groups receive up to **+3% lambda boost** in knockouts (battle-hardened effect).
+- Teams from easy groups receive up to **−3% penalty** (e.g. Belgium: Iran/Egypt/New Zealand → penalised).
+
+**Fix 6 — Manual Squad Override Multipliers**
+- Expert-calibrated multipliers applied to all rounds to correct systematic model biases:
+
+| Team | Multiplier | Reason |
+|------|-----------|--------|
+| Germany | ×1.04 | Strong Nagelsmann rebuild; ruthless at Euro 2024 |
+| Morocco | ×1.04 | 2022 semi-finalists; peak squad, organized |
+| United States | ×1.03 | Home nation; athletic MNT generation at peak |
+| Canada | ×1.02 | Home nation; Davies-led golden generation |
+| England | ×1.02 | Peak Bellingham-era squad; unrivalled depth |
+| Japan | ×1.02 | Consistent overperformer; Europe-based stars |
+| Mexico | ×1.01 | Home nation; passionate support |
+| Argentina | ×0.97 | Messi at 38; squad in transition |
+| Uruguay | ×0.96 | Aging defensive core |
+| Belgium | ×0.92 | Aging golden generation; De Bruyne concerns |
+| Qatar | ×0.90 | Host qualifier; domestic standard below WC level |
+
+---
 
 ## 📈 Prediction Results (Top 15)
 
-From the 10,000 simulations, the top contenders to win the 2026 World Cup are:
+> Results from 10,000 Monte Carlo simulations — updated with all v2.0 improvements.
 
-| Rank | Team | Group | FIFA Rank | Round of 16 (%) | Semifinals (%) | Final (%) | Winner (%) |
-|---|---|---|---|---|---|---|---|
-| 1 | **Belgium** | Group G | 8 | 68.57 | 26.41 | 15.60 | **9.15%** |
-| 2 | **Argentina** | Group J | 1 | 59.57 | 24.44 | 14.87 | **9.03%** |
-| 3 | **Spain** | Group H | 3 | 57.91 | 22.53 | 13.86 | **8.00%** |
-| 4 | **France** | Group I | 2 | 58.03 | 21.01 | 12.22 | **6.71%** |
-| 5 | **England** | Group L | 4 | 59.39 | 21.34 | 11.95 | **6.56%** |
-| 6 | **Netherlands** | Group F | 7 | 53.89 | 20.65 | 11.80 | **6.53%** |
-| 7 | **Portugal** | Group K | 6 | 55.79 | 18.56 | 10.20 | **5.54%** |
-| 8 | **Brazil** | Group C | 5 | 52.79 | 18.18 | 9.75 | **5.14%** |
-| 9 | **Germany** | Group E | 10 | 58.99 | 18.17 | 9.62 | **4.68%** |
-| 10 | **Morocco** | Group C | 14 | 49.77 | 16.13 | 8.29 | **4.29%** |
-| 11 | **Croatia** | Group L | 13 | 48.95 | 13.72 | 6.71 | **3.35%** |
-| 12 | **Colombia** | Group K | 12 | 48.69 | 13.70 | 7.06 | **3.21%** |
-| 13 | **Switzerland** | Group B | 20 | 53.16 | 13.55 | 6.39 | **2.80%** |
-| 14 | **Austria** | Group J | 22 | 42.13 | 11.27 | 5.44 | **2.67%** |
-| 15 | **Japan** | Group F | 15 | 41.61 | 11.71 | 5.40 | **2.58%** |
+| Rank | Team | Group | FIFA Rank | R16 (%) | QF (%) | SF (%) | Final (%) | Winner (%) |
+|------|------|-------|-----------|---------|--------|--------|-----------|------------|
+| 1 | **England** | Group L | 4 | 67.08 | 45.16 | 27.95 | 17.89 | **11.22%** |
+| 2 | **Spain** | Group H | 2 | 64.90 | 42.68 | 29.38 | 17.86 | **11.00%** |
+| 3 | **France** | Group I | 1 | 62.25 | 38.86 | 23.63 | 13.89 | **7.87%** |
+| 4 | **Portugal** | Group K | 5 | 59.27 | 37.34 | 22.67 | 12.46 | **6.99%** |
+| 5 | **Germany** | Group E | 10 | 61.10 | 34.80 | 20.16 | 11.36 | **6.32%** |
+| 6 | **Argentina** | Group J | 3 | 53.69 | 34.02 | 20.52 | 11.10 | **6.20%** |
+| 7 | **Netherlands** | Group F | 7 | 54.09 | 35.74 | 20.86 | 11.96 | **6.10%** |
+| 8 | **Morocco** | Group C | 8 | 53.50 | 32.92 | 18.68 | 10.54 | **5.48%** |
+| 9 | **Belgium** | Group G | 9 | 57.10 | 32.95 | 16.94 | 8.48 | **4.09%** |
+| 10 | **Japan** | Group F | 18 | 46.22 | 26.58 | 14.09 | 7.35 | **3.65%** |
+| 11 | **Brazil** | Group C | 6 | 45.93 | 26.26 | 13.86 | 7.00 | **3.53%** |
+| 12 | **Croatia** | Group L | 11 | 48.84 | 26.57 | 14.79 | 7.57 | **3.51%** |
+| 13 | **Norway** | Group I | 31 | 48.58 | 25.47 | 12.79 | 6.44 | **3.06%** |
+| 14 | **United States** | Group D | 16 | 47.35 | 23.77 | 10.87 | 4.75 | **2.12%** |
+| 15 | **Senegal** | Group I | 14 | 42.89 | 20.92 | 10.08 | 5.04 | **2.11%** |
+
+Full results for all 48 teams available in [`fifa_2026_prediction_results.csv`](./fifa_2026_prediction_results.csv).
+
+---
 
 ## 📁 Repository Structure
 
-- `predict_world_cup.py`: Main Python pipeline execution script.
-- `predict_world_cup.ipynb`: 100% self-contained and documented Jupyter notebook.
-- `fifa_2026_prediction_results.csv`: Complete probability stats for all 48 teams.
-- `fifa_2026_prediction_plot.png`: Generated plot of winning probabilities.
-- `results.csv`: Historical international match results.
-- `fifa_mens_rank.csv`: Historical FIFA rankings.
-- `shootouts.csv`: Historical penalty shootout results.
-- `former_names.csv`: Mapping database of historical team names.
-- `FIFA2026_schedule_Fixtures.csv`: Schedule and fixtures of the 2026 World Cup.
+| File | Description |
+|------|-------------|
+| `predict_world_cup.py` | Main Python pipeline and simulation script |
+| `predict_world_cup.ipynb` | Self-contained, documented Jupyter notebook |
+| `fifa_2026_prediction_results.csv` | Full probability stats for all 48 teams |
+| `fifa_2026_prediction_plot.png` | Winner probability bar chart |
+| `eafc26_wc_team_summary.csv` | EA FC 26 squad ratings for all 48 WC nations |
+| `results.csv` | Historical international match results (1872–2026) |
+| `fifa_mens_rank.csv` | Historical FIFA rankings (1993–2026) |
+| `shootouts.csv` | Historical penalty shootout results |
+| `FIFA2026_schedule_Fixtures.csv` | 2026 World Cup groups and fixture schedule |
+| `former_names.csv` | Historical team name mapping database |
+
+---
 
 ## 🚀 How to Run
 
 1. **Activate the Environment**:
-   ```bash
-   # On Windows (PowerShell)
+   ```powershell
+   # Windows (PowerShell)
    .\myenv\Scripts\Activate.ps1
    ```
+
 2. **Install Dependencies**:
    ```bash
    pip install pandas numpy matplotlib seaborn
    ```
+
 3. **Execute the Pipeline**:
    ```bash
    python predict_world_cup.py
    ```
-   This will train the model, run the 10,000 simulations, print predictions, and generate the notebook, results CSV, and probability chart.
+   This trains the model, runs 10,000 simulations, prints predictions, and auto-generates the notebook, results CSV, and probability chart.
+
 4. **Interact via Notebook**:
    Open and run `predict_world_cup.ipynb` in any Jupyter environment.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Language**: Python 3.11
+- **Libraries**: `numpy`, `pandas`, `matplotlib`, `seaborn`
+- **Model**: Custom Poisson Regression (pure NumPy gradient descent)
+- **Simulation**: Monte Carlo (10,000 iterations)
+- **Data**: Kaggle international football results + EA FC 26 squad ratings
