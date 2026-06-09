@@ -437,6 +437,36 @@ print("\nGroup draw difficulty multipliers (knockout adjustment):")
 for t in sorted(all_wc_teams, key=lambda x: team_group_difficulty[x]):
     print(f"  {t:<22} group_opp_avg_OVR={team_group_difficulty[t]:.1f}  "
           f"KO_multiplier={get_group_difficulty_multiplier(t):.3f}")
+
+# 9b. MANUAL SQUAD OVERRIDE MULTIPLIERS (Fix 6)
+# Applied to ALL rounds (group + knockout) to correct systemic model biases.
+# Values represent expert football judgment on squad quality vs model estimate.
+MANUAL_OVERRIDES = {
+    # --- Over-rated by model ---
+    'Belgium':      0.92,   # Aging golden generation (avg ~31); De Bruyne injury concerns
+    'Qatar':        0.90,   # Host qualifier; domestic standard far below WC level
+    'Argentina':    0.97,   # Messi at 38, late career; squad transition underway
+    'Uruguay':      0.96,   # Overperforms FIFA rank but aging defensive core
+
+    # --- Under-rated by model ---
+    'Morocco':      1.04,   # 2022 semifinalists; peak squad, hungry & organized
+    'United States':1.03,   # Home nation; young, athletic; MLS/MNT generation peak
+    'Canada':       1.02,   # Home nation; Davies-led golden generation at peak
+    'Mexico':       1.01,   # Home nation; passionate support; always punches above weight
+    'Germany':      1.04,   # Nagelsmann rebuild working; ruthless at 2024 Euros host
+    'England':      1.02,   # Peak squad; depth unrivalled; Bellingham-era prime
+    'Japan':        1.02,   # Consistent overperformer; Europe-based stars at peak
+}
+
+def get_manual_override(team):
+    """Return lambda multiplier for a team based on manual squad assessment."""
+    return MANUAL_OVERRIDES.get(team, 1.0)
+
+print("\nManual squad override multipliers:")
+for t, mult in sorted(MANUAL_OVERRIDES.items(), key=lambda x: x[1], reverse=True):
+    direction = "[+] boost" if mult > 1.0 else "[-] penalty"
+    print(f"  {t:<22} {mult:.2f}  {direction}")
+
 print("Pre-calculating expected goals for all possible team pairings...")
 latest_date = pd.to_datetime('2026-06-01')
 
@@ -503,7 +533,11 @@ def get_cached_lambdas(team_a, team_b, neutral):
 # 10. SIMULATOR LOGIC FUNCTIONS
 def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
     lambda_a, lambda_b = get_cached_lambdas(team_a, team_b, neutral)
-    
+
+    # Apply manual squad override multipliers (all rounds)
+    lambda_a *= get_manual_override(team_a)
+    lambda_b *= get_manual_override(team_b)
+
     # Apply group difficulty multiplier in knockout rounds
     if is_knockout:
         lambda_a *= get_group_difficulty_multiplier(team_a)
