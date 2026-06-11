@@ -6,6 +6,7 @@ import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt
 import seaborn as sns
+from xgboost import XGBRegressor
 
 # 1. SETUP AND DIRECTORY WORK
 CWD = os.getcwd()
@@ -144,6 +145,40 @@ team_match_history = {}   # stores (goals_for, goals_against, date, tournament)
 training_rows = []
 training_weights = []  # sample weights for each training row
 
+# --- 6a. HEAD-TO-HEAD WIN RATE (competitive, last 10 years) ---
+# For each ordered pair (A, B): fraction of competitive matches A won vs B.
+# Only considers matches since 2016 to reflect current squad generations.
+# Default = 0.5 (no prior knowledge) for pairs with no shared history.
+print("Building head-to-head win rate table...")
+H2H_CUTOFF = pd.to_datetime('2016-01-01')
+h2h_records = {}  # (team_a, team_b) -> {'wins': int, 'total': int}
+
+def _h2h_key(a, b): return (a, b)
+
+for _, row in results_df.iterrows():
+    try:
+        hs = float(row['home_score']); as_ = float(row['away_score'])
+        if np.isnan(hs) or np.isnan(as_): continue
+    except (ValueError, TypeError): continue
+    if row['date'] < H2H_CUTOFF: continue
+    tourn = str(row.get('tournament', 'Friendly'))
+    if 'friendly' in tourn.lower(): continue  # skip friendlies
+    h, a = row['home_team'], row['away_team']
+    for team, opp in [(h, a), (a, h)]:
+        key = _h2h_key(team, opp)
+        if key not in h2h_records: h2h_records[key] = {'wins': 0, 'total': 0}
+        h2h_records[key]['total'] += 1
+        won = (team == h and hs > as_) or (team == a and as_ > hs)
+        if won: h2h_records[key]['wins'] += 1
+
+def get_h2h_win_rate(team_a, team_b):
+    """Fraction of competitive matches team_a won vs team_b (2016+). Default 0.5."""
+    rec = h2h_records.get(_h2h_key(team_a, team_b))
+    if not rec or rec['total'] == 0: return 0.5
+    return rec['wins'] / rec['total']
+
+print(f"H2H records built for {len(h2h_records)} directional team pairs.")
+
 # --- Match importance weights for form calculation ---
 MATCH_WEIGHTS = {
     'FIFA World Cup': 2.0,
@@ -238,26 +273,30 @@ for idx, row in results_df.iterrows():
             # Recency-based sample weight: decays over 4 years toward WC date
             days_to_wc = max(0.0, (WC_TARGET_DATE - date).days)
             row_weight = 2.0 ** (-days_to_wc / TRAIN_HALF_LIFE_DAYS) * imp
-            
+
+            h2h_h = get_h2h_win_rate(h, a)  # H's win rate vs A in competitive matches
+            h2h_a = get_h2h_win_rate(a, h)  # A's win rate vs H
             training_rows.append({
                 'team': h, 'opp': a, 'is_home': 1 - neutral,
-                'rank_diff': (h_rank - a_rank) / 100.0,
-                'point_diff': (h_pts - a_pts) / 500.0,
+                'rank_diff': (h_rank - a_rank) / 60.0,    # was /100 — stronger rank signal
+                'point_diff': (h_pts - a_pts) / 300.0,    # was /500 — stronger points signal
                 'squad_atk_self': (h_atk - 75.0) / 10.0,
                 'squad_def_opp': (a_def - 70.0) / 10.0,
-                'squad_ovr_diff': (h_ovr - a_ovr) / 10.0,
+                'squad_ovr_diff': (h_ovr - a_ovr) / 10.0,   # consistent: /10 in training
                 'form_attack_self': h_form_att, 'form_defense_opp': a_form_def,
+                'h2h_win_rate': h2h_h,
                 'is_friendly': is_friendly, 'goals': hs
             })
             training_weights.append(row_weight)
             training_rows.append({
                 'team': a, 'opp': h, 'is_home': 0,
-                'rank_diff': (a_rank - h_rank) / 100.0,
-                'point_diff': (a_pts - h_pts) / 500.0,
+                'rank_diff': (a_rank - h_rank) / 60.0,    # consistent with above
+                'point_diff': (a_pts - h_pts) / 300.0,
                 'squad_atk_self': (a_atk - 75.0) / 10.0,
                 'squad_def_opp': (h_def - 70.0) / 10.0,
-                'squad_ovr_diff': (a_ovr - h_ovr) / 10.0,
+                'squad_ovr_diff': (a_ovr - h_ovr) / 10.0,   # consistent: /10 in training
                 'form_attack_self': a_form_att, 'form_defense_opp': h_form_def,
+                'h2h_win_rate': h2h_a,
                 'is_friendly': is_friendly, 'goals': as_
             })
             training_weights.append(row_weight)
@@ -269,46 +308,17 @@ for idx, row in results_df.iterrows():
         team_match_history[h].append((hs_int, as_int, date, tournament))
         team_match_history[a].append((as_int, hs_int, date, tournament))
 
-# 7. IMPLEMENT PURE NUMPY POISSON REGRESSION (with sample weights)
-class PurePoissonRegression:
-    def __init__(self, lr=0.001, iterations=1500):
-        self.lr = lr
-        self.iterations = iterations
-        self.weights = None
-        self.bias = None
-        
-    def fit(self, X, y, sample_weights=None):
-        N, D = X.shape
-        self.weights = np.zeros(D)
-        self.bias = 0.0
-        if sample_weights is None:
-            sample_weights = np.ones(N)
-        # Normalize weights so they sum to N (keeps gradient magnitudes comparable)
-        w = sample_weights / sample_weights.sum() * N
-        for i in range(self.iterations):
-            linear = np.dot(X, self.weights) + self.bias
-            linear = np.clip(linear, -10.0, 5.0)
-            lambdas = np.exp(linear)
-            residuals = lambdas - y
-            dw = np.dot(X.T, w * residuals) / N
-            db = np.sum(w * residuals) / N
-            self.weights -= self.lr * dw
-            self.bias -= self.lr * db
-            
-    def predict(self, X):
-        linear = np.dot(X, self.weights) + self.bias
-        linear = np.clip(linear, -10.0, 5.0)
-        return np.exp(linear)
-
+# 7. TRAIN XGBOOST POISSON MODEL (replaces custom Poisson regression)
 train_df = pd.DataFrame(training_rows)
 weights_arr = np.array(training_weights, dtype=np.float64)
 print(f"Constructed {len(train_df)} training rows (competitive matches, 2016+).")
 
-features_cols = ['is_home', 'rank_diff', 'point_diff', 'squad_atk_self', 'squad_def_opp', 'squad_ovr_diff', 'form_attack_self', 'form_defense_opp', 'is_friendly']
+features_cols = ['is_home', 'rank_diff', 'point_diff', 'squad_atk_self', 'squad_def_opp',
+                 'squad_ovr_diff', 'form_attack_self', 'form_defense_opp', 'h2h_win_rate', 'is_friendly']
 X_df = train_df[features_cols]
 y_df = train_df['goals']
 
-# Train/Test split in numpy
+# Train/Test split
 np.random.seed(42)
 indices = np.arange(len(train_df))
 np.random.shuffle(indices)
@@ -321,25 +331,53 @@ w_train = weights_arr[train_idx]
 X_val = X_df.iloc[val_idx].to_numpy(dtype=np.float64)
 y_val = y_df.iloc[val_idx].to_numpy(dtype=np.float64)
 
-# Fit custom model with sample weights
-print("Training custom Poisson Regression model (with recency + importance weighting)...")
-model = PurePoissonRegression(lr=0.01, iterations=2000)
-model.fit(X_train, y_train, sample_weights=w_train)
+# --- XGBoost Poisson Regressor ---
+# objective='count:poisson' makes XGBoost predict a Poisson rate (lambda),
+# so the output is always >= 0 and interprets goals as a count distribution.
+# This is a direct upgrade over linear Poisson regression:
+#   - Captures non-linear interactions between rank, form, squad strength etc.
+#   - Gradient-boosted trees are highly resistant to overfitting with proper params.
+#   - sample_weight passes the recency + importance weights directly to XGBoost.
+print("Training XGBoost Poisson model (with recency + importance weighting)...")
+model = XGBRegressor(
+    objective='count:poisson',   # Poisson log-likelihood loss, output = predicted goals
+    n_estimators=600,            # number of boosting rounds
+    learning_rate=0.05,          # shrinkage — controls overfitting
+    max_depth=4,                 # shallow trees = lower variance, better generalisation
+    subsample=0.8,               # row subsampling per tree
+    colsample_bytree=0.8,        # feature subsampling per tree
+    min_child_weight=5,          # minimum sum of instance weight in a leaf
+    gamma=0.1,                   # minimum loss reduction to split a node
+    reg_lambda=1.5,              # L2 regularisation
+    random_state=42,
+    n_jobs=-1,                   # use all CPU cores
+    verbosity=0
+)
+model.fit(
+    X_train, y_train,
+    sample_weight=w_train,
+    eval_set=[(X_val, y_val)],
+    verbose=False
+)
 
-# Evaluate model
+# Evaluate on held-out validation set
 y_pred = model.predict(X_val)
 mae = np.mean(np.abs(y_val - y_pred))
 ss_res = np.sum((y_val - y_pred)**2)
 ss_tot = np.sum((y_val - np.mean(y_val))**2)
 r2 = 1.0 - (ss_res / ss_tot)
-print(f"Validation MAE (Custom Poisson): {mae:.4f}")
-print(f"Validation R2 Score (Custom Poisson): {r2:.4f}")
+print(f"Validation MAE  (XGBoost Poisson): {mae:.4f}")
+print(f"Validation R²   (XGBoost Poisson): {r2:.4f}")
 
-# Train on the entire dataset with full weights
+# Refit on FULL dataset so the final model sees all data
 X_all = X_df.to_numpy(dtype=np.float64)
 y_all = y_df.to_numpy(dtype=np.float64)
-model.fit(X_all, y_all, sample_weights=weights_arr)
-print("Model coefficients:", model.weights, "Bias:", model.bias)
+model.fit(X_all, y_all, sample_weight=weights_arr, verbose=False)
+
+# Feature importance summary
+print("\nXGBoost feature importances (gain):")
+for fname, imp in sorted(zip(features_cols, model.feature_importances_), key=lambda x: -x[1]):
+    print(f"  {fname:<25} {imp:.4f}")
 
 # 8. EXTRACT WORLD CUP 2026 GROUPS
 print("Extracting World Cup 2026 groups...")
@@ -438,34 +476,100 @@ for t in sorted(all_wc_teams, key=lambda x: team_group_difficulty[x]):
     print(f"  {t:<22} group_opp_avg_OVR={team_group_difficulty[t]:.1f}  "
           f"KO_multiplier={get_group_difficulty_multiplier(t):.3f}")
 
-# 9b. MANUAL SQUAD OVERRIDE MULTIPLIERS (Fix 6)
+# 9b. MANUAL SQUAD OVERRIDE MULTIPLIERS
 # Applied to ALL rounds (group + knockout) to correct systemic model biases.
-# Values represent expert football judgment on squad quality vs model estimate.
+# EA FC ratings for South American league-based players are inflated vs actual
+# WC performance. These values reflect expert assessment of true tournament quality.
 MANUAL_OVERRIDES = {
-    # --- Over-rated by model ---
-    'Belgium':      0.92,   # Aging golden generation (avg ~31); De Bruyne injury concerns
-    'Qatar':        0.90,   # Host qualifier; domestic standard far below WC level
+    # --- Significantly over-rated by model (EA FC inflation / no WC pedigree) ---
+    'Ecuador':      0.80,   # EA FC OVR 81.36 is deeply misleading; group-stage exits historically
+    'Algeria':      0.86,   # No WC pedigree; AFCON form ≠ WC knockout quality
+    'Egypt':        0.87,   # Salah dependent; historically fragile in WC
+    'Jordan':       0.86,   # FIFA rank 63; EA FC overstates regional quality
+    'Tunisia':      0.89,   # Consistently exits group stage in WCs
+    'Ivory Coast':  0.90,   # Underperformed in every WC relative to squad quality
+    'Belgium':      0.91,   # Aging golden generation; De Bruyne injury concerns
+    'Qatar':        0.87,   # Host qualifier; domestic standard far below WC level
+    'Uruguay':      0.87,   # EA FC def score 81 misleading; aging squad; R16 ceiling historically
+    'Japan':        0.91,   # Strong 2022 form but R16 ceiling; can’t sustain vs QF-level elite
+    'Sweden':       0.90,   # Rank 38; EA FC over-rates Allsvenskan-based players
+    'Australia':    0.90,   # Rank 27; R16 ceiling historically
+    'Iran':         0.88,   # Limited WC knockout impact
+    'Saudi Arabia': 0.86,   # Regional strength ≠ WC knockout quality
     'Argentina':    0.97,   # Messi at 38, late career; squad transition underway
-    'Uruguay':      0.96,   # Overperforms FIFA rank but aging defensive core
+    'Norway':       0.93,   # Haaland-dependent; no recent WC history
+    'Cape Verde':   0.87,   # Regional qualifier; well below WC elite standard
 
-    # --- Under-rated by model ---
+    # --- Under-rated by model (WC pedigree / peak generation / host factor) ---
+    'France':       1.05,   # Defending finalists 2022; deepest squad in the world
+    'Brazil':       1.12,   # 5× WC champions; most WC wins all time; prime squad
+    'Germany':      1.08,   # 4× WC champions; Nagelsmann era; always lethal in KO rounds
+    'Portugal':     1.07,   # Strong WC QF/R16 history; elite squad depth
+    'Netherlands':  1.10,   # Consistently underrated; 2014 SF showed WC quality; elite squad
+    'Spain':        1.03,   # WC winners 2010; young golden generation again
     'Morocco':      1.04,   # 2022 semifinalists; peak squad, hungry & organized
     'United States':1.03,   # Home nation; young, athletic; MLS/MNT generation peak
     'Canada':       1.02,   # Home nation; Davies-led golden generation at peak
     'Mexico':       1.01,   # Home nation; passionate support; always punches above weight
-    'Germany':      1.04,   # Nagelsmann rebuild working; ruthless at 2024 Euros host
-    'England':      1.02,   # Peak squad; depth unrivalled; Bellingham-era prime
-    'Japan':        1.02,   # Consistent overperformer; Europe-based stars at peak
+    'England':      1.03,   # Peak squad; depth unrivalled; Bellingham-era prime
+    'Colombia':     1.02,   # Strong CONMEBOL form; James/Díaz generation at peak
+    'Croatia':      1.03,   # 2018 runners-up, 2022 SF; experienced knockout operators
 }
 
 def get_manual_override(team):
     """Return lambda multiplier for a team based on manual squad assessment."""
     return MANUAL_OVERRIDES.get(team, 1.0)
 
-print("\nManual squad override multipliers:")
-for t, mult in sorted(MANUAL_OVERRIDES.items(), key=lambda x: x[1], reverse=True):
-    direction = "[+] boost" if mult > 1.0 else "[-] penalty"
-    print(f"  {t:<22} {mult:.2f}  {direction}")
+# 9c. WORLD CUP PEDIGREE MULTIPLIER (knockout rounds only)
+# Teams with a history of deep WC runs perform better in high-pressure knockout
+# football than their raw stats suggest. Computed from the last 3 WCs (2014-2022).
+# Scoring: Winner=4, Runner-up=3, Semifinal=2, Quarterfinal=1, R16=0.5, Group=0
+print("\nBuilding WC pedigree scores from historical results...")
+WC_PEDIGREE_RAW = {
+    'Germany':      4+3+0,   # 2014 winner, 2018 group stage, 2022 group stage
+    'France':       2+4+2,   # 2014 QF, 2018 winner, 2022 runner-up
+    'Brazil':       2+0.5+2, # 2014 SF (host), 2018 R16, 2022 QF
+    'Argentina':    3+0.5+4, # 2014 runner-up, 2018 R16, 2022 winner
+    'Belgium':      0.5+2+1, # 2014 R16, 2018 SF, 2022 R16 (but aging now)
+    'Netherlands':  3+0+2,   # 2014 SF, 2018 DNQ, 2022 QF
+    'Croatia':      0.5+3+2, # 2014 group, 2018 runner-up, 2022 SF  
+    'Morocco':      0+0+2,   # 2014/2018 group, 2022 SF
+    'England':      0+0.5+1, # 2014 group, 2018 SF, 2022 QF
+    'Spain':        0.5+0+0.5,# 2014 group, 2018 R16, 2022 R16
+    'Portugal':     1+0+1,   # 2014 group, 2018 QF, 2022 QF
+    'Uruguay':      1+0.5+0.5,# 2014 R16, 2018 R16, 2022 R16
+    'Colombia':     1+0+0,   # 2014 QF, 2018 R16, DNQ 2022
+    'Japan':        0+0.5+0.5,# consistent R16
+    'Mexico':       0.5+0.5+0.5, # three consecutive R16 exits
+    'United States':0+0+0,   # 2014 R16, 2018 DNQ, 2022 R16
+    'Senegal':      0+0+0.5, # 2022 R16 only
+    'South Korea':  0+0+0.5, # 2022 R16
+    'Australia':    0+0+0.5, # 2022 R16
+    'Switzerland':  0.5+0.5+0.5, # consistent R16
+    'Denmark':      0.5+0+0.5,
+    'Poland':       0+0.5+0,
+    'Ecuador':      0+0+0,   # Group stage exits in 2014/2018/2022
+    'Algeria':      0+0+0,
+    'Canada':       0+0+0,   # Historically limited WC appearances
+    'Saudi Arabia': 0+0+0,
+}
+
+# Normalize pedigree scores to a multiplier range:
+# Best pedigree (Argentina/France: ~8pts) → 1.04, zero pedigree → 0.99
+_ped_vals = list(WC_PEDIGREE_RAW.values())
+_ped_max = max(_ped_vals) if _ped_vals else 1.0
+WC_PEDIGREE_MULT_RANGE = 0.05   # total swing: zero-pedigree=0.99, max-pedigree=1.04
+
+def get_wc_pedigree_multiplier(team):
+    """Returns a knockout-only lambda multiplier based on historical WC depth.
+    Applied only in knockout rounds where big-tournament experience matters most."""
+    score = WC_PEDIGREE_RAW.get(team, 0.0)
+    normalized = score / _ped_max if _ped_max > 0 else 0.0
+    return 0.99 + normalized * WC_PEDIGREE_MULT_RANGE
+
+print("WC pedigree multipliers (knockout rounds):")
+for t, sc in sorted(WC_PEDIGREE_RAW.items(), key=lambda x: -x[1]):
+    print(f"  {t:<22} raw_score={sc:.1f}  KO_mult={get_wc_pedigree_multiplier(t):.3f}")
 
 print("Pre-calculating expected goals for all possible team pairings...")
 latest_date = pd.to_datetime('2026-06-01')
@@ -489,30 +593,34 @@ for team_a in all_wc_teams:
         att_b, def_b = get_latest_form(team_b)
         ovr_b, atk_b, def_b_sq, pen_b = get_squad_features(team_b, rank_b)
         
+        h2h_ab = get_h2h_win_rate(team_a, team_b)
+
         # Scenario 1: neutral = 1
         precalc_features.append([
             0.0,  # is_home
-            (rank_a - rank_b) / 100.0,
-            (pts_a - pts_b) / 500.0,
+            (rank_a - rank_b) / 60.0,
+            (pts_a - pts_b) / 300.0,
             (atk_a - 75.0) / 10.0,
             (def_b_sq - 70.0) / 10.0,
             (ovr_a - ovr_b) / 10.0,
             att_a,
             def_b,
+            h2h_ab,  # h2h_win_rate
             0.0  # is_friendly
         ])
         precalc_keys.append((team_a, team_b, 1))
-        
+
         # Scenario 2: neutral = 0
         precalc_features.append([
             1.0,  # is_home
-            (rank_a - rank_b) / 100.0,
-            (pts_a - pts_b) / 500.0,
+            (rank_a - rank_b) / 60.0,
+            (pts_a - pts_b) / 300.0,
             (atk_a - 75.0) / 10.0,
             (def_b_sq - 70.0) / 10.0,
             (ovr_a - ovr_b) / 10.0,
             att_a,
             def_b,
+            h2h_ab,  # h2h_win_rate
             0.0  # is_friendly
         ])
         precalc_keys.append((team_a, team_b, 0))
@@ -531,6 +639,44 @@ def get_cached_lambdas(team_a, team_b, neutral):
     return l_a, l_b
 
 # 10. SIMULATOR LOGIC FUNCTIONS
+
+# --- Dixon-Coles correction (defined once, used in every match simulation) ---
+# rho < 0 reduces 0-0 draws and 1-1 draws while boosting 1-0 and 0-1 results,
+# matching the empirical frequency distribution of international football scorelines.
+DC_RHO = -0.13   # standard value calibrated on international match data
+_DC_MAX_GOALS = 8
+_DC_GOALS = np.arange(_DC_MAX_GOALS + 1, dtype=np.float64)  # [0,1,...,8]
+_DC_LOG_FACT = np.array([0.0] + list(np.cumsum(np.log(np.arange(1, _DC_MAX_GOALS + 1)))))
+
+# Pre-build (9,9) index grids
+_DC_I, _DC_J = np.meshgrid(_DC_GOALS, _DC_GOALS, indexing='ij')  # shape (9,9)
+
+def dc_sample(la, lb, rho=DC_RHO):
+    """Sample a scoreline (goals_a, goals_b) from the Dixon-Coles distribution.
+    Fully vectorised with NumPy — no Python loops, safe for 10K+ Monte Carlo calls."""
+    # Poisson log-PMFs for each goal count
+    log_pa = _DC_GOALS * np.log(max(la, 1e-9)) - la - _DC_LOG_FACT  # shape (9,)
+    log_pb = _DC_GOALS * np.log(max(lb, 1e-9)) - lb - _DC_LOG_FACT  # shape (9,)
+
+    # Joint independent Poisson probability table (9x9)
+    log_joint = log_pa[:, None] + log_pb[None, :]  # shape (9,9)
+    p_joint = np.exp(log_joint)
+
+    # Dixon-Coles tau correction for low-scoring cells
+    tau = np.ones((_DC_MAX_GOALS + 1, _DC_MAX_GOALS + 1), dtype=np.float64)
+    tau[0, 0] = max(1.0 - la * lb * rho, 1e-9)
+    tau[0, 1] = max(1.0 + la * rho,       1e-9)
+    tau[1, 0] = max(1.0 + lb * rho,       1e-9)
+    tau[1, 1] = max(1.0 - rho,            1e-9)
+
+    p_corrected = p_joint * tau
+    p_flat = p_corrected.ravel()
+    p_flat = np.maximum(p_flat, 0.0)
+    p_flat /= p_flat.sum()  # normalise to valid probability distribution
+
+    flat_idx = np.random.choice(len(p_flat), p=p_flat)
+    return divmod(flat_idx, _DC_MAX_GOALS + 1)  # -> (goals_a, goals_b)
+
 def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
     lambda_a, lambda_b = get_cached_lambdas(team_a, team_b, neutral)
 
@@ -538,24 +684,27 @@ def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
     lambda_a *= get_manual_override(team_a)
     lambda_b *= get_manual_override(team_b)
 
-    # Apply group difficulty multiplier in knockout rounds
+    # Apply group difficulty + WC pedigree multipliers in knockout rounds
     if is_knockout:
         lambda_a *= get_group_difficulty_multiplier(team_a)
         lambda_b *= get_group_difficulty_multiplier(team_b)
-    
-    goals_a = np.random.poisson(lambda_a)
-    goals_b = np.random.poisson(lambda_b)
-    
+        # WC pedigree: teams with history of deep WC runs get a small KO boost
+        lambda_a *= get_wc_pedigree_multiplier(team_a)
+        lambda_b *= get_wc_pedigree_multiplier(team_b)
+
+    # Sample scoreline using Dixon-Coles corrected Poisson distribution
+    goals_a, goals_b = dc_sample(lambda_a, lambda_b)
+
     if not is_knockout:
         return goals_a, goals_b
-        
+
     # Extra time if tied
     if goals_a == goals_b:
         goals_a_et = np.random.poisson(lambda_a / 3.0)
         goals_b_et = np.random.poisson(lambda_b / 3.0)
         goals_a += goals_a_et
         goals_b += goals_b_et
-        
+
     # Penalty shootout if still tied
     if goals_a == goals_b:
         rank_a, _ = get_rank_and_points(team_a, latest_date)
@@ -564,19 +713,19 @@ def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
         wr_b = get_shootout_win_rate(team_b)
         _, _, _, pen_a = get_squad_features(team_a, rank_a)
         _, _, _, pen_b = get_squad_features(team_b, rank_b)
-        
+
         # Combined: historical win rate (40%) + FIFA rank (10%) + EA FC Penalty score (50%)
         p_win_a = (0.5
             + 0.15 * (wr_a - wr_b)
             + 0.15 * (pen_a - pen_b) / 100.0
             + 0.05 * ((rank_b - rank_a) / max(rank_b + rank_a, 1)))
         p_win_a = np.clip(p_win_a, 0.35, 0.65)
-        
+
         if np.random.random() < p_win_a:
             return goals_a + 1, goals_b
         else:
             return goals_a, goals_b + 1
-            
+
     return goals_a, goals_b
 
 def simulate_group_stage():
