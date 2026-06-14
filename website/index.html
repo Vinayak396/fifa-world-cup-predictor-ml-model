@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIFA 2026 World Cup AI Predictor</title>
+  <meta name="description" content="AI-powered FIFA 2026 World Cup match predictions. Win/draw/loss probabilities for every group stage match plus the predicted tournament winner, powered by XGBoost.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">⚽ FIFA 2026 · Predictor</div>
+  <div class="nav-links">
+    <a href="#winner">Winner</a>
+    <a href="#contenders">Contenders</a>
+    <a href="#groups">Group Stage</a>
+  </div>
+  <div class="nav-badge">XGBoost · Poisson</div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <canvas id="particles" class="hero-particles"></canvas>
+  <div class="hero-content">
+    <div class="hero-tag">🏆 FIFA World Cup 2026 · USA · Canada · Mexico</div>
+    <h1>World Cup<br>AI Predictor</h1>
+    <p>Machine-learning powered predictions for every match — group stage through the final. Built with XGBoost Poisson regression, Dixon-Coles correction & FIFA rankings.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val">48</div><div class="lbl">Teams</div></div>
+      <div class="hero-stat"><div class="val">72</div><div class="lbl">Group Matches</div></div>
+      <div class="hero-stat"><div class="val">10K+</div><div class="lbl">Simulations</div></div>
+      <div class="hero-stat"><div class="val">12</div><div class="lbl">Groups</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PREDICTED WINNER ─────────────────────────────────────────────────────── -->
+<section id="winner">
+  <div class="section-inner">
+    <div class="section-title"><span>🥇</span> Predicted Champion</div>
+    <div class="section-sub">Based on 10,000 Monte Carlo tournament simulations</div>
+    <div class="winner-card">
+      <div class="winner-flag">
+        <img id="winner-flag" src="" alt="Winner">
+      </div>
+      <div class="winner-info">
+        <div class="winner-label">🏆 Predicted World Cup Winner</div>
+        <div class="winner-name" id="winner-name">—</div>
+        <div class="winner-pct" id="winner-pct-text"></div>
+      </div>
+      <div class="winner-bar-wrap" id="winner-bars"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOP CONTENDERS ───────────────────────────────────────────────────────── -->
+<section id="contenders">
+  <div class="section-inner">
+    <div class="section-title"><span>📊</span> Top Contenders</div>
+    <div class="section-sub">Tournament winner probability — top 10 teams</div>
+    <div class="contenders-grid" id="contenders-list"></div>
+  </div>
+</section>
+
+<!-- ── GROUP STAGE ──────────────────────────────────────────────────────────── -->
+<section id="groups">
+  <div class="section-inner">
+    <div class="section-title"><span>⚽</span> Group Stage Predictions</div>
+    <div class="section-sub">Win / Draw / Win probabilities for all 72 group stage matches, derived from the AI model's tournament simulation</div>
+    <div class="group-tabs" id="group-tabs"></div>
+    <div id="group-panels"></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────────────────── -->
+<footer>
+  <p>Built with <strong>XGBoost Poisson Regression</strong> · Dixon-Coles Correction · FIFA Rankings · EA FC 26 Squad Ratings</p>
+  <p style="margin-top:0.5rem;opacity:0.5">Predictions are probabilistic estimates, not guarantees. Data as of June 2026.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
