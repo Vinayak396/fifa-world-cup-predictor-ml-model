@@ -39,7 +39,14 @@ A companion **[interactive web app](#-interactive-web-predictor)** visualises ma
 
 ### Model Improvements
 
-**v3.0 — XGBoost + Dixon-Coles (latest)**
+**v4.0 — Live Matchday 1 Results & Squad Lists (latest)**
+- Recomputed squad statistics using **actual named squads** scraped and cross-referenced with EA FC ratings.
+- Updated results database with actual scores of completed Matchday 1 fixtures (Groups A–H).
+- Shifted form decay reference evaluation date to `2026-06-16` to capture Matchday 1 results as recent match history.
+- Initialized group standings using real Matchday 1 scores, simulating only the remaining matches.
+- Synchronized web dashboard to display Matchday 1 results with pre-match predicted probabilities.
+
+**v3.0 — XGBoost + Dixon-Coles**
 - Replaced custom NumPy Poisson with **XGBoost Poisson regressor** (`count:poisson` objective)
 - Added **Dixon-Coles scoreline correction** for low-score match cells (0-0, 1-0, 0-1, 1-1)
 - Added **head-to-head win rate** as a training feature (competitive matches, last 10 years)
@@ -71,25 +78,25 @@ A companion **[interactive web app](#-interactive-web-predictor)** visualises ma
 
 ## 📈 Latest Prediction Results (Top 15)
 
-> Results from 10,000 Monte Carlo simulations — v3.0 model.
+> Results from 10,000 Monte Carlo simulations — v4.0 model (post-Matchday 1).
 
 | Rank | Team | Group | FIFA Rank | R16 (%) | QF (%) | SF (%) | Final (%) | **Winner (%)** |
 |------|------|-------|-----------|---------|--------|--------|-----------|----------------|
-| 1 | 🏴󠁧󠁢󠁥󠁮󠁧󠁿 **England** | L | 4 | 61.96 | 40.49 | 25.38 | 15.62 | **9.32%** |
-| 2 | 🇫🇷 **France** | I | 1 | 55.39 | 35.52 | 23.31 | 14.58 | **9.02%** |
-| 3 | 🇦🇷 **Argentina** | J | 3 | 51.39 | 34.33 | 22.41 | 13.00 | **8.04%** |
-| 4 | 🇪🇸 **Spain** | H | 2 | 52.29 | 34.03 | 21.66 | 12.43 | **7.24%** |
-| 5 | 🇲🇦 **Morocco** | C | 8 | 52.99 | 33.51 | 19.18 | 11.99 | **6.56%** |
-| 6 | 🇧🇷 **Brazil** | C | 6 | 51.67 | 31.83 | 18.93 | 10.51 | **5.73%** |
-| 7 | 🇵🇹 **Portugal** | K | 5 | 50.94 | 29.17 | 15.27 | 8.02 | **4.12%** |
-| 8 | 🇩🇪 **Germany** | E | 10 | 51.18 | 27.65 | 15.19 | 8.36 | **4.05%** |
-| 9 | 🇧🇪 **Belgium** | G | 9 | 44.77 | 24.87 | 14.74 | 7.01 | **3.48%** |
-| 10 | 🇺🇾 **Uruguay** | H | 17 | 45.36 | 26.90 | 15.45 | 7.38 | **3.46%** |
-| 11 | 🇪🇨 **Ecuador** | E | 23 | 42.44 | 22.05 | 11.14 | 6.19 | **3.22%** |
-| 12 | 🇳🇱 **Netherlands** | F | 7 | 42.16 | 23.83 | 12.01 | 6.40 | **3.11%** |
-| 13 | 🇨🇴 **Colombia** | K | 13 | 43.47 | 23.15 | 12.61 | 6.20 | **3.01%** |
-| 14 | 🇯🇵 **Japan** | F | 18 | 35.90 | 18.65 | 9.72 | 5.11 | **2.61%** |
-| 15 | 🇺🇸 **United States** | D | 16 | 51.46 | 27.14 | 11.67 | 5.26 | **2.58%** |
+| 1 | 🇫🇷 **France** | I | 1 | 58.23% | 39.77% | 27.66% | 17.75% | **12.21%** |
+| 2 | 🏴󠁧󠁢󠁥󠁮󠁧󠁿 **England** | L | 4 | 64.58% | 40.86% | 25.91% | 15.58% | **8.77%** |
+| 3 | 🇪🇸 **Spain** | H | 2 | 53.08% | 34.80% | 22.76% | 14.32% | **8.76%** |
+| 4 | 🇦🇷 **Argentina** | J | 3 | 49.44% | 32.83% | 20.82% | 11.88% | **6.57%** |
+| 5 | 🇵🇹 **Portugal** | K | 5 | 55.46% | 34.56% | 19.60% | 11.28% | **6.33%** |
+| 6 | 🇲🇦 **Morocco** | C | 8 | 55.58% | 35.55% | 18.84% | 11.28% | **6.12%** |
+| 7 | 🇧🇷 **Brazil** | C | 6 | 57.00% | 36.16% | 21.11% | 11.50% | **6.11%** |
+| 8 | 🇧🇪 **Belgium** | G | 9 | 46.88% | 28.41% | 17.20% | 8.86% | **4.74%** |
+| 9 | 🇩🇪 **Germany** | E | 10 | 61.72% | 32.70% | 18.16% | 9.64% | **4.70%** |
+| 10 | 🇨🇴 **Colombia** | K | 13 | 41.84% | 22.28% | 12.20% | 6.14% | **2.78%** |
+| 11 | 🇭🇷 **Croatia** | L | 11 | 35.01% | 20.56% | 11.80% | 5.93% | **2.67%** |
+| 12 | 🇦🇺 **Australia** | D | 27 | 53.31% | 26.03% | 13.24% | 5.67% | **2.51%** |
+| 13 | 🇳🇱 **Netherlands** | F | 7 | 35.42% | 19.98% | 9.47% | 4.64% | **2.26%** |
+| 14 | 🇲🇽 **Mexico** | A | 15 | 57.25% | 25.29% | 11.18% | 5.05% | **2.24%** |
+| 15 | 🇺🇸 **United States** | D | 16 | 54.34% | 26.91% | 11.88% | 5.33% | **2.18%** |
 
 Full results for all 48 teams: [`fifa_2026_prediction_results.csv`](./fifa_2026_prediction_results.csv)
 
@@ -100,11 +107,11 @@ Full results for all 48 teams: [`fifa_2026_prediction_results.csv`](./fifa_2026_
 A companion website visualises **Win / Draw / Win probabilities** for every group stage match.
 
 **Features:**
-- 🏆 Predicted tournament winner spotlight (England, 9.32%)
+- 🏆 Predicted tournament winner spotlight (France, 12.21%)
 - 📊 Top 10 contenders with animated probability bars
 - ⚽ All 72 group stage matches across 12 group tabs (A–L)
-- Match cards with team flags, venue, date, and tri-colour probability bars
-- Fully responsive — dark navy design with gold accents
+- Match cards displaying completed Matchday 1 final scores alongside pre-match odds
+- Fully responsive — dark navy design with gold accents and glassmorphic card layouts
 
 **Run locally:**
 ```bash
@@ -121,11 +128,14 @@ python -m http.server 8765
 |------|-------------|
 | `predict_world_cup.py` | Main Python pipeline and simulation script |
 | `predict_world_cup.ipynb` | Self-contained, documented Jupyter notebook |
+| `get_wc_squads.py` | Scrapes Wikipedia squad list and cross-references it with EA FC ratings |
+| `update_results_md1.py` | Helper utility to populate Matchday 1 results into `results.csv` |
 | `fifa_2026_prediction_results.csv` | Full probability stats for all 48 teams |
 | `fifa_2026_prediction_plot.png` | Winner probability bar chart |
-| `FIFA2026_schedule_Fixtures.csv` | **Updated** — confirmed teams for all 104 matches |
+| `FIFA2026_schedule_Fixtures.csv` | Confirmed teams for all 104 matches |
+| `wc2026_squads.csv` | Compiled actual named squads for all 2026 WC nations |
 | `eafc26_wc_team_summary.csv` | EA FC 26 squad ratings for all 48 WC nations |
-| `results.csv` | Historical international match results (1872–2026) |
+| `results.csv` | Historical international match results + Matchday 1 scores |
 | `fifa_mens_rank.csv` | Historical FIFA rankings (1993–2026) |
 | `shootouts.csv` | Historical penalty shootout results |
 | `former_names.csv` | Historical team name mapping database |
