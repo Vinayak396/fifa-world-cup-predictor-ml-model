@@ -22,15 +22,20 @@ function flagUrl(code) {
 
 // ── MATCH CARD ───────────────────────────────────────────────────────────────
 function buildMatchCard(fix) {
-  const p = getProbs(fix.home, fix.away);
+  const p = fix.preMatchProbs || getProbs(fix.home, fix.away);
   const hFlag = TEAMS[fix.home]?.flag || 'un';
   const aFlag = TEAMS[fix.away]?.flag || 'un';
 
+  const vsContent = fix.result ? `${fix.result.homeScore} - ${fix.result.awayScore}` : 'VS';
+  const badgeClass = fix.result ? 'vs-badge scored' : 'vs-badge';
+  const cardClass = fix.result ? 'match-card completed' : 'match-card';
+  const drawLabel = fix.result ? 'Pre-Match Odds' : 'Draw';
+
   const card = document.createElement('div');
-  card.className = 'match-card';
+  card.className = cardClass;
   card.innerHTML = `
     <div class="match-meta">
-      <span class="match-id">MATCH ${fix.id}</span>
+      <span class="match-id">MATCH ${fix.id}${fix.result ? ' · <span class="final-badge">FINAL</span>' : ''}</span>
       <span class="match-venue" title="${fix.venue}">${fix.venue}</span>
       <span class="match-date">${fix.date}</span>
     </div>
@@ -39,7 +44,7 @@ function buildMatchCard(fix) {
         <img class="team-flag" src="${flagUrl(hFlag)}" alt="${fix.home}" loading="lazy">
         <span class="team-name">${fix.home}</span>
       </div>
-      <div class="vs-badge">VS</div>
+      <div class="${badgeClass}">${vsContent}</div>
       <div class="match-team away">
         <img class="team-flag" src="${flagUrl(aFlag)}" alt="${fix.away}" loading="lazy">
         <span class="team-name">${fix.away}</span>
@@ -48,7 +53,7 @@ function buildMatchCard(fix) {
     <div class="prob-bar-container">
       <div class="prob-labels">
         <span class="home-lbl">Win</span>
-        <span class="draw-lbl">Draw</span>
+        <span class="draw-lbl">${drawLabel}</span>
         <span class="away-lbl">Win</span>
       </div>
       <div class="prob-bar">

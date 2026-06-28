@@ -254,6 +254,26 @@ section { padding: 4rem 2rem; }
   border: 1px solid var(--border);
   width: 36px; height: 36px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.vs-badge.scored {
+  font-size: 0.9rem; font-weight: 850; color: var(--bg-deep);
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  border-color: var(--gold);
+  width: auto; height: 28px; border-radius: 6px;
+  padding: 0 12px;
+  box-shadow: 0 0 15px rgba(240,192,64,0.25);
+}
+.final-badge {
+  color: var(--gold);
+  background: rgba(240,192,64,0.12);
+  border: 1px solid rgba(240,192,64,0.25);
+  padding: 2px 6px; border-radius: 4px;
+  font-size: 0.58rem; font-weight: 800;
+  text-transform: uppercase;
+  margin-left: 6px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Probability Bar */
