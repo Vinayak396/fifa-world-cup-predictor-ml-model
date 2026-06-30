@@ -308,6 +308,43 @@ footer {
 }
 footer strong { color: var(--gold); }
 
+/* ── ROUND OF 32 ───────────────────────────────────────────── */
+#r32 { background: linear-gradient(180deg, #0c1628 0%, var(--bg-dark) 100%); }
+.r32-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+.r32-card {
+  border-color: rgba(74,158,255,0.2);
+  background: linear-gradient(135deg, rgba(74,158,255,0.05), rgba(255,255,255,0.03));
+}
+.r32-card:hover { border-color: rgba(74,158,255,0.5); }
+.pens-badge {
+  color: #a78bfa;
+  background: rgba(167,139,250,0.12);
+  border: 1px solid rgba(167,139,250,0.25);
+  padding: 2px 6px; border-radius: 4px;
+  font-size: 0.58rem; font-weight: 800;
+  text-transform: uppercase;
+  margin-left: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.pens-result {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #a78bfa;
+  background: rgba(167,139,250,0.08);
+  border: 1px solid rgba(167,139,250,0.2);
+  border-radius: 6px;
+  padding: 5px 12px;
+  margin: -0.25rem 0 1rem;
+  font-weight: 600;
+}
+.pens-result strong { color: #c4b5fd; }
+
+
 /* ── ANIMATIONS ────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }

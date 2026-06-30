@@ -246,10 +246,68 @@ function initParticles() {
   draw();
 }
 
+// ── BUILD ROUND OF 32 ────────────────────────────────────────────────────────
+function buildR32() {
+  const container = document.getElementById('r32-list');
+  if (!container || typeof R32_FIXTURES === 'undefined') return;
+
+  R32_FIXTURES.forEach(fix => {
+    const hFlag = TEAMS[fix.home]?.flag || 'un';
+    const aFlag = TEAMS[fix.away]?.flag || 'un';
+    const p = fix.preMatchProbs;
+    const hasPens = fix.result?.pens;
+    const scoreText = fix.result
+      ? `${fix.result.homeScore} - ${fix.result.awayScore}`
+      : 'VS';
+
+    const card = document.createElement('div');
+    card.className = 'match-card completed r32-card';
+    card.innerHTML = `
+      <div class="match-meta">
+        <span class="match-id">MATCH ${fix.id} · <span class="final-badge">FINAL</span>${hasPens ? ' · <span class="pens-badge">AET</span>' : ''}</span>
+        <span class="match-venue" title="${fix.venue}">${fix.venue}</span>
+        <span class="match-date">${fix.date}</span>
+      </div>
+      <div class="match-teams">
+        <div class="match-team">
+          <img class="team-flag" src="${flagUrl(hFlag)}" alt="${fix.home}" loading="lazy">
+          <span class="team-name">${fix.home}</span>
+        </div>
+        <div class="vs-badge scored">${scoreText}</div>
+        <div class="match-team away">
+          <img class="team-flag" src="${flagUrl(aFlag)}" alt="${fix.away}" loading="lazy">
+          <span class="team-name">${fix.away}</span>
+        </div>
+      </div>
+      ${hasPens ? `<div class="pens-result">Penalties: <strong>${hasPens}</strong></div>` : ''}
+      <div class="prob-bar-container">
+        <div class="prob-labels">
+          <span class="home-lbl">Win</span>
+          <span class="draw-lbl">Pre-Match Odds</span>
+          <span class="away-lbl">Win</span>
+        </div>
+        <div class="prob-bar">
+          <div class="prob-home" style="width:0%" data-w="${p.home}"></div>
+          <div class="prob-draw"  style="width:0%" data-w="${p.draw}"></div>
+          <div class="prob-away"  style="width:0%" data-w="${p.away}"></div>
+        </div>
+        <div class="prob-pcts">
+          <span class="hp">${p.home}%</span>
+          <span class="dp">${p.draw}%</span>
+          <span class="ap">${p.away}%</span>
+        </div>
+      </div>`;
+    barObserver.observe(card);
+    container.appendChild(card);
+  });
+}
+
 // ── INIT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   buildWinner();
   buildContenders();
+  if (typeof buildKnockoutBracket === 'function') buildKnockoutBracket();
+  buildR32();
   buildGroups();
 });

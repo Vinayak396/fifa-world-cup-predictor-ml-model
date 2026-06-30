@@ -1,0 +1,406 @@
+/* ═══════════════════════════════════════════════════════════════
+   KNOCKOUT BRACKET STYLES
+   Dark glassmorphism bracket with connecting lines
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ────────────────────────────────────────── */
+#knockout {
+  background: linear-gradient(180deg, var(--bg-dark) 0%, #060e22 100%);
+  padding: 4rem 0;
+  overflow: hidden;
+}
+#knockout .section-inner { max-width: none; padding: 0 2rem; }
+#knockout .section-title  { padding: 0 2rem 0.4rem; }
+#knockout .section-sub    { padding: 0 2rem 2rem; }
+
+/* ── Scroll wrapper ─────────────────────────────────────────── */
+.bracket-scroll-outer {
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dim) transparent;
+}
+.bracket-scroll-outer::-webkit-scrollbar { height: 6px; }
+.bracket-scroll-outer::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* ── Main bracket flex row ──────────────────────────────────── */
+#bracket-inner {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  min-width: 1400px;
+  padding: 1rem 2rem 0;
+}
+
+/* ── Columns ────────────────────────────────────────────────── */
+.bk-col {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+.bk-col-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.75rem;
+  white-space: nowrap;
+}
+.bk-col--final .bk-col-label { font-size: 0.75rem; color: #f0c040; }
+
+.bk-col-slots {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Column widths */
+.bk-col--r32-left,  .bk-col--r32-right  { width: 168px; gap: 0; }
+.bk-col--r16-left,  .bk-col--r16-right  { width: 168px; }
+.bk-col--qf-left,   .bk-col--qf-right   { width: 168px; }
+.bk-col--sf-left,   .bk-col--sf-right   { width: 168px; }
+.bk-col--final-slot { width: 180px; }
+
+/* ── Connector columns (vertical lines between rounds) ──────── */
+.bk-connectors {
+  flex: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ── Slots ──────────────────────────────────────────────────── */
+.bk-slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* R32: 8 slots = 4 pairs, each pair has 2 matches */
+.bk-col--r32-left  .bk-slot,
+.bk-col--r32-right .bk-slot { min-height: 108px; padding: 4px 0; }
+
+/* R16: 4 slots */
+.bk-col--r16-left  .bk-slot,
+.bk-col--r16-right .bk-slot { flex: 1; justify-content: center; padding: 4px 0; }
+
+/* QF: 2 slots */
+.bk-col--qf-left   .bk-slot,
+.bk-col--qf-right  .bk-slot { flex: 1; justify-content: center; padding: 4px 0; }
+
+/* SF: 1 slot */
+.bk-col--sf-left   .bk-slot,
+.bk-col--sf-right  .bk-slot { flex: 1; justify-content: center; }
+
+/* Final */
+.bk-col--final-slot .bk-slot { flex: 1; justify-content: center; }
+
+/* ── Match Card ─────────────────────────────────────────────── */
+.bk-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s;
+  font-size: 0.75rem;
+  position: relative;
+  width: 160px;
+}
+.bk-card:hover {
+  border-color: rgba(240,192,64,0.35);
+  background: rgba(255,255,255,0.07);
+  transform: scale(1.02);
+  z-index: 10;
+}
+.bk-card--done {
+  border-color: rgba(240,192,64,0.2);
+}
+.bk-card--upcoming {
+  border-color: rgba(74,158,255,0.15);
+}
+.bk-col--final-slot .bk-card {
+  width: 174px;
+  border-color: rgba(240,192,64,0.45);
+  background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(240,192,64,0.03));
+  box-shadow: 0 0 30px rgba(240,192,64,0.15);
+}
+
+.bk-card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.04);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.bk-date { color: rgba(255,255,255,0.3); font-weight: 400; }
+
+.bk-team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  gap: 4px;
+  transition: background 0.15s;
+}
+.bk-team + .bk-team {
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.bk-team-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+.bk-flag {
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.bk-tbd {
+  background: rgba(255,255,255,0.08);
+  border: 1px dashed rgba(255,255,255,0.15);
+}
+.bk-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 78px;
+}
+.bk-score {
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  min-width: 22px;
+  text-align: right;
+}
+.bk-score-final { color: var(--gold); }
+.bk-score-prob  { color: var(--blue); font-size: 0.62rem; }
+.bk-score-tbd   { color: rgba(255,255,255,0.2); }
+
+/* Winner / loser styling */
+.bk-winner {
+  background: rgba(240,192,64,0.12);
+}
+.bk-winner .bk-name { color: var(--gold); }
+.bk-winner .bk-score-final { color: var(--gold); }
+
+.bk-loser .bk-name  { color: rgba(255,255,255,0.35); }
+.bk-loser .bk-score-final { color: rgba(255,255,255,0.3); }
+
+/* Penalties badge */
+.bk-pens {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #a78bfa;
+  text-align: center;
+  padding: 3px 8px;
+  background: rgba(167,139,250,0.1);
+  border-top: 1px solid rgba(167,139,250,0.15);
+  letter-spacing: 0.5px;
+}
+
+/* ── Connecting Lines ───────────────────────────────────────── */
+/* Right-side connectors on R32 cards (→ R16) */
+.bk-col--r32-left .bk-slot::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+/* Bracket arms: top slot has line going down, bottom slot has line going up */
+.bk-col--r32-left .bk-slot:nth-child(odd)::before,
+.bk-col--r32-left .bk-slot:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  right: -24px;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r32-left .bk-slot:nth-child(odd)::before {
+  top: 50%;
+  height: calc(50% + 4px);
+}
+.bk-col--r32-left .bk-slot:nth-child(even)::before {
+  bottom: 50%;
+  height: calc(50% + 4px);
+}
+
+/* R16 left → QF left */
+.bk-col--r16-left .bk-slot::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r16-left .bk-slot:nth-child(odd)::before {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r16-left .bk-slot:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  right: -24px;
+  bottom: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* QF left → SF left */
+.bk-col--qf-left .bk-slot::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(240,192,64,0.25);
+}
+.bk-col--qf-left .bk-slot:nth-child(odd)::before {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(240,192,64,0.25);
+}
+.bk-col--qf-left .bk-slot:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  right: -24px;
+  bottom: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(240,192,64,0.25);
+}
+
+/* SF left → Final */
+.bk-col--sf-left .bk-slot::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(240,192,64,0.4);
+}
+
+/* Mirror for right side */
+.bk-col--r32-right .bk-slot::after {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r32-right .bk-slot:nth-child(odd)::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  height: calc(50% + 4px);
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r32-right .bk-slot:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  bottom: 50%;
+  height: calc(50% + 4px);
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r16-right .bk-slot::after {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r16-right .bk-slot:nth-child(odd)::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--r16-right .bk-slot:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  bottom: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.bk-col--qf-right .bk-slot::after {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(240,192,64,0.25);
+}
+.bk-col--qf-right .bk-slot:nth-child(odd)::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(240,192,64,0.25);
+}
+.bk-col--qf-right .bk-slot:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  bottom: 50%;
+  height: 50%;
+  width: 1px;
+  background: rgba(240,192,64,0.25);
+}
+.bk-col--sf-right .bk-slot::after {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(240,192,64,0.4);
+}
+
+/* Connector divs between columns */
+.bk-connectors { width: 24px; flex-shrink: 0; }

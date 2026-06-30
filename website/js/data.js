@@ -1,43 +1,42 @@
 // ─── TEAM DATA ───────────────────────────────────────────────────────────────
-// winner: overall tournament winner probability (%) — XGBoost model updated
-//         after all 72 group-stage results (retrained June 28 2026)
+// winner: overall tournament winner probability (%) — XGBoost model (pure data)
+//         LEAGUE_QUALITY_FACTOR & MANUAL_OVERRIDES removed — retrained June 30 2026
 // flag:   ISO 3166-1 alpha-2 code for flagcdn.com
 const TEAMS = {
-  "France":                { group:"I", rank:1,  winner:17.06, flag:"fr"     },
-  "Spain":                 { group:"H", rank:2,  winner:14.32, flag:"es"     },
-  "Argentina":             { group:"J", rank:3,  winner:11.88, flag:"ar"     },
-  "England":               { group:"L", rank:4,  winner:9.02,  flag:"gb-eng" },
-  "Portugal":              { group:"K", rank:5,  winner:5.29,  flag:"pt"     },
-  "Germany":               { group:"E", rank:10, winner:5.15,  flag:"de"     },
-  "Morocco":               { group:"C", rank:8,  winner:4.83,  flag:"ma"     },
-  "Belgium":               { group:"G", rank:9,  winner:4.59,  flag:"be"     },
-  "Colombia":              { group:"K", rank:13, winner:3.99,  flag:"co"     },
-  "Japan":                 { group:"F", rank:18, winner:3.56,  flag:"jp"     },
-  "Brazil":                { group:"C", rank:6,  winner:2.59,  flag:"br"     },
-  "Mexico":                { group:"A", rank:15, winner:2.38,  flag:"mx"     },
-  "Netherlands":           { group:"F", rank:7,  winner:2.22,  flag:"nl"     },
-  "USA":                   { group:"D", rank:16, winner:1.80,  flag:"us"     },
-  "Ivory Coast":           { group:"E", rank:34, winner:1.37,  flag:"ci"     },
-  "Senegal":               { group:"I", rank:14, winner:1.35,  flag:"sn"     },
-  "Switzerland":           { group:"B", rank:19, winner:1.33,  flag:"ch"     },
-  "Egypt":                 { group:"G", rank:29, winner:1.06,  flag:"eg"     },
-  "Croatia":               { group:"L", rank:11, winner:0.85,  flag:"hr"     },
-  "Norway":                { group:"I", rank:31, winner:0.75,  flag:"no"     },
-  "Ecuador":               { group:"E", rank:23, winner:0.73,  flag:"ec"     },
-  "Australia":             { group:"D", rank:27, winner:0.69,  flag:"au"     },
-  "Austria":               { group:"J", rank:24, winner:0.65,  flag:"at"     },
-  "Canada":                { group:"B", rank:30, winner:0.64,  flag:"ca"     },
-  "Algeria":               { group:"J", rank:28, winner:0.45,  flag:"dz"     },
-  "Paraguay":              { group:"D", rank:40, winner:0.44,  flag:"py"     },
-  "Ghana":                 { group:"L", rank:74, winner:0.44,  flag:"gh"     },
-  "DR Congo":              { group:"K", rank:46, winner:0.24,  flag:"cd"     },
-  "South Africa":          { group:"A", rank:60, winner:0.19,  flag:"za"     },
-  "Cape Verde":            { group:"H", rank:69, winner:0.07,  flag:"cv"     },
-  "Sweden":                { group:"F", rank:38, winner:0.06,  flag:"se"     },
+  "Spain":                 { group:"H", rank:2,  winner:15.66, flag:"es"     },
+  "Argentina":             { group:"J", rank:3,  winner:14.57, flag:"ar"     },
+  "England":               { group:"L", rank:4,  winner:11.19, flag:"gb-eng" },
+  "Morocco":               { group:"C", rank:8,  winner:9.67,  flag:"ma"     },
+  "France":                { group:"I", rank:1,  winner:9.50,  flag:"fr"     },
+  "Brazil":                { group:"C", rank:6,  winner:8.11,  flag:"br"     },
+  "Portugal":              { group:"K", rank:5,  winner:4.31,  flag:"pt"     },
+  "Belgium":               { group:"G", rank:9,  winner:3.77,  flag:"be"     },
+  "Paraguay":              { group:"D", rank:40, winner:2.53,  flag:"py"     },
+  "Switzerland":           { group:"B", rank:19, winner:2.17,  flag:"ch"     },
+  "Colombia":              { group:"K", rank:13, winner:2.14,  flag:"co"     },
+  "Mexico":                { group:"A", rank:15, winner:2.01,  flag:"mx"     },
+  "USA":                   { group:"D", rank:16, winner:1.50,  flag:"us"     },
+  "Algeria":               { group:"J", rank:28, winner:1.46,  flag:"dz"     },
+  "Egypt":                 { group:"G", rank:29, winner:1.26,  flag:"eg"     },
+  "Norway":                { group:"I", rank:31, winner:1.25,  flag:"no"     },
+  "Iran":                  { group:"G", rank:21, winner:1.10,  flag:"ir"     },
+  "Croatia":               { group:"L", rank:11, winner:0.94,  flag:"hr"     },
+  "Ecuador":               { group:"E", rank:23, winner:0.93,  flag:"ec"     },
+  "Turkey":                { group:"D", rank:22, winner:0.90,  flag:"tr"     },
+  "Uruguay":               { group:"H", rank:17, winner:0.87,  flag:"uy"     },
+  "Austria":               { group:"J", rank:24, winner:0.85,  flag:"at"     },
+  "Australia":             { group:"D", rank:27, winner:0.81,  flag:"au"     },
+  "Senegal":               { group:"I", rank:14, winner:0.69,  flag:"sn"     },
+  "Ghana":                 { group:"L", rank:74, winner:0.61,  flag:"gh"     },
+  "DR Congo":              { group:"K", rank:46, winner:0.52,  flag:"cd"     },
+  "Canada":                { group:"B", rank:30, winner:0.51,  flag:"ca"     },
+  "Cape Verde":            { group:"H", rank:69, winner:0.17,  flag:"cv"     },
+  "Germany":               { group:"E", rank:10, winner:0.00,  flag:"de"     },
+  "Netherlands":           { group:"F", rank:7,  winner:0.00,  flag:"nl"     },
+  "Japan":                 { group:"F", rank:18, winner:0.00,  flag:"jp"     },
+  "South Africa":          { group:"A", rank:60, winner:0.00,  flag:"za"     },
+  "Ivory Coast":           { group:"E", rank:34, winner:0.00,  flag:"ci"     },
   "South Korea":           { group:"A", rank:25, winner:0.00,  flag:"kr"     },
-  "Turkey":                { group:"D", rank:22, winner:0.00,  flag:"tr"     },
-  "Uruguay":               { group:"H", rank:17, winner:0.00,  flag:"uy"     },
-  "Iran":                  { group:"G", rank:21, winner:0.00,  flag:"ir"     },
   "Uzbekistan":            { group:"K", rank:50, winner:0.00,  flag:"uz"     },
   "Tunisia":               { group:"F", rank:44, winner:0.00,  flag:"tn"     },
   "Czech Republic":        { group:"A", rank:41, winner:0.00,  flag:"cz"     },
@@ -50,7 +49,8 @@ const TEAMS = {
   "Qatar":                 { group:"B", rank:55, winner:0.00,  flag:"qa"     },
   "New Zealand":           { group:"G", rank:85, winner:0.00,  flag:"nz"     },
   "Haiti":                 { group:"C", rank:83, winner:0.00,  flag:"ht"     },
-  "Panama":                { group:"L", rank:33, winner:0.00,  flag:"pa"     }
+  "Panama":                { group:"L", rank:33, winner:0.00,  flag:"pa"     },
+  "Sweden":                { group:"F", rank:38, winner:0.00,  flag:"se"     }
 };
 
 // ─── FIXTURES (Group Stage only — 72 matches) ────────────────────────────────
@@ -139,4 +139,12 @@ const FIXTURES = [
   { id:46, md:2, date:"Jun 23", home:"Panama",       away:"Croatia",       group:"L", venue:"BMO Field Toronto", result: { homeScore:0, awayScore:1 }, preMatchProbs: { home:21.4, draw:22.6, away:56.0 } },
   { id:67, md:3, date:"Jun 27", home:"Panama",       away:"England",       group:"L", venue:"MetLife Stadium", result: { homeScore:0, awayScore:2 }, preMatchProbs: { home:21.9, draw:22.5, away:55.6 } },
   { id:68, md:3, date:"Jun 27", home:"Croatia",      away:"Ghana",         group:"L", venue:"Lincoln Financial Field", result: { homeScore:2, awayScore:1 }, preMatchProbs: { home:45.3, draw:23.9, away:30.8 } }
+];
+
+// ─── ROUND OF 32 FIXTURES ────────────────────────────────────────────────────
+const R32_FIXTURES = [
+  { id:73, date:"Jun 28", home:"Canada",      away:"South Africa", venue:"SoFi Stadium",       result: { homeScore:1, awayScore:0 }, preMatchProbs: { home:52.1, draw:22.4, away:25.5 } },
+  { id:74, date:"Jun 29", home:"Germany",     away:"Paraguay",     venue:"Gillette Stadium",   result: { homeScore:1, awayScore:1, pens:"Paraguay 4–3" }, preMatchProbs: { home:71.2, draw:16.8, away:12.0 } },
+  { id:75, date:"Jun 29", home:"Netherlands", away:"Morocco",      venue:"Estadio BBVA",       result: { homeScore:1, awayScore:1, pens:"Morocco 3–2" }, preMatchProbs: { home:55.3, draw:22.1, away:22.6 } },
+  { id:76, date:"Jun 29", home:"Brazil",      away:"Japan",        venue:"NRG Stadium",        result: { homeScore:2, awayScore:1 }, preMatchProbs: { home:68.4, draw:17.2, away:14.4 } }
 ];

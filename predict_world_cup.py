@@ -60,83 +60,19 @@ for idx, row in eafc_df.iterrows():
         'Penalty_Score': float(row['Penalty_Score'])
     }
 
-# --- League Quality Discount/Bonus for EA FC OVR ---
-# EA FC rates players relative to their club performance, but club league strength
-# doesn't equal international tournament quality. Players basing their ratings in
-# weaker domestic leagues are systematically overrated; elite PL/UCL squads are
-# often under-rated because their players are rated against tougher competition.
-#
-# Factor > 1.0 = squad is MORE effective than raw EA FC OVR suggests (top leagues)
-# Factor < 1.0 = squad is LESS effective than raw EA FC OVR suggests (weak leagues)
-LEAGUE_QUALITY_FACTOR = {
-    # --- Elite squads: majority of top-11 play in top-5 leagues regularly ---
-    'England':      1.04,   # All starters in PL; historically strong tournament pedigree
-    'France':       1.03,   # Ligue 1 + UCL clubs; deepest squad quality
-    'Germany':      1.03,   # Bundesliga top clubs; Wirtz/Musiala generation
-    'Spain':        1.03,   # La Liga; Yamal/Pedri/Rodri core
-    'Netherlands':  1.03,   # PL/Bundesliga; van Dijk, Gravenberch, Gakpo all elite PL
-    'Portugal':     1.02,   # La Liga/PL; Rúben Dias, Bernardo, Dalot
-    'Brazil':       1.02,   # Vini Jr. (Real), Raphinha (Barca), Gabriel (Arsenal)
-    'Belgium':      1.01,   # PL core; De Bruyne, Trossard, Openda
-    'Norway':       1.02,   # Haaland (City), Ødegaard (Arsenal); top-2 players are elite
-    'Sweden':       1.03,   # Isak (Liverpool), Gyökeres (Arsenal), Kulusevski (Spurs)
-                            #   — 3 of top-4 players are starting PL title-challengers
-    'Croatia':      1.01,   # Kovačić (City), Modrić (Real); experienced UCL operators
-    'Colombia':     1.01,   # James (São Paulo), Díaz (Liverpool)
-    'Morocco':      1.02,   # Hakimi (PSG), En-Nesyri (Fenerbahce), Mazraoui (ManUtd)
-    'Japan':        1.01,   # Mitoma, Kubo, Doan — all top European leagues
-    'United States':1.01,   # Pulisic (Milan), Weah (Juve), Robinson (Fulham)
-    'Mexico':       0.97,   # Mostly Liga MX based; lower competitive ceiling
-    'Turkey':       0.99,   # Çalhanoğlu (Inter), Güler (Real); mid-tier mostly Super Lig
-    'South Korea':  0.98,   # Son (Spurs) missing; squad is K-League heavy now
-    'Ecuador':      0.90,   # Caicedo (Chelsea) is elite, but rest are Liga Pro Ecuador
-                            #   — 3 top-rated CBs play domestically; attack is SA-league standard
-    'Algeria':      0.90,   # Ligue Pro Algeria / mid-tier French; no top-10 league presence
-    'Egypt':        0.91,   # Salah (Liverpool) is world-class but carries 9 players in weak league
-    'Tunisia':      0.88,   # Almost all players in Ligue Professionnelle Tunisienne
-                            #   — EA FC OVR reflects domestic league, not WC quality
-    'Iran':         0.89,   # Persian Gulf Pro League; isolated from European competition
-    'Saudi Arabia': 0.88,   # Saudi Pro League; high wages ≠ high WC quality
-    'Qatar':        0.86,   # QSL; significant step below WC standard
-    'Iraq':         0.89,   # Iraqi Premier League + Syria-based; limited European exposure
-    'Australia':    0.96,   # A-League + some Championship/PL fringe; solid but not elite
-    'Canada':       0.98,   # Davies (Bayern), David (Lille); but several MLS players
-    'Cape Verde':   0.92,   # Mostly Portuguese league; some Ligue 2; solid for level
-    'New Zealand':  0.93,   # A-League and Championship; limited top-flight exposure
-    'Haiti':        0.88,   # MLS + lower tiers; significant quality drop from OVR
-    'Curacao':      0.90,   # Dutch lower leagues mostly; Chong is NL standard
-    'Bosnia and Herzegovina': 0.94, # Some PL/Bundesliga but mostly Balkans leagues
-    'Uzbekistan':   0.91,   # Uzbekistan Super League; lowest competitive baseline
-    'Jordan':       0.89,   # Jordanian league; no European presence in top-11
-    'Ghana':        0.93,   # Championship + mid-tier PL; some La Liga
-    'Ivory Coast':  0.97,   # Kessié (Barcelona), Diomandé (PSG), Ndicka (Roma)
-    'Senegal':      0.99,   # Mané (Al Ittihad), Jackson (Chelsea), Sarr (Watford) — mixed
-    'DR Congo':     0.93,   # Mostly Ligue 1 Belge and low-tier European
-    'Paraguay':     0.93,   # Mostly domestic or Argentine Primera
-    'Uruguay':      0.94,   # Valverde (Real), Araujo (Barca); but Suárez at 39
-    'Scotland':     0.99,   # McTominay (Napoli), Robertson (Liverpool); solid
-    'Panama':       0.91,   # MLS-based; some Mexican league; limited ceiling
-    'South Africa': 0.91,   # PSL + some European lower tiers
-    'Czech Republic': 0.97, # Bundesliga + Austrian; Schick (Leverkusen)
-    'Austria':      0.98,   # Bundesliga + PL; Sabitzer, Alaba — solid
-    'Switzerland':  0.98,   # Bundesliga + PL; Xhaka (Leverkusen)
-}
 
 def get_squad_features(team, rank):
     stats = eafc_stats.get(team)
-    # Apply league quality factor: adjusts effective OVR/ATK based on where
-    # players actually compete (weak domestic leagues → EA FC overcredits OVR)
-    lqf = LEAGUE_QUALITY_FACTOR.get(team, 0.96)  # default: slight discount for untracked leagues
     if stats:
-        top11_ovr  = stats['Top11_OVR']  * lqf
-        atk_score  = stats['Attack_Score']  * lqf
-        def_score  = stats['Defense_Score']  # defence ratings are more position-based, less league-biased
+        top11_ovr  = stats['Top11_OVR']
+        atk_score  = stats['Attack_Score']
+        def_score  = stats['Defense_Score']
         pen_score  = stats['Penalty_Score']
         return top11_ovr, atk_score, def_score, pen_score
     else:
         # Fallback using regression formulas derived from WC team data
-        top11_ovr = np.clip((85.67 - 0.1827 * rank) * lqf, 55.0, 88.5)
-        atk_score = np.clip((76.43 - 0.1265 * rank) * lqf, 50.0, 83.0)
+        top11_ovr = np.clip(85.67 - 0.1827 * rank, 55.0, 88.5)
+        atk_score = np.clip(76.43 - 0.1265 * rank, 50.0, 83.0)
         def_score = np.clip(70.69 - 0.0891 * rank, 50.0, 82.0)
         pen_score = np.clip(58.0 - 0.1 * rank, 40.0, 75.0)
         return top11_ovr, atk_score, def_score, pen_score
@@ -546,56 +482,6 @@ for t in sorted(all_wc_teams, key=lambda x: team_group_difficulty[x]):
     print(f"  {t:<22} group_opp_avg_OVR={team_group_difficulty[t]:.1f}  "
           f"KO_multiplier={get_group_difficulty_multiplier(t):.3f}")
 
-# 9b. MANUAL SQUAD OVERRIDE MULTIPLIERS
-# Applied to ALL rounds (group + knockout) to correct systemic model biases.
-# ON TOP OF the LEAGUE_QUALITY_FACTOR already applied in get_squad_features().
-# Teams discounted by LQF should get smaller penalties here (avoid double-dip);
-# teams boosted by LQF should get smaller bonuses here (avoid double-boost).
-MANUAL_OVERRIDES = {
-    # --- Over-rated by raw model (WC ceiling / pedigree correction) ---
-    'Ecuador':      0.85,   # LQF=0.90 already discounts heavily; 3× group-stage exits
-    'Algeria':      0.90,   # LQF=0.90 already; AFCON form ≠ WC knockout quality
-    'Egypt':        0.92,   # LQF=0.91 covers league discount; Salah-dependent ceiling
-    'Jordan':       0.90,   # LQF=0.89 covers it; virtually no WC history at all
-    'Tunisia':      0.84,   # LQF=0.88 + consistently exits group stage (2006/2022)
-                            #   combined effective penalty is significant and accurate
-    'Ivory Coast':  0.92,   # LQF=0.97 (decent leagues); underperformed every WC
-    'Belgium':      0.91,   # Aging golden generation; De Bruyne fitness concerns
-    'Qatar':        0.88,   # LQF=0.86 covers league; host qualifier with limited WC quality
-    'Uruguay':      0.89,   # LQF=0.94; Valverde/Araujo genuine but aging support cast
-    'Japan':        0.92,   # LQF=1.01 (good leagues); R16 ceiling; can't sustain vs QF elite
-    'Sweden':       0.97,   # LQF=1.03 boosts Isak (Liverpool) + Gyökeres (Arsenal)
-                            #   + Kulusevski (Spurs); this is now a genuinely elite attacking trio
-                            #   Combined effective: 0.97 × 1.03 ≈ 1.00 — correct for R16/QF contender
-    'Australia':    0.92,   # LQF=0.96; R16 ceiling historically; limited KO pedigree
-    'Iran':         0.90,   # LQF=0.89; limited WC knockout impact
-    'Saudi Arabia': 0.88,   # LQF=0.88; Saudi Pro League ≠ WC quality despite big names
-    'Argentina':    0.97,   # Squad in transition post-Messi peak; still dangerous
-    'Norway':       0.94,   # LQF=1.02 (Haaland/Ødegaard); no WC history at all
-    'Cape Verde':   0.90,   # LQF=0.92; plucky qualifiers but well below WC elite
-
-    # --- Under-rated by model (WC pedigree / peak generation / host factor) ---
-    'France':       1.05,   # Defending finalists 2022; deepest squad in the world
-    'Brazil':       1.12,   # 5× WC champions; most WC wins all time; prime squad
-    'Germany':      1.12,   # 4× WC champions; Wirtz+Musiala+Kimmich at absolute career peak
-                            #   FIFA rank 10 severely understates this generation's ceiling
-                            #   7-1 vs Curaçao MD1 form + LQF=1.03 → combined ~1.15 total boost
-    'Portugal':     1.06,   # LQF=1.02 already; strong WC QF/R16 history; elite depth
-    'Netherlands':  1.06,   # LQF=1.03 already; 2014 SF quality; van Dijk/Gravenberch
-                            #   reduced from 1.08 to avoid double-boost with LQF=1.03
-    'Spain':        1.02,   # LQF=1.03 already; WC winners 2010; Yamal generation
-    'Morocco':      1.03,   # LQF=1.02 already; 2022 semifinalists; organized & hungry
-    'United States':1.03,   # Home nation; young, athletic; MNT generation at peak
-    'Canada':       1.02,   # Home nation; Davies-led golden generation at peak
-    'Mexico':       1.01,   # Home nation; passionate support; always punches above weight
-    'England':      1.02,   # LQF=1.04 already; peak squad; Bellingham-era prime
-    'Colombia':     1.02,   # Strong CONMEBOL form; Díaz (Liverpool) generation at peak
-    'Croatia':      1.02,   # LQF=1.01 already; 2018 runner-up, 2022 SF; KO operators
-}
-
-def get_manual_override(team):
-    """Return lambda multiplier for a team based on manual squad assessment."""
-    return MANUAL_OVERRIDES.get(team, 1.0)
 
 # 9c. WORLD CUP PEDIGREE MULTIPLIER (knockout rounds only)
 # Teams with a history of deep WC runs perform better in high-pressure knockout
@@ -757,10 +643,6 @@ def dc_sample(la, lb, rho=DC_RHO):
 def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
     lambda_a, lambda_b = get_cached_lambdas(team_a, team_b, neutral)
 
-    # Apply manual squad override multipliers (all rounds)
-    lambda_a *= get_manual_override(team_a)
-    lambda_b *= get_manual_override(team_b)
-
     # Apply group difficulty + WC pedigree multipliers in knockout rounds
     if is_knockout:
         lambda_a *= get_group_difficulty_multiplier(team_a)
@@ -816,6 +698,9 @@ def simulate_group_stage():
         a = clean_name(row['away_team'])
         if h in team_groups and a in team_groups:
             g = team_groups[h]
+            # Only count group-stage matches (both teams must be in the same group)
+            if team_groups[a] != g:
+                continue  # skip knockout matches where teams come from different groups
             goals_h = int(float(row['home_score']))
             goals_a = int(float(row['away_score']))
             
@@ -925,21 +810,19 @@ def simulate_tournament():
     # 2. ROUND OF 32
     ko_winners = {}
     
-    # Match 73: A2 vs B2
-    g73_h, g73_a = simulate_match(runners_up['Group A'], runners_up['Group B'], neutral=1, is_knockout=True)
-    ko_winners[73] = runners_up['Group A'] if g73_h > g73_a else runners_up['Group B']
+    # ── COMPLETED R32 RESULTS (real outcomes — not simulated) ──────────────────
+    # Match 73 (Jun 28): Canada 1-0 South Africa
+    ko_winners[73] = 'Canada'
     
-    # Match 74: E1 vs 3rd place
-    g74_h, g74_a = simulate_match(winners['Group E'], third_pairings[74], neutral=1, is_knockout=True)
-    ko_winners[74] = winners['Group E'] if g74_h > g74_a else third_pairings[74]
+    # Match 74 (Jun 29): Germany 1-1 Paraguay (aet), Paraguay win 4-3 on pens
+    ko_winners[74] = 'Paraguay'
     
-    # Match 75: F1 vs C2
-    g75_h, g75_a = simulate_match(winners['Group F'], runners_up['Group C'], neutral=1, is_knockout=True)
-    ko_winners[75] = winners['Group F'] if g75_h > g75_a else runners_up['Group C']
+    # Match 75 (Jun 29): Netherlands 1-1 Morocco (aet), Morocco win 3-2 on pens
+    ko_winners[75] = 'Morocco'
     
-    # Match 76: C1 vs F2
-    g76_h, g76_a = simulate_match(winners['Group C'], runners_up['Group F'], neutral=1, is_knockout=True)
-    ko_winners[76] = winners['Group C'] if g76_h > g76_a else runners_up['Group F']
+    # Match 76 (Jun 29): Brazil 2-1 Japan
+    ko_winners[76] = 'Brazil'
+    # ── END OF COMPLETED RESULTS ────────────────────────────────────────────────
     
     # Match 77: I1 vs 3rd place
     g77_h, g77_a = simulate_match(winners['Group I'], third_pairings[77], neutral=1, is_knockout=True)
