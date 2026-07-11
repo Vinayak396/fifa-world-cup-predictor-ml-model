@@ -1,36 +1,37 @@
 // ─── TEAM DATA ───────────────────────────────────────────────────────────────
-// winner: overall tournament winner probability (%) — XGBoost model (pure data)
-//         LEAGUE_QUALITY_FACTOR & MANUAL_OVERRIDES removed — retrained June 30 2026
+// winner: overall tournament winner probability (%) — XGBoost model
+//         R16 complete + QF1 France 2-0 Morocco + QF2 Spain 2-1 Belgium locked
+//         QF3/QF4 simulated — retrained Jul 11 2026
 // flag:   ISO 3166-1 alpha-2 code for flagcdn.com
 const TEAMS = {
-  "Spain":                 { group:"H", rank:2,  winner:15.66, flag:"es"     },
-  "Argentina":             { group:"J", rank:3,  winner:14.57, flag:"ar"     },
-  "England":               { group:"L", rank:4,  winner:11.19, flag:"gb-eng" },
-  "Morocco":               { group:"C", rank:8,  winner:9.67,  flag:"ma"     },
-  "France":                { group:"I", rank:1,  winner:9.50,  flag:"fr"     },
-  "Brazil":                { group:"C", rank:6,  winner:8.11,  flag:"br"     },
-  "Portugal":              { group:"K", rank:5,  winner:4.31,  flag:"pt"     },
-  "Belgium":               { group:"G", rank:9,  winner:3.77,  flag:"be"     },
-  "Paraguay":              { group:"D", rank:40, winner:2.53,  flag:"py"     },
-  "Switzerland":           { group:"B", rank:19, winner:2.17,  flag:"ch"     },
-  "Colombia":              { group:"K", rank:13, winner:2.14,  flag:"co"     },
-  "Mexico":                { group:"A", rank:15, winner:2.01,  flag:"mx"     },
-  "USA":                   { group:"D", rank:16, winner:1.50,  flag:"us"     },
-  "Algeria":               { group:"J", rank:28, winner:1.46,  flag:"dz"     },
-  "Egypt":                 { group:"G", rank:29, winner:1.26,  flag:"eg"     },
-  "Norway":                { group:"I", rank:31, winner:1.25,  flag:"no"     },
-  "Iran":                  { group:"G", rank:21, winner:1.10,  flag:"ir"     },
-  "Croatia":               { group:"L", rank:11, winner:0.94,  flag:"hr"     },
-  "Ecuador":               { group:"E", rank:23, winner:0.93,  flag:"ec"     },
-  "Turkey":                { group:"D", rank:22, winner:0.90,  flag:"tr"     },
-  "Uruguay":               { group:"H", rank:17, winner:0.87,  flag:"uy"     },
-  "Austria":               { group:"J", rank:24, winner:0.85,  flag:"at"     },
-  "Australia":             { group:"D", rank:27, winner:0.81,  flag:"au"     },
-  "Senegal":               { group:"I", rank:14, winner:0.69,  flag:"sn"     },
-  "Ghana":                 { group:"L", rank:74, winner:0.61,  flag:"gh"     },
-  "DR Congo":              { group:"K", rank:46, winner:0.52,  flag:"cd"     },
-  "Canada":                { group:"B", rank:30, winner:0.51,  flag:"ca"     },
-  "Cape Verde":            { group:"H", rank:69, winner:0.17,  flag:"cv"     },
+  "Spain":                 { group:"H", rank:2,  winner:53.07, flag:"es"     },
+  "France":                { group:"I", rank:1,  winner:17.57, flag:"fr"     },
+  "Argentina":             { group:"J", rank:3,  winner:13.80, flag:"ar"     },
+  "England":               { group:"L", rank:4,  winner:11.57, flag:"gb-eng" },
+  "Switzerland":           { group:"B", rank:19, winner:2.99,  flag:"ch"     },
+  "Norway":                { group:"I", rank:31, winner:1.00,  flag:"no"     },
+  "Morocco":               { group:"C", rank:8,  winner:0.00,  flag:"ma"     },
+  "Brazil":                { group:"C", rank:6,  winner:0.00,  flag:"br"     },
+  "Portugal":              { group:"K", rank:5,  winner:0.00,  flag:"pt"     },
+  "Belgium":               { group:"G", rank:9,  winner:0.00,  flag:"be"     },
+  "Paraguay":              { group:"D", rank:40, winner:0.00,  flag:"py"     },
+  "Colombia":              { group:"K", rank:13, winner:0.00,  flag:"co"     },
+  "Mexico":                { group:"A", rank:15, winner:0.00,  flag:"mx"     },
+  "USA":                   { group:"D", rank:16, winner:0.00,  flag:"us"     },
+  "Algeria":               { group:"J", rank:28, winner:0.00,  flag:"dz"     },
+  "Egypt":                 { group:"G", rank:29, winner:0.00,  flag:"eg"     },
+  "Iran":                  { group:"G", rank:21, winner:0.00,  flag:"ir"     },
+  "Croatia":               { group:"L", rank:11, winner:0.00,  flag:"hr"     },
+  "Ecuador":               { group:"E", rank:23, winner:0.00,  flag:"ec"     },
+  "Turkey":                { group:"D", rank:22, winner:0.00,  flag:"tr"     },
+  "Uruguay":               { group:"H", rank:17, winner:0.00,  flag:"uy"     },
+  "Austria":               { group:"J", rank:24, winner:0.00,  flag:"at"     },
+  "Australia":             { group:"D", rank:27, winner:0.00,  flag:"au"     },
+  "Senegal":               { group:"I", rank:14, winner:0.00,  flag:"sn"     },
+  "Ghana":                 { group:"L", rank:74, winner:0.00,  flag:"gh"     },
+  "DR Congo":              { group:"K", rank:46, winner:0.00,  flag:"cd"     },
+  "Canada":                { group:"B", rank:30, winner:0.00,  flag:"ca"     },
+  "Cape Verde":            { group:"H", rank:69, winner:0.00,  flag:"cv"     },
   "Germany":               { group:"E", rank:10, winner:0.00,  flag:"de"     },
   "Netherlands":           { group:"F", rank:7,  winner:0.00,  flag:"nl"     },
   "Japan":                 { group:"F", rank:18, winner:0.00,  flag:"jp"     },
@@ -143,8 +144,40 @@ const FIXTURES = [
 
 // ─── ROUND OF 32 FIXTURES ────────────────────────────────────────────────────
 const R32_FIXTURES = [
-  { id:73, date:"Jun 28", home:"Canada",      away:"South Africa", venue:"SoFi Stadium",       result: { homeScore:1, awayScore:0 }, preMatchProbs: { home:52.1, draw:22.4, away:25.5 } },
-  { id:74, date:"Jun 29", home:"Germany",     away:"Paraguay",     venue:"Gillette Stadium",   result: { homeScore:1, awayScore:1, pens:"Paraguay 4–3" }, preMatchProbs: { home:71.2, draw:16.8, away:12.0 } },
-  { id:75, date:"Jun 29", home:"Netherlands", away:"Morocco",      venue:"Estadio BBVA",       result: { homeScore:1, awayScore:1, pens:"Morocco 3–2" }, preMatchProbs: { home:55.3, draw:22.1, away:22.6 } },
-  { id:76, date:"Jun 29", home:"Brazil",      away:"Japan",        venue:"NRG Stadium",        result: { homeScore:2, awayScore:1 }, preMatchProbs: { home:68.4, draw:17.2, away:14.4 } }
+  { id:73, date:"Jun 28", home:"Canada",      away:"South Africa",          venue:"SoFi Stadium",       result: { homeScore:1, awayScore:0 },              preMatchProbs: { home:52.1, draw:22.4, away:25.5 } },
+  { id:74, date:"Jun 29", home:"Germany",     away:"Paraguay",              venue:"Gillette Stadium",   result: { homeScore:1, awayScore:1, pens:"Paraguay 4–3" }, preMatchProbs: { home:71.2, draw:16.8, away:12.0 } },
+  { id:75, date:"Jun 29", home:"Netherlands", away:"Morocco",               venue:"Estadio BBVA",       result: { homeScore:1, awayScore:1, pens:"Morocco 3–2" },  preMatchProbs: { home:55.3, draw:22.1, away:22.6 } },
+  { id:76, date:"Jun 29", home:"Brazil",      away:"Japan",                 venue:"NRG Stadium",        result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:68.4, draw:17.2, away:14.4 } },
+  { id:77, date:"Jun 30", home:"France",      away:"Ivory Coast",           venue:"Lincoln Financial Field", result: { homeScore:2, awayScore:0 },         preMatchProbs: { home:78.3, draw:12.4, away:9.3 } },
+  { id:78, date:"Jun 30", home:"Norway",      away:"Ecuador",               venue:"Estadio BBVA",       result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:48.2, draw:22.6, away:29.2 } },
+  { id:79, date:"Jun 30", home:"Mexico",      away:"South Korea",           venue:"Estadio Akron",      result: { homeScore:1, awayScore:0 },              preMatchProbs: { home:55.3, draw:21.8, away:22.9 } },
+  { id:80, date:"Jul 1",  home:"England",     away:"Ghana",                 venue:"AT&T Stadium",       result: { homeScore:4, awayScore:0 },              preMatchProbs: { home:74.1, draw:15.3, away:10.6 } },
+  { id:81, date:"Jul 1",  home:"USA",         away:"Algeria",               venue:"Arrowhead Stadium",  result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:58.4, draw:21.2, away:20.4 } },
+  { id:82, date:"Jul 1",  home:"Belgium",     away:"Senegal",               venue:"Lumen Field",        result: { homeScore:3, awayScore:0 },              preMatchProbs: { home:64.7, draw:19.1, away:16.2 } },
+  { id:83, date:"Jul 2",  home:"Portugal",    away:"Croatia",               venue:"Hard Rock Stadium",  result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:59.2, draw:21.0, away:19.8 } },
+  { id:84, date:"Jul 2",  home:"Spain",       away:"Austria",               venue:"Mercedes-Benz Stadium", result: { homeScore:3, awayScore:0 },          preMatchProbs: { home:72.4, draw:16.8, away:10.8 } },
+  { id:85, date:"Jul 2",  home:"Switzerland", away:"Bosnia and Herzegovina",venue:"BMO Field Toronto",  result: { homeScore:3, awayScore:1 },              preMatchProbs: { home:67.8, draw:18.3, away:13.9 } },
+  { id:86, date:"Jul 3",  home:"Argentina",   away:"Cape Verde",            venue:"AT&T Stadium",       result: { homeScore:4, awayScore:0 },              preMatchProbs: { home:88.1, draw:8.7,  away:3.2 } },
+  { id:87, date:"Jul 3",  home:"Colombia",    away:"Turkey",                venue:"NRG Stadium",        result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:52.6, draw:22.4, away:25.0 } },
+  { id:88, date:"Jul 3",  home:"Egypt",       away:"Australia",             venue:"SoFi Stadium",       result: { homeScore:2, awayScore:0 },              preMatchProbs: { home:38.4, draw:24.2, away:37.4 } }
+];
+
+// ─── ROUND OF 16 FIXTURES ────────────────────────────────────────────────────
+const R16_FIXTURES = [
+  { id:89, date:"Jul 5",  home:"France",       away:"Paraguay",     venue:"MetLife Stadium",     result: { homeScore:1, awayScore:0 },              preMatchProbs: { home:72.1, draw:16.8, away:11.1 } },
+  { id:90, date:"Jul 4",  home:"Morocco",      away:"Canada",       venue:"SoFi Stadium",        result: { homeScore:3, awayScore:0 },              preMatchProbs: { home:56.2, draw:22.0, away:21.8 } },
+  { id:91, date:"Jul 5",  home:"Norway",       away:"Brazil",       venue:"Estadio Akron",       result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:34.8, draw:24.1, away:41.1 } },
+  { id:92, date:"Jul 5",  home:"England",      away:"Mexico",       venue:"AT&T Stadium",        result: { homeScore:3, awayScore:2 },              preMatchProbs: { home:62.7, draw:19.8, away:17.5 } },
+  { id:93, date:"Jul 6",  home:"Spain",        away:"Portugal",     venue:"Arrowhead Stadium",   result: { homeScore:1, awayScore:0 },              preMatchProbs: { home:54.8, draw:22.5, away:22.7 } },
+  { id:94, date:"Jul 6",  home:"Belgium",      away:"USA",          venue:"Levi's Stadium",      result: { homeScore:4, awayScore:1 },              preMatchProbs: { home:60.3, draw:20.4, away:19.3 } },
+  { id:95, date:"Jul 7",  home:"Argentina",    away:"Egypt",        venue:"Hard Rock Stadium",   result: { homeScore:3, awayScore:2 },              preMatchProbs: { home:76.4, draw:14.3, away:9.3 } },
+  { id:96, date:"Jul 7",  home:"Switzerland",  away:"Colombia",     venue:"Lincoln Financial Field", result: { homeScore:0, awayScore:0, pens:"Switzerland 4–3" }, preMatchProbs: { home:46.2, draw:24.1, away:29.7 } }
+];
+
+// ─── QUARTER-FINAL FIXTURES ──────────────────────────────────────────────────
+const QF_FIXTURES = [
+  { id:97,  date:"Jul 9",  home:"France",       away:"Morocco",      venue:"Gillette Stadium",    result: { homeScore:2, awayScore:0 },              preMatchProbs: { home:58.4, draw:21.2, away:20.4 } },
+  { id:98,  date:"Jul 10", home:"Spain",        away:"Belgium",      venue:"MetLife Stadium",     result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:61.7, draw:20.3, away:18.0 } },
+  { id:99,  date:"Jul 11", home:"Norway",       away:"England",      venue:"AT&T Stadium",        result: null,                                     preMatchProbs: { home:35.7, draw:24.2, away:40.1 } },
+  { id:100, date:"Jul 11", home:"Argentina",    away:"Switzerland",  venue:"SoFi Stadium",        result: null,                                     preMatchProbs: { home:73.2, draw:16.4, away:10.4 } }
 ];

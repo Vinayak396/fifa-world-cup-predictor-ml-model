@@ -10,11 +10,12 @@ function matchupProb(home, away) {
 // Round of 32 — 16 matches
 // result: null = upcoming, { hg, ag, winner } = played, add pens string if shootout
 const R32 = [
-  // ── LEFT HALF (feeds into R16: M89, M90, M91, M92) ────────────────────────
+  // -- LEFT HALF --
   // M89 feeds
   { id:74, home:"Germany",     away:"Paraguay",     date:"Jun 29",
     result:{ hg:1, ag:1, winner:"Paraguay", pens:"Paraguay 4–3" } },
-  { id:77, home:"France",      away:"Sweden",       date:"Jun 30", result:null },
+  { id:77, home:"France",      away:"Ivory Coast",  date:"Jun 30",
+    result:{ hg:2, ag:0, winner:"France" } },
   // M90 feeds
   { id:75, home:"Netherlands", away:"Morocco",      date:"Jun 29",
     result:{ hg:1, ag:1, winner:"Morocco",  pens:"Morocco 3–2" } },
@@ -23,41 +24,52 @@ const R32 = [
   // M91 feeds
   { id:76, home:"Brazil",      away:"Japan",        date:"Jun 29",
     result:{ hg:2, ag:1, winner:"Brazil" } },
-  { id:78, home:"Ivory Coast", away:"Norway",       date:"Jun 30", result:null },
+  { id:78, home:"Norway",      away:"Ecuador",      date:"Jun 30",
+    result:{ hg:2, ag:1, winner:"Norway" } },
   // M92 feeds
-  { id:79, home:"Mexico",      away:"Ecuador",      date:"Jun 30", result:null },
-  { id:80, home:"England",     away:"DR Congo",     date:"Jul 1",  result:null },
-  // ── RIGHT HALF (feeds into R16: M93, M94, M95, M96) ───────────────────────
+  { id:79, home:"Mexico",      away:"South Korea",  date:"Jun 30",
+    result:{ hg:1, ag:0, winner:"Mexico" } },
+  { id:80, home:"England",     away:"Ghana",        date:"Jul 1",
+    result:{ hg:4, ag:0, winner:"England" } },
+  // -- RIGHT HALF --
   // M93 feeds
-  { id:83, home:"Portugal",    away:"Croatia",      date:"Jul 2",  result:null },
-  { id:84, home:"Spain",       away:"Austria",      date:"Jul 2",  result:null },
+  { id:83, home:"Portugal",    away:"Croatia",      date:"Jul 2",
+    result:{ hg:2, ag:1, winner:"Portugal" } },
+  { id:84, home:"Spain",       away:"Austria",      date:"Jul 2",
+    result:{ hg:3, ag:0, winner:"Spain" } },
   // M94 feeds
-  { id:81, home:"USA",         away:"Algeria",      date:"Jul 1",  result:null },
-  { id:82, home:"Belgium",     away:"Senegal",      date:"Jul 1",  result:null },
+  { id:81, home:"USA",         away:"Algeria",      date:"Jul 1",
+    result:{ hg:2, ag:1, winner:"USA" } },
+  { id:82, home:"Belgium",     away:"Senegal",      date:"Jul 1",
+    result:{ hg:3, ag:0, winner:"Belgium" } },
   // M95 feeds
-  { id:86, home:"Argentina",   away:"Cape Verde",   date:"Jul 3",  result:null },
-  { id:88, home:"Australia",   away:"Egypt",        date:"Jul 3",  result:null },
+  { id:86, home:"Argentina",   away:"Cape Verde",   date:"Jul 3",
+    result:{ hg:4, ag:0, winner:"Argentina" } },
+  { id:88, home:"Egypt",       away:"Australia",    date:"Jul 3",
+    result:{ hg:2, ag:0, winner:"Egypt" } },
   // M96 feeds
-  { id:85, home:"Switzerland", away:"Bosnia and Herzegovina", date:"Jul 2", result:null },
-  { id:87, home:"Colombia",    away:"Ghana",        date:"Jul 3",  result:null },
+  { id:85, home:"Switzerland", away:"Bosnia and Herzegovina", date:"Jul 2",
+    result:{ hg:3, ag:1, winner:"Switzerland" } },
+  { id:87, home:"Colombia",    away:"Turkey",       date:"Jul 3",
+    result:{ hg:2, ag:1, winner:"Colombia" } },
 ];
 
 // Round of 16 — uses winner labels when not yet determined
 const R16 = [
-  { id:89, src:[74,77], date:"Jul 5" },
-  { id:90, src:[75,73], date:"Jul 4" },
-  { id:91, src:[76,78], date:"Jul 5" },
-  { id:92, src:[79,80], date:"Jul 5" },
-  { id:93, src:[83,84], date:"Jul 6" },
-  { id:94, src:[81,82], date:"Jul 6" },
-  { id:95, src:[86,88], date:"Jul 7" },
-  { id:96, src:[85,87], date:"Jul 7" },
+  { id:89, src:[74,77], date:"Jul 5",  result:{ hg:1, ag:0, winner:"France" } },
+  { id:90, src:[75,73], date:"Jul 4",  result:{ hg:3, ag:0, winner:"Morocco" } },
+  { id:91, src:[76,78], date:"Jul 5",  result:{ hg:2, ag:1, winner:"Norway" } },
+  { id:92, src:[79,80], date:"Jul 5",  result:{ hg:3, ag:2, winner:"England" } },
+  { id:93, src:[83,84], date:"Jul 6",  result:{ hg:1, ag:0, winner:"Spain" } },
+  { id:94, src:[81,82], date:"Jul 6",  result:{ hg:4, ag:1, winner:"Belgium" } },
+  { id:95, src:[86,88], date:"Jul 7",  result:{ hg:3, ag:2, winner:"Argentina" } },
+  { id:96, src:[85,87], date:"Jul 7",  result:{ hg:0, ag:0, winner:"Switzerland", pens:"Switzerland 4–3" } },
 ];
 const QF = [
-  { id:97, src:[89,90], date:"Jul 9" },
-  { id:99, src:[91,92], date:"Jul 9" },
-  { id:98, src:[93,94], date:"Jul 10"},
-  { id:100,src:[95,96], date:"Jul 10"},
+  { id:97, src:[89,90], date:"Jul 9",  result:{ hg:2, ag:0, winner:"France" } },
+  { id:99, src:[91,92], date:"Jul 11", result:null },
+  { id:98, src:[93,94], date:"Jul 10", result:{ hg:2, ag:1, winner:"Spain" } },
+  { id:100,src:[95,96], date:"Jul 11", result:null },
 ];
 const SF = [
   { id:101, src:[97,98],  date:"Jul 14" },

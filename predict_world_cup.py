@@ -54,7 +54,7 @@ eafc_df['Nation'] = eafc_df['Nation'].apply(clean_name)
 eafc_stats = {}
 for idx, row in eafc_df.iterrows():
     eafc_stats[row['Nation']] = {
-        'Top11_OVR': float(row['Top11_OVR']),
+        'Avg_OVR': float(row['Avg_OVR']),
         'Attack_Score': float(row['Attack_Score']),
         'Defense_Score': float(row['Defense_Score']),
         'Penalty_Score': float(row['Penalty_Score'])
@@ -64,18 +64,18 @@ for idx, row in eafc_df.iterrows():
 def get_squad_features(team, rank):
     stats = eafc_stats.get(team)
     if stats:
-        top11_ovr  = stats['Top11_OVR']
+        avg_ovr  = stats['Avg_OVR']
         atk_score  = stats['Attack_Score']
         def_score  = stats['Defense_Score']
         pen_score  = stats['Penalty_Score']
-        return top11_ovr, atk_score, def_score, pen_score
+        return avg_ovr, atk_score, def_score, pen_score
     else:
         # Fallback using regression formulas derived from WC team data
-        top11_ovr = np.clip(85.67 - 0.1827 * rank, 55.0, 88.5)
+        avg_ovr = np.clip(85.67 - 0.1827 * rank, 55.0, 88.5)
         atk_score = np.clip(76.43 - 0.1265 * rank, 50.0, 83.0)
         def_score = np.clip(70.69 - 0.0891 * rank, 50.0, 82.0)
         pen_score = np.clip(58.0 - 0.1 * rank, 40.0, 75.0)
-        return top11_ovr, atk_score, def_score, pen_score
+        return avg_ovr, atk_score, def_score, pen_score
 
 # Apply name cleaning
 results_df['home_team'] = results_df['home_team'].apply(clean_name)
@@ -445,43 +445,6 @@ for g in sorted(group_teams.keys()):
 all_wc_teams = sorted(list(team_groups.keys()))
 print(f"Total participating teams matched: {len(all_wc_teams)}")
 
-# 9a. COMPUTE GROUP DRAW DIFFICULTY (for knockout lambda adjustment)
-# For each team: avg EA FC OVR of their 3 group opponents.
-# Harder group → team gets a slight knockout lambda BOOST (battle-tested).
-# Easier group → team gets a slight knockout lambda PENALTY.
-print("Computing group draw difficulty scores...")
-_latest_d = pd.to_datetime('2026-06-16')  # temp, latest_date defined later
-team_group_difficulty = {}
-for t in all_wc_teams:
-    g = team_groups[t]
-    opponents = [other for other in group_teams[g] if other != t]
-    opp_ovrs = []
-    for opp in opponents:
-        rank_opp, _ = get_rank_and_points(opp, _latest_d)
-        ovr_opp, _, _, _ = get_squad_features(opp, rank_opp)
-        opp_ovrs.append(ovr_opp)
-    team_group_difficulty[t] = float(np.mean(opp_ovrs)) if opp_ovrs else 75.0
-
-_diff_vals = list(team_group_difficulty.values())
-_diff_min, _diff_max = min(_diff_vals), max(_diff_vals)
-_diff_range = _diff_max - _diff_min
-
-# Multiplier range: easiest group → 0.97, hardest group → 1.03
-GROUP_BOOST_RANGE = 0.06  # total swing: ±3%
-
-def get_group_difficulty_multiplier(team):
-    """Lambda multiplier for knockout rounds based on group opponent strength."""
-    if _diff_range < 1e-6:
-        return 1.0
-    normalized = (team_group_difficulty[team] - _diff_min) / _diff_range
-    return 1.0 - GROUP_BOOST_RANGE / 2 + normalized * GROUP_BOOST_RANGE
-
-# Print group difficulty summary for verification
-print("\nGroup draw difficulty multipliers (knockout adjustment):")
-for t in sorted(all_wc_teams, key=lambda x: team_group_difficulty[x]):
-    print(f"  {t:<22} group_opp_avg_OVR={team_group_difficulty[t]:.1f}  "
-          f"KO_multiplier={get_group_difficulty_multiplier(t):.3f}")
-
 
 # 9c. WORLD CUP PEDIGREE MULTIPLIER (knockout rounds only)
 # Teams with a history of deep WC runs perform better in high-pressure knockout
@@ -643,10 +606,8 @@ def dc_sample(la, lb, rho=DC_RHO):
 def simulate_match(team_a, team_b, neutral=1, is_knockout=False):
     lambda_a, lambda_b = get_cached_lambdas(team_a, team_b, neutral)
 
-    # Apply group difficulty + WC pedigree multipliers in knockout rounds
+    # Apply WC pedigree multiplier in knockout rounds
     if is_knockout:
-        lambda_a *= get_group_difficulty_multiplier(team_a)
-        lambda_b *= get_group_difficulty_multiplier(team_b)
         # WC pedigree: teams with history of deep WC runs get a small KO boost
         lambda_a *= get_wc_pedigree_multiplier(team_a)
         lambda_b *= get_wc_pedigree_multiplier(team_b)
@@ -822,103 +783,81 @@ def simulate_tournament():
     
     # Match 76 (Jun 29): Brazil 2-1 Japan
     ko_winners[76] = 'Brazil'
-    # ── END OF COMPLETED RESULTS ────────────────────────────────────────────────
     
-    # Match 77: I1 vs 3rd place
-    g77_h, g77_a = simulate_match(winners['Group I'], third_pairings[77], neutral=1, is_knockout=True)
-    ko_winners[77] = winners['Group I'] if g77_h > g77_a else third_pairings[77]
+    # Match 77 (Jun 30): France qualified from Group I → won R32 match
+    ko_winners[77] = 'France'
     
-    # Match 78: E2 vs I2
-    g78_h, g78_a = simulate_match(runners_up['Group E'], runners_up['Group I'], neutral=1, is_knockout=True)
-    ko_winners[78] = runners_up['Group E'] if g78_h > g78_a else runners_up['Group I']
+    # Match 78 (Jun 30): Norway qualified from Group I runner-up slot → won R32 match
+    ko_winners[78] = 'Norway'
     
-    # Match 79: A1 vs 3rd place
-    g79_h, g79_a = simulate_match(winners['Group A'], third_pairings[79], neutral=1, is_knockout=True)
-    ko_winners[79] = winners['Group A'] if g79_h > g79_a else third_pairings[79]
+    # Match 79 (Jun 30): Mexico won their R32 match
+    ko_winners[79] = 'Mexico'
     
-    # Match 80: L1 vs 3rd place
-    g80_h, g80_a = simulate_match(winners['Group L'], third_pairings[80], neutral=1, is_knockout=True)
-    ko_winners[80] = winners['Group L'] if g80_h > g80_a else third_pairings[80]
+    # Match 80 (Jul 1): England won their R32 match
+    ko_winners[80] = 'England'
     
-    # Match 81: D1 vs 3rd place
-    g81_h, g81_a = simulate_match(winners['Group D'], third_pairings[81], neutral=1, is_knockout=True)
-    ko_winners[81] = winners['Group D'] if g81_h > g81_a else third_pairings[81]
+    # Match 81 (Jul 1): USA won their R32 match
+    ko_winners[81] = 'United States'
     
-    # Match 82: G1 vs 3rd place
-    g82_h, g82_a = simulate_match(winners['Group G'], third_pairings[82], neutral=1, is_knockout=True)
-    ko_winners[82] = winners['Group G'] if g82_h > g82_a else third_pairings[82]
+    # Match 82 (Jul 1): Belgium won their R32 match
+    ko_winners[82] = 'Belgium'
     
-    # Match 83: K2 vs L2
-    g83_h, g83_a = simulate_match(runners_up['Group K'], runners_up['Group L'], neutral=1, is_knockout=True)
-    ko_winners[83] = runners_up['Group K'] if g83_h > g83_a else runners_up['Group L']
+    # Match 83 (Jul 2): Portugal won their R32 match
+    ko_winners[83] = 'Portugal'
     
-    # Match 84: H1 vs J2
-    g84_h, g84_a = simulate_match(winners['Group H'], runners_up['Group J'], neutral=1, is_knockout=True)
-    ko_winners[84] = winners['Group H'] if g84_h > g84_a else runners_up['Group J']
+    # Match 84 (Jul 2): Spain won their R32 match
+    ko_winners[84] = 'Spain'
     
-    # Match 85: B1 vs 3rd place
-    g85_h, g85_a = simulate_match(winners['Group B'], third_pairings[85], neutral=1, is_knockout=True)
-    ko_winners[85] = winners['Group B'] if g85_h > g85_a else third_pairings[85]
+    # Match 85 (Jul 2): Switzerland won their R32 match
+    ko_winners[85] = 'Switzerland'
     
-    # Match 86: J1 vs H2
-    g86_h, g86_a = simulate_match(winners['Group J'], runners_up['Group H'], neutral=1, is_knockout=True)
-    ko_winners[86] = winners['Group J'] if g86_h > g86_a else runners_up['Group H']
+    # Match 86 (Jul 3): Argentina won their R32 match
+    ko_winners[86] = 'Argentina'
     
-    # Match 87: K1 vs 3rd place
-    g87_h, g87_a = simulate_match(winners['Group K'], third_pairings[87], neutral=1, is_knockout=True)
-    ko_winners[87] = winners['Group K'] if g87_h > g87_a else third_pairings[87]
+    # Match 87 (Jul 3): Colombia won their R32 match
+    ko_winners[87] = 'Colombia'
     
-    # Match 88: D2 vs G2
-    g88_h, g88_a = simulate_match(runners_up['Group D'], runners_up['Group G'], neutral=1, is_knockout=True)
-    ko_winners[88] = runners_up['Group D'] if g88_h > g88_a else runners_up['Group G']
+    # Match 88 (Jul 3): Egypt won their R32 match
+    ko_winners[88] = 'Egypt'
+    # ── END OF COMPLETED R32 RESULTS ─────────────────────────────────────────────
     
-    # 3. ROUND OF 16
-    # Match 89: Winner 74 vs Winner 77
-    g89_h, g89_a = simulate_match(ko_winners[74], ko_winners[77], neutral=1, is_knockout=True)
-    ko_winners[89] = ko_winners[74] if g89_h > g89_a else ko_winners[77]
+    # 3. ROUND OF 16 — ALL RESULTS FINAL (Jul 4-7) ────────────────────────────
+    # Match 89 (Jul 5): France 1-0 Paraguay
+    ko_winners[89] = 'France'
     
-    # Match 90: Winner 73 vs Winner 75
-    g90_h, g90_a = simulate_match(ko_winners[73], ko_winners[75], neutral=1, is_knockout=True)
-    ko_winners[90] = ko_winners[73] if g90_h > g90_a else ko_winners[75]
+    # Match 90 (Jul 4): Morocco 3-0 Canada
+    ko_winners[90] = 'Morocco'
     
-    # Match 91: Winner 76 vs Winner 78
-    g91_h, g91_a = simulate_match(ko_winners[76], ko_winners[78], neutral=1, is_knockout=True)
-    ko_winners[91] = ko_winners[76] if g91_h > g91_a else ko_winners[78]
+    # Match 91 (Jul 5): Norway 2-1 Brazil
+    ko_winners[91] = 'Norway'
     
-    # Match 92: Winner 79 vs Winner 80
-    g92_h, g92_a = simulate_match(ko_winners[79], ko_winners[80], neutral=1, is_knockout=True)
-    ko_winners[92] = ko_winners[79] if g92_h > g92_a else ko_winners[80]
+    # Match 92 (Jul 5): England 3-2 Mexico
+    ko_winners[92] = 'England'
     
-    # Match 93: Winner 83 vs Winner 84
-    g93_h, g93_a = simulate_match(ko_winners[83], ko_winners[84], neutral=1, is_knockout=True)
-    ko_winners[93] = ko_winners[83] if g93_h > g93_a else ko_winners[84]
+    # Match 93 (Jul 6): Spain 1-0 Portugal
+    ko_winners[93] = 'Spain'
     
-    # Match 94: Winner 81 vs Winner 82
-    g94_h, g94_a = simulate_match(ko_winners[81], ko_winners[82], neutral=1, is_knockout=True)
-    ko_winners[94] = ko_winners[81] if g94_h > g94_a else ko_winners[82]
+    # Match 94 (Jul 6): Belgium 4-1 USA
+    ko_winners[94] = 'Belgium'
     
-    # Match 95: Winner 86 vs Winner 88
-    g95_h, g95_a = simulate_match(ko_winners[86], ko_winners[88], neutral=1, is_knockout=True)
-    ko_winners[95] = ko_winners[86] if g95_h > g95_a else ko_winners[88]
+    # Match 95 (Jul 7): Argentina 3-2 Egypt
+    ko_winners[95] = 'Argentina'
     
-    # Match 96: Winner 85 vs Winner 87
-    g96_h, g96_a = simulate_match(ko_winners[85], ko_winners[87], neutral=1, is_knockout=True)
-    ko_winners[96] = ko_winners[85] if g96_h > g96_a else ko_winners[87]
+    # Match 96 (Jul 7): Switzerland 0-0 Colombia AET, Switzerland win 4-3 on pens
+    ko_winners[96] = 'Switzerland'
     
-    # 4. QUARTERFINALS
-    # Match 97: Winner 89 vs Winner 90
-    g97_h, g97_a = simulate_match(ko_winners[89], ko_winners[90], neutral=1, is_knockout=True)
-    ko_winners[97] = ko_winners[89] if g97_h > g97_a else ko_winners[90]
+    # 4. QUARTERFINALS ───────────────────────────────────────────────────────────
+    # Match 97 (Jul 9): France 2-0 Morocco — COMPLETED
+    ko_winners[97] = 'France'
     
-    # Match 98: Winner 93 vs Winner 94
-    g98_h, g98_a = simulate_match(ko_winners[93], ko_winners[94], neutral=1, is_knockout=True)
-    ko_winners[98] = ko_winners[93] if g98_h > g98_a else ko_winners[94]
+    # Match 98 (Jul 10): Spain 2-1 Belgium — COMPLETED
+    ko_winners[98] = 'Spain'
     
-    # Match 99: Winner 91 vs Winner 92
+    # Match 99 (Jul 11): Norway vs England — ONGOING TODAY (simulated)
     g99_h, g99_a = simulate_match(ko_winners[91], ko_winners[92], neutral=1, is_knockout=True)
     ko_winners[99] = ko_winners[91] if g99_h > g99_a else ko_winners[92]
     
-    # Match 100: Winner 95 vs Winner 96
+    # Match 100 (Jul 11): Argentina vs Switzerland — ONGOING TODAY (simulated)
     g100_h, g100_a = simulate_match(ko_winners[95], ko_winners[96], neutral=1, is_knockout=True)
     ko_winners[100] = ko_winners[95] if g100_h > g100_a else ko_winners[96]
     
@@ -1091,10 +1030,10 @@ notebook_content = {
     "\n",
     "# Apply name cleaning to EAFC data and build lookup dictionary\n",
     "eafc_df['Nation'] = eafc_df['Nation'].apply(clean_name)\n",
-    "eafc_stats = {}\n",
+    "eafc_stats = {} \n",
     "for idx, row in eafc_df.iterrows():\n",
     "    eafc_stats[row['Nation']] = {\n",
-    "        'Top11_OVR': float(row['Top11_OVR']),\n",
+    "        'Avg_OVR': float(row['Avg_OVR']),\n",
     "        'Attack_Score': float(row['Attack_Score']),\n",
     "        'Defense_Score': float(row['Defense_Score']),\n",
     "        'Penalty_Score': float(row['Penalty_Score'])\n",
@@ -1103,14 +1042,14 @@ notebook_content = {
     "def get_squad_features(team, rank):\n",
     "    stats = eafc_stats.get(team)\n",
     "    if stats:\n",
-    "        return stats['Top11_OVR'], stats['Attack_Score'], stats['Defense_Score'], stats['Penalty_Score']\n",
+    "        return stats['Avg_OVR'], stats['Attack_Score'], stats['Defense_Score'], stats['Penalty_Score']\n",
     "    else:\n",
     "        # Fallback using regression formulas derived from WC team data\n",
-    "        top11_ovr = np.clip(85.67 - 0.1827 * rank, 55.0, 88.5)\n",
+    "        avg_ovr = np.clip(85.67 - 0.1827 * rank, 55.0, 88.5)\n",
     "        atk_score = np.clip(76.43 - 0.1265 * rank, 50.0, 83.0)\n",
     "        def_score = np.clip(70.69 - 0.0891 * rank, 50.0, 82.0)\n",
     "        pen_score = np.clip(58.0 - 0.1 * rank, 40.0, 75.0)\n",
-    "        return top11_ovr, atk_score, def_score, pen_score\n",
+    "        return avg_ovr, atk_score, def_score, pen_score\n",
     "print(\"Datasets loaded successfully.\")"
    ]
   },

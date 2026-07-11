@@ -70,7 +70,7 @@ nav {
   font-size: 0.7rem; font-weight: 700;
   background: linear-gradient(135deg, #1a3a6a, #2a6ab8);
   border: 1px solid #4a9eff44;
-  color: var(--blue);
+  color: #ffffff;
   padding: 4px 10px; border-radius: 20px;
   letter-spacing: 0.5px;
 }
@@ -343,6 +343,33 @@ footer strong { color: var(--gold); }
   font-weight: 600;
 }
 .pens-result strong { color: #c4b5fd; }
+
+/* Live match badges */
+.live-badge {
+  color: #fff;
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  border: 1px solid rgba(220,38,38,0.5);
+  padding: 2px 6px; border-radius: 4px;
+  font-size: 0.58rem; font-weight: 800;
+  text-transform: uppercase;
+  margin-left: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  animation: pulse-live 1.5s ease infinite;
+}
+.vs-badge.live {
+  color: #fff;
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  border-color: #dc2626;
+  width: auto; height: 28px; border-radius: 6px;
+  padding: 0 10px;
+  font-size: 0.72rem;
+  animation: pulse-live 1.5s ease infinite;
+}
+@keyframes pulse-live {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.4); }
+  50%       { box-shadow: 0 0 0 4px rgba(220,38,38,0); }
+}
 
 
 /* ── ANIMATIONS ────────────────────────────────────────────── */
