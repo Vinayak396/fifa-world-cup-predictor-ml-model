@@ -1,30 +1,13 @@
 Nation,Name,Position,Age,OVR,PAC,SHO,PAS,DRI,DEF,PHY,Acceleration,Positioning,Penalties
-Mexico,Julian Quiñones,ST,28,80,88,79,70,79,36,83,89,0,78
-Mexico,Julian Quiñones,ST,29,80,88,79,70,79,36,83,89,79,78
-Mexico,Santiago Giménez,ST,24,79,78,80,70,77,46,69,77,0,81
-Mexico,Santiago Giménez,ST,24,79,78,80,70,77,46,69,77,84,81
+Mexico,César Huerta,LW,24,73,84,68,68,75,48,70,83,0,68
 Mexico,Edson Álvarez,CDM,28,78,65,58,69,72,78,79,64,0,65
-Mexico,Hirving Lozano,LW,30,78,88,75,71,80,41,58,89,0,72
-Mexico,Edson Álvarez,CDM,28,78,65,58,69,72,78,79,64,56,65
-Mexico,Hirving Lozano,LW,30,78,88,75,71,80,41,58,89,80,72
+Mexico,Johan Vásquez,CB,27,75,61,33,58,60,76,75,59,0,45
+Mexico,Julian Quiñones,ST,28,80,88,79,70,79,36,83,89,0,78
+Mexico,Mateo Chávez,LB,21,72,82,45,64,71,65,68,81,0,37
+Mexico,Obed Vargas,CM,20,69,74,52,64,73,63,57,76,0,47
 Mexico,Orbelín Pineda,CAM,29,77,81,74,72,81,68,69,82,0,75
 Mexico,Raúl Jiménez,ST,34,77,57,79,74,75,46,79,61,0,89
-Mexico,Orbelín Pineda,CAM,30,77,81,74,72,81,68,69,82,74,75
-Mexico,Raúl Jiménez,ST,34,77,57,79,74,75,46,79,61,80,89
-Mexico,Johan Vásquez,CB,27,75,61,33,58,60,76,75,59,0,45
-Mexico,Johan Vásquez,CB,27,75,61,33,58,60,76,75,59,40,45
-Mexico,Julian Araujo,RB,24,74,83,35,64,70,71,73,86,0,44
-Mexico,Julian Araujo,RB,24,74,83,35,64,70,71,73,86,65,44
-Mexico,César Huerta,LW,24,73,84,68,68,75,48,70,83,0,68
-Mexico,César Huerta,LW,25,73,84,68,68,75,48,70,83,68,68
-Mexico,Rodrigo Huescas,RB,22,72,83,63,67,70,65,62,82,0,55
-Mexico,Mateo Chávez,LB,21,72,82,45,64,71,65,68,81,0,37
-Mexico,Rodrigo Huescas,RB,22,72,83,63,67,70,65,62,82,62,55
-Mexico,Mateo Chávez,LB,21,72,82,45,64,71,65,68,81,53,37
-Mexico,Obed Vargas,CM,20,69,74,52,64,73,63,57,76,0,47
-Mexico,Obed Vargas,CM,20,69,74,52,64,73,63,57,76,70,47
-Mexico,Álex Padilla,GK,22,68,70,67,63,71,34,67,37,67,16
-Mexico,Álex Padilla,GK,22,68,70,67,63,71,34,67,37,7,16
+Mexico,Santiago Giménez,ST,24,79,78,80,70,77,46,69,77,0,81
 Jamaica,Leon Bailey,RM,28,79,87,74,73,84,38,61,91,0,71
 Jamaica,Leon Bailey,RM,28,79,87,74,73,84,38,61,91,76,71
 Jamaica,Ethan Pinnock,CB,32,77,60,36,56,61,78,79,54,0,44
@@ -51,32 +34,19 @@ Jamaica,Demetri Mitchell,LM,28,68,89,62,63,67,59,67,88,0,55
 Jamaica,Greg Leigh,LB,31,68,74,59,60,64,64,74,75,0,39
 Jamaica,Daniel Johnson,CAM,33,68,71,64,68,71,54,63,75,0,78
 Jamaica,Demetri Mitchell,LM,29,68,89,62,63,67,59,67,88,61,55
-Ecuador,Moisés Caicedo,CDM,24,87,71,64,78,81,84,82,76,0,55
-Ecuador,Moisés Caicedo,CDM,24,87,71,64,78,81,84,82,76,63,55
-Ecuador,Willian Pacho,CB,24,86,80,34,62,62,86,86,74,0,39
-Ecuador,Willian Pacho,CB,24,86,80,34,62,62,86,86,74,36,39
-Ecuador,Piero Hincapié,CB,23,83,84,41,65,72,84,82,80,0,33
-Ecuador,Piero Hincapié,CB,24,83,84,41,65,72,84,82,80,60,33
-Ecuador,Pervis Estupiñán,LB,27,79,76,57,77,78,75,72,77,0,65
-Ecuador,Pervis Estupiñán,LB,28,79,76,57,77,78,75,72,77,70,65
-Ecuador,Ángelo Preciado,RM,27,75,87,62,70,76,66,71,89,0,58
-Ecuador,Joel Ordoñez,CB,21,75,74,26,54,56,74,79,68,0,39
-Ecuador,Ángelo Preciado,RM,28,75,87,62,70,76,66,71,89,69,58
-Ecuador,Joel Ordoñez,CB,21,75,74,26,54,56,74,79,68,40,39
+Ecuador,Alan Minda,RM,22,70,84,65,62,71,51,59,82,0,50
 Ecuador,Hernán Galíndez,GK,38,74,74,73,70,74,32,76,33,76,20
-Ecuador,Hernán Galíndez,GK,39,74,74,73,70,74,32,76,33,18,20
-Ecuador,Alexander Domínguez,GK,38,73,73,73,71,72,34,73,34,73,17
-Ecuador,Kendry Páez,CAM,18,73,79,68,69,75,43,54,77,0,51
-Ecuador,Alexander Domínguez,GK,38,73,73,73,71,72,34,73,34,15,17
-Ecuador,Kendry Páez,CAM,18,73,79,68,69,75,43,54,77,71,51
-Ecuador,José Cifuentes,CM,26,72,71,61,68,73,71,78,67,0,37
-Ecuador,Jhoanner Chávez,LB,23,72,85,60,66,72,66,67,85,0,63
-Ecuador,Javier Burrai,GK,35,72,72,71,70,71,44,71,47,71,29
-Ecuador,Carlos Gruezo,CDM,30,72,58,46,62,70,67,75,68,0,49
-Ecuador,Junior Sornoza,CAM,31,72,68,73,73,73,41,49,69,0,74
-Ecuador,Leonardo Campana,ST,25,72,65,72,48,65,31,71,65,0,66
-Ecuador,José Cifuentes,CM,27,72,71,61,68,73,71,78,67,70,37
-Ecuador,Jhoanner Chávez,LB,23,72,85,60,66,72,66,67,85,70,63
+Ecuador,Joel Ordoñez,CB,21,75,74,26,54,56,74,79,68,0,39
+Ecuador,John Yeboah,ST,25,70,92,66,62,75,26,57,91,0,48
+Ecuador,Jordy Alcívar,CDM,26,68,66,65,66,67,63,71,68,0,71
+Ecuador,Jordy Caicedo,ST,28,66,69,65,44,62,34,77,63,0,66
+Ecuador,Kevin Rodríguez,ST,25,67,79,65,54,68,25,67,77,0,52
+Ecuador,Moisés Caicedo,CDM,24,87,71,64,78,81,84,82,76,0,55
+Ecuador,Nilson Angulo,LM,22,67,80,60,60,68,34,55,79,0,60
+Ecuador,Pervis Estupiñán,LB,27,79,76,57,77,78,75,72,77,0,65
+Ecuador,Piero Hincapié,CB,23,83,84,41,65,72,84,82,80,0,33
+Ecuador,Willian Pacho,CB,24,86,80,34,62,62,86,86,74,0,39
+Ecuador,Ángelo Preciado,RM,27,75,87,62,70,76,66,71,89,0,58
 Venezuela,Yangel Herrera,CM,27,81,65,76,77,79,80,81,66,0,60
 Venezuela,Yangel Herrera,CM,28,81,65,76,77,79,80,81,66,79,60
 Venezuela,Jon Mikel Aramburu,RB,23,77,69,48,70,72,76,72,71,0,60
@@ -103,1077 +73,638 @@ Venezuela,Maurice Cova,CM,33,70,70,71,74,70,45,66,68,0,77
 Venezuela,Eduard Bello,RM,30,70,80,64,67,71,37,64,81,0,68
 Venezuela,Joel Graterol,GK,28,70,69,68,66,70,24,72,30,72,16
 Venezuela,Maurice Cova,CM,33,70,70,71,74,70,45,66,68,71,77
-Canada,Alphonso Davies,LB,25,84,94,66,78,85,74,76,95,0,54
-Canada,Alphonso Davies,LB,25,84,94,66,78,85,74,76,95,77,54
-Canada,Jonathan David,ST,25,82,81,82,71,80,34,78,79,0,86
-Canada,Jonathan David,ST,26,82,81,82,71,80,34,78,79,88,86
+Canada,Ali Ahmed,CM,25,68,78,58,65,72,61,65,78,0,39
 Canada,Alistair Johnston,RB,27,78,82,59,73,72,73,80,76,0,60
-Canada,Milan Borjan,GK,38,78,72,78,76,76,46,82,49,82,34
-Canada,Alistair Johnston,RB,27,78,82,59,73,72,73,80,76,74,60
-Canada,Milan Borjan,GK,38,78,72,78,76,76,46,82,49,14,34
-Canada,Stephen Eustáquio,CDM,28,77,66,67,76,73,73,74,67,0,65
 Canada,Cyle Larin,ST,30,77,70,77,68,71,28,78,66,0,72
-Canada,Stephen Eustáquio,CDM,29,77,66,67,76,73,73,74,67,68,65
-Canada,Cyle Larin,ST,30,77,70,77,68,71,28,78,66,78,72
-Canada,Moïse Bombito,CB,25,76,93,49,58,65,75,76,92,0,32
-Canada,Moïse Bombito,CB,26,76,93,49,58,65,75,76,92,59,32
-Canada,Promise David,ST,24,75,62,78,59,64,29,84,57,0,75
-Canada,Promise David,ST,24,75,62,78,59,64,29,84,57,75,75
-Canada,Tajon Buchanan,RM,26,74,90,65,66,74,67,73,91,0,55
 Canada,Derek Cornelius,CB,27,74,67,45,55,57,71,85,61,0,32
-Canada,Tajon Buchanan,RM,27,74,90,65,66,74,67,73,91,64,55
-Canada,Derek Cornelius,CB,28,74,67,45,55,57,71,85,61,44,32
-Canada,Dayne St. Clair,GK,28,73,73,69,60,76,27,72,27,72,10
-Canada,Dayne St. Clair,GK,28,73,73,69,60,76,27,72,27,5,10
-Canada,Richie Laryea,RM,30,72,81,61,65,74,64,71,79,0,57
 Canada,Ismaël Koné,CM,23,72,78,63,68,71,64,69,74,0,44
+Canada,Jacob Shaffelburg,LM,25,67,91,63,60,65,52,63,91,0,49
+Canada,Jayden Nelson,LW,23,68,92,59,58,74,48,59,93,0,56
+Canada,Jonathan David,ST,25,82,81,82,71,80,34,78,79,0,86
+Canada,Jonathan Osorio,CM,33,71,50,67,70,72,61,65,53,0,50
 Canada,Liam Millar,LM,26,72,85,66,66,75,52,59,86,0,56
-Canada,Richie Laryea,RM,31,72,81,61,65,74,64,71,79,70,57
-Uruguay,Federico Valverde,CM,27,89,88,84,84,84,83,85,84,0,59
-Uruguay,Federico Valverde,CM,27,89,88,84,84,84,83,85,84,86,59
-Uruguay,Lucas Torreira,CDM,29,83,76,72,78,81,81,79,80,0,48
-Uruguay,Ronald Araujo,CB,26,83,80,53,63,61,81,83,73,0,43
-Uruguay,José María Giménez,CB,30,83,73,46,60,62,85,82,68,0,40
-Uruguay,Lucas Torreira,CDM,30,83,76,72,78,81,81,79,80,76,48
-Uruguay,Ronald Araujo,CB,27,83,80,53,63,61,81,83,73,56,43
-Uruguay,José María Giménez,CB,31,83,73,46,60,62,85,82,68,25,40
-Uruguay,Mauro Arambarri,CM,30,80,65,79,76,77,79,79,75,0,61
-Uruguay,Rodrigo Bentancur,CDM,28,80,64,68,78,79,78,72,63,0,67
-Uruguay,Mauro Arambarri,CM,30,80,65,79,76,77,79,79,75,80,61
-Uruguay,Rodrigo Bentancur,CDM,28,80,64,68,78,79,78,72,63,73,67
-Uruguay,Rodrigo Zalazar,CAM,26,79,80,81,79,78,67,74,77,0,67
+Canada,Luc De Fougerolles,CB,20,58,64,32,44,48,60,58,65,0,44
+Canada,Mathieu Choinière,CM,26,67,60,58,66,66,62,59,68,0,59
+Canada,Maxime Crépeau,GK,31,69,71,69,64,72,45,66,46,66,23
+Canada,Moïse Bombito,CB,25,76,93,49,58,65,75,76,92,0,32
+Canada,Niko Sigur,RB,22,70,71,61,68,73,62,68,69,0,50
+Canada,Promise David,ST,24,75,62,78,59,64,29,84,57,0,75
+Canada,Richie Laryea,RM,30,72,81,61,65,74,64,71,79,0,57
+Canada,Stephen Eustáquio,CDM,28,77,66,67,76,73,73,74,67,0,65
+Canada,Tajon Buchanan,RM,26,74,90,65,66,74,67,73,91,0,55
+Canada,Tani Oluwaseyi,ST,25,70,85,71,54,66,31,67,82,0,73
 Uruguay,Darwin Núñez,ST,26,79,88,79,72,76,49,82,86,0,78
-Uruguay,Manuel Ugarte,CDM,24,79,62,65,72,76,77,75,62,0,62
+Uruguay,Federico Valverde,CM,27,89,88,84,84,84,83,85,84,0,59
+Uruguay,Federico Viñas,ST,27,72,73,72,56,70,25,76,71,0,73
 Uruguay,Fernando Muslera,GK,39,79,81,80,66,77,43,78,40,78,67
-Uruguay,Luis Suárez,ST,38,79,53,82,74,76,41,75,52,0,81
-Uruguay,Sebastián Coates,CB,35,79,60,49,54,61,81,84,61,0,69
-Uruguay,Rodrigo Zalazar,CAM,26,79,80,81,79,78,67,74,77,78,67
-Uruguay,Darwin Núñez,ST,26,79,88,79,72,76,49,82,86,81,78
-Uruguay,Manuel Ugarte,CDM,24,79,62,65,72,76,77,75,62,70,62
-Uruguay,Fernando Muslera,GK,39,79,81,80,66,77,43,78,40,13,67
-Uruguay,Luis Suárez,ST,39,79,53,82,74,76,41,75,52,84,81
-Uruguay,Sebastián Coates,CB,35,79,60,49,54,61,81,84,61,49,69
-Uruguay,Leonardo Fernández,CAM,27,78,78,81,78,77,44,64,78,0,74
+Uruguay,Manuel Ugarte,CDM,24,79,62,65,72,76,77,75,62,0,62
 Uruguay,Mathías Olivera,LB,28,78,70,51,69,72,77,73,69,0,42
-Panama,Amir Murillo,RB,29,76,84,57,70,71,70,76,80,0,62
-Panama,Amir Murillo,RB,30,76,84,57,70,71,70,76,80,67,62
-Panama,Luis Mejía,GK,34,72,69,67,68,75,52,71,55,71,45
-Panama,Luis Mejía,GK,35,72,69,67,68,75,52,71,55,13,45
-Panama,Orlando Mosquera,GK,30,70,73,68,69,71,32,65,32,65,10
-Panama,Eduardo Guerrero,ST,25,70,77,69,66,75,21,66,79,0,64
-Panama,Aníbal Godoy,CM,35,70,43,56,65,67,64,75,43,0,36
-Panama,Orlando Mosquera,GK,31,70,73,68,69,71,32,65,32,8,10
-Panama,Eduardo Guerrero,ST,26,70,77,69,66,75,21,66,79,71,64
-Panama,Aníbal Godoy,CM,36,70,43,56,65,67,64,75,43,60,36
+Uruguay,Maximiliano Araújo,LM,25,77,85,63,70,79,68,68,87,0,54
+Uruguay,Rodrigo Bentancur,CDM,28,80,64,68,78,79,78,72,63,0,67
 Panama,Andrés Andrade,CB,27,69,74,51,60,64,68,79,73,0,39
-Panama,Andrés Andrade,CB,27,69,74,51,60,64,68,79,73,59,39
-Panama,José Fajardo,ST,32,68,69,68,58,68,33,68,66,0,68
-Panama,José Córdoba,CB,24,68,72,31,53,61,65,73,66,0,35
-Panama,José Fajardo,ST,32,68,69,68,58,68,33,68,66,69,68
-Panama,José Córdoba,CB,24,68,72,31,53,61,65,73,66,29,35
+Panama,Aníbal Godoy,CM,35,70,43,56,65,67,64,75,43,0,36
 Panama,Carlos Harvey,CB,25,65,53,42,54,58,64,73,56,0,40
-Panama,Carlos Harvey,CB,26,65,53,42,54,58,64,73,56,43,40
-Panama,Leslie Heráldez,CDM,32,64,70,47,66,57,61,50,70,0,52
-Panama,Leslie Heráldez,CDM,33,64,70,47,66,57,61,50,70,51,52
-Panama,Omar Valencia,LB,21,59,59,45,58,56,58,55,56,0,43
-Panama,Omar Valencia,LB,21,59,59,45,58,56,58,55,56,50,43
-New Zealand,Chris Wood,ST,33,82,53,83,68,72,40,81,55,0,85
-New Zealand,Chris Wood,ST,34,82,53,83,68,72,40,81,55,86,85
-New Zealand,Joe Bell,CDM,26,74,70,64,72,71,69,81,71,0,55
-New Zealand,Joe Bell,CDM,26,74,70,64,72,71,69,81,71,67,55
-New Zealand,Liberato Cacace,LB,25,72,72,60,67,71,69,74,73,0,55
-New Zealand,Liberato Cacace,LB,25,72,72,60,67,71,69,74,73,72,55
-New Zealand,Marko Stamenić,CDM,23,71,67,60,68,71,66,75,65,0,58
-New Zealand,Alex Paulsen,GK,23,71,72,66,73,74,55,64,55,64,24
-New Zealand,Marko Stamenić,CDM,24,71,67,60,68,71,66,75,65,64,58
-New Zealand,Alex Paulsen,GK,23,71,72,66,73,74,55,64,55,18,24
-New Zealand,Francis de Vries,LB,30,69,64,53,67,62,63,83,66,0,55
-New Zealand,Tyler Bindon,CB,20,69,58,46,59,64,68,73,57,0,37
-New Zealand,Michael Boxall,CB,37,69,52,43,60,57,67,80,40,0,42
-New Zealand,Francis de Vries,LB,31,69,64,53,67,62,63,83,66,61,55
-New Zealand,Tyler Bindon,CB,21,69,58,46,59,64,68,73,57,32,37
-New Zealand,Michael Boxall,CB,37,69,52,43,60,57,67,80,40,59,42
+Panama,José Córdoba,CB,24,68,72,31,53,61,65,73,66,0,35
+Panama,José Fajardo,ST,32,68,69,68,58,68,33,68,66,0,68
+Panama,Amir Murillo,RB,29,76,84,57,70,71,70,76,80,0,62
+Panama,Orlando Mosquera,GK,30,70,73,68,69,71,32,65,32,65,10
 New Zealand,Ben Old,LW,23,68,82,58,63,71,52,69,83,0,51
-New Zealand,Kosta Barbarouses,ST,35,68,78,69,58,69,40,77,79,0,60
-New Zealand,Finn Surman,CB,22,68,65,33,49,55,66,78,62,0,29
-New Zealand,Ben Old,LW,23,68,82,58,63,71,52,69,83,63,51
-New Zealand,Kosta Barbarouses,ST,36,68,78,69,58,69,40,77,79,71,60
-New Zealand,Finn Surman,CB,22,68,65,33,49,55,66,78,62,32,29
-New Zealand,Alex Rufer,CDM,29,67,64,59,65,67,63,78,64,0,67
+New Zealand,Callan Elliot,RB,26,62,76,48,56,63,55,67,80,0,48
 New Zealand,Callum McCowatt,CAM,26,67,76,67,65,67,52,67,75,0,60
-New Zealand,Nando Pijnaker,CB,26,67,60,48,54,53,65,79,56,0,48
-New Zealand,Alex Rufer,CDM,29,67,64,59,65,67,63,78,64,63,67
+New Zealand,Chris Wood,ST,33,82,53,83,68,72,40,81,55,0,85
+New Zealand,Elijah Just,LW,25,66,81,66,58,68,38,53,84,0,55
+New Zealand,Finn Surman,CB,22,68,65,33,49,55,66,78,62,0,29
+New Zealand,Francis de Vries,LB,30,69,64,53,67,62,63,83,66,0,55
+New Zealand,Jesse Randall,LM,23,60,78,58,53,61,31,59,79,0,56
+New Zealand,Joe Bell,CDM,26,74,70,64,72,71,69,81,71,0,55
+New Zealand,Liberato Cacace,LB,25,72,72,60,67,71,69,74,73,0,55
+New Zealand,Marko Stamenić,CDM,23,71,67,60,68,71,66,75,65,0,58
+New Zealand,Max Crocombe,GK,32,65,64,65,62,65,47,64,46,64,21
+New Zealand,Michael Boxall,CB,37,69,52,43,60,57,67,80,40,0,42
+New Zealand,Ryan Thomas,CM,30,66,57,58,68,69,57,66,72,0,62
+New Zealand,Tim Payne,RB,31,64,68,56,58,57,60,80,67,0,50
+New Zealand,Tyler Bindon,CB,20,69,58,46,59,64,68,73,57,0,37
 Morocco,Achraf Hakimi,RB,27,89,92,79,82,83,82,79,89,0,68
-Morocco,Achraf Hakimi,RB,27,89,92,79,82,83,82,79,89,84,68
-Morocco,Yassine Bounou,GK,34,82,81,82,76,85,38,82,38,82,24
-Morocco,Youssef En-Nesyri,ST,28,82,79,81,65,75,35,80,73,0,73
-Morocco,Brahim,RM,26,82,82,74,79,85,31,58,83,0,58
-Morocco,Yassine Bounou,GK,34,82,81,82,76,85,38,82,38,10,24
-Morocco,Youssef En-Nesyri,ST,28,82,79,81,65,75,35,80,73,85,73
-Morocco,Brahim,RM,26,82,82,74,79,85,31,58,83,79,58
-Morocco,Nayef Aguerd,CB,29,81,72,50,67,65,82,77,65,0,48
-Morocco,Nayef Aguerd,CB,30,81,72,50,67,65,82,77,65,52,48
-Morocco,Noussair Mazraoui,RB,28,80,75,66,76,80,77,72,78,0,44
+Morocco,Amine Sbaï,LM,25,68,76,62,62,73,27,55,74,0,56
 Morocco,Ayoub El Kaabi,ST,32,80,82,82,62,75,46,77,80,0,84
-Morocco,Noussair Mazraoui,RB,28,80,75,66,76,80,77,72,78,76,44
-Morocco,Ayoub El Kaabi,ST,32,80,82,82,62,75,46,77,80,82,84
+Morocco,Ayoube Amaimouni,RW,20,63,71,65,57,68,21,50,69,0,56
+Morocco,Azzedine Ounahi,CM,25,76,64,66,73,77,63,67,63,0,57
+Morocco,Bilal El Khannouss,CAM,21,76,76,64,76,82,38,56,79,0,55
+Morocco,Chadi Riad,CB,22,72,60,32,57,61,71,72,56,0,46
+Morocco,Chemsdine Talbi,RM,20,73,90,59,64,79,47,57,92,0,50
 Morocco,Ismael Saibari,CAM,24,79,78,75,74,82,51,78,81,0,57
-Morocco,Abderrazak Hamdallah,ST,34,79,59,80,70,78,31,78,51,0,85
-Morocco,Ismael Saibari,CAM,24,79,78,75,74,82,51,78,81,78,57
-Morocco,Abderrazak Hamdallah,ST,35,79,59,80,70,78,31,78,51,83,85
-Morocco,Sofyan Amrabat,CDM,29,78,61,70,73,74,75,82,62,0,57
-Morocco,Amine Adli,ST,25,78,84,76,70,82,42,69,87,0,68
-Morocco,Soufiane Rahimi,LM,29,78,85,76,72,77,38,66,87,0,67
-Morocco,Sofyan Amrabat,CDM,29,78,61,70,73,74,75,82,62,66,57
-Morocco,Amine Adli,ST,25,78,84,76,70,82,42,69,87,78,68
-Morocco,Soufiane Rahimi,LM,29,78,85,76,72,77,38,66,87,78,67
+Morocco,Marwane Saadane,CB,33,72,54,51,61,62,70,85,55,0,71
 Morocco,Neil El Aynaoui,CM,24,77,62,63,76,74,73,75,57,0,79
-Morocco,Omar El Hilali,RB,22,77,85,41,67,69,74,77,85,0,40
-Brazil,Raphinha,LM,28,89,91,84,85,87,53,75,90,0,78
+Morocco,Noussair Mazraoui,RB,28,80,75,66,76,80,77,72,78,0,44
+Morocco,Redouane Halhal,CB,22,63,59,30,44,48,64,65,57,0,41
+Morocco,Samir El Mourabet,CM,20,65,57,48,63,62,57,61,56,0,46
+Morocco,Sofyan Amrabat,CDM,29,78,61,70,73,74,75,82,62,0,57
+Morocco,Soufiane Rahimi,LM,29,78,85,76,72,77,38,66,87,0,67
+Morocco,Yassine Bounou,GK,34,82,81,82,76,85,38,82,38,82,24
+Morocco,Zakaria El Ouahdi,RB,23,76,73,66,70,77,69,71,81,0,58
 Brazil,Alisson,GK,33,89,86,85,86,89,56,90,60,90,23
-Brazil,Vini Jr.,LW,25,89,95,84,81,91,29,69,95,0,74
-Brazil,Raphinha,LM,29,89,91,84,85,87,53,75,90,89,78
-Brazil,Alisson,GK,33,89,86,85,86,89,56,90,60,13,23
-Brazil,Vini Jr.,LW,25,89,95,84,81,91,29,69,95,86,74
-Brazil,Gabriel,CB,27,88,64,44,64,65,88,84,61,0,51
-Brazil,Gabriel,CB,28,88,64,44,64,65,88,84,61,52,51
-Brazil,Marquinhos,CB,31,87,78,56,75,74,89,80,75,0,52
-Brazil,Marquinhos,CB,31,87,78,56,75,74,89,80,75,70,52
 Brazil,Bruno Guimarães,CM,28,86,66,75,84,84,79,81,66,0,65
-Brazil,Bruno Guimarães,CM,28,86,66,75,84,84,79,81,66,77,65
-Brazil,Ederson,GK,32,85,83,82,91,83,64,83,64,83,65
-Brazil,Rodrygo,RW,24,85,88,80,79,87,31,64,89,0,82
-Brazil,Bremer,CB,28,85,82,50,58,66,86,80,78,0,43
-Brazil,Ederson,GK,32,85,83,82,91,83,64,83,64,20,65
-Brazil,Rodrygo,RW,25,85,88,80,79,87,31,64,89,83,82
-Brazil,Bremer,CB,29,85,82,50,58,66,86,80,78,58,43
-Brazil,Éder Militão,CB,27,84,82,50,69,71,85,82,80,0,60
-Brazil,Éder Militão,CB,28,84,82,50,69,71,85,82,80,64,60
+Brazil,Casemiro,CDM,33,80,36,74,76,69,80,76,35,0,66
+Brazil,Endrick,ST,19,77,87,77,62,78,30,68,88,0,68
+Brazil,Fabinho,CDM,32,82,53,69,78,77,81,80,45,0,85
+Brazil,Gabriel Martinelli,LW,24,81,90,77,75,83,46,72,92,0,62
+Brazil,Igor Thiago,ST,24,75,66,75,54,69,37,78,65,0,74
+Brazil,Lucas Paquetá,CM,28,80,68,78,78,84,69,75,69,0,82
+Brazil,Marquinhos,CB,31,87,78,56,75,74,89,80,75,0,52
 Brazil,Matheus Cunha,CAM,26,83,77,85,79,84,44,75,78,0,76
-Brazil,Murillo,CB,23,83,80,48,67,71,83,83,83,0,52
-Brazil,Matheus Cunha,CAM,26,83,77,85,79,84,44,75,78,80,76
-Brazil,Murillo,CB,23,83,80,48,67,71,83,83,83,40,52
-Brazil,Joelinton,CM,29,82,74,73,77,81,82,90,69,0,61
-Brazil,Éderson,CM,26,82,78,72,77,80,80,81,78,0,57
-Scotland,Scott McTominay,CM,28,85,76,82,77,80,80,85,70,0,60
-Scotland,Scott McTominay,CM,29,85,76,82,77,80,80,85,70,87,60
-Scotland,Andrew Robertson,LB,31,82,74,61,80,77,79,75,75,0,55
-Scotland,Andrew Robertson,LB,32,82,74,61,80,77,79,75,75,76,55
-Scotland,John McGinn,LM,31,81,69,77,78,80,77,83,69,0,55
-Scotland,John McGinn,LM,31,81,69,77,78,80,77,83,69,77,55
-Scotland,Callum McGregor,CDM,32,79,77,76,78,80,72,78,80,0,66
-Scotland,Ryan Christie,CDM,30,79,69,70,77,78,74,76,73,0,73
-Scotland,Callum McGregor,CDM,32,79,77,76,78,80,72,78,80,78,66
-Scotland,Ryan Christie,CDM,31,79,69,70,77,78,74,76,73,74,73
-Scotland,Lewis Ferguson,CM,26,78,72,78,74,78,72,75,72,0,80
-Scotland,Ryan Gauld,LW,29,78,83,68,77,82,51,54,82,0,75
-Scotland,Lewis Ferguson,CM,26,78,72,78,74,78,72,75,72,84,80
-Scotland,Ryan Gauld,LW,30,78,83,68,77,82,51,54,82,77,75
-Scotland,Kieran Tierney,LB,28,77,76,60,75,76,75,73,77,0,42
-Scotland,Ché Adams,ST,29,77,82,80,64,77,43,72,80,0,69
-Scotland,Kieran Tierney,LB,28,77,76,60,75,76,75,73,77,72,42
-Scotland,Ché Adams,ST,29,77,82,80,64,77,43,72,80,78,69
-Scotland,Scott McKenna,CB,29,75,60,32,51,56,76,80,56,0,36
-Scotland,Scott McKenna,CB,29,75,60,32,51,56,76,80,56,21,36
-Scotland,Greg Taylor,LB,28,74,71,55,73,73,71,73,69,0,59
-Scotland,Jack Hendry,CB,30,74,73,56,63,64,71,82,62,0,37
+Brazil,Raphinha,LM,28,89,91,84,85,87,53,75,90,0,78
 Scotland,Aaron Hickey,RB,23,74,71,54,70,73,74,64,70,0,47
-Scotland,Tom Cairney,CM,34,74,52,71,76,73,66,62,53,0,65
-Scotland,Billy Gilmour,CM,24,74,60,58,74,76,69,58,69,0,65
-Scotland,Oli McBurnie,ST,29,74,61,71,60,71,34,82,58,0,65
-Haiti,Frantzdy Pierrot,ST,30,72,65,72,56,62,32,82,59,0,60
-Haiti,Frantzdy Pierrot,ST,31,72,65,72,56,62,32,82,59,76,60
+Scotland,Angus Gunn,GK,29,72,73,71,70,74,48,70,48,70,19
+Scotland,Anthony Ralston,RB,27,71,76,59,69,70,64,78,74,0,44
+Scotland,Ché Adams,ST,29,77,82,80,64,77,43,72,80,0,69
+Scotland,Findlay Curtis,LW,19,63,63,53,61,66,34,44,61,0,41
+Scotland,Grant Hanley,CB,34,71,52,30,47,49,71,78,51,0,26
+Scotland,Jack Hendry,CB,30,74,73,56,63,64,71,82,62,0,37
+Scotland,John McGinn,LM,31,81,69,77,78,80,77,83,69,0,55
+Scotland,Kenny McLean,CDM,33,72,58,67,68,71,66,73,64,0,75
+Scotland,Kieran Tierney,LB,28,77,76,60,75,76,75,73,77,0,42
+Scotland,Lawrence Shankland,ST,30,73,63,75,66,72,28,80,65,0,79
+Scotland,Lewis Ferguson,CM,26,78,72,78,74,78,72,75,72,0,80
+Scotland,Lyndon Dykes,ST,30,68,66,67,52,64,29,82,64,0,74
+Scotland,Nathan Patterson,RB,24,71,71,46,63,70,70,69,68,0,35
+Scotland,Ross Stewart,ST,29,71,68,71,57,64,30,70,70,0,72
+Scotland,Ryan Christie,CDM,30,79,69,70,77,78,74,76,73,0,73
+Scotland,Scott McKenna,CB,29,75,60,32,51,56,76,80,56,0,36
+Scotland,Scott McTominay,CM,28,85,76,82,77,80,80,85,70,0,60
 Haiti,Carlens Arcus,RB,29,71,75,44,66,66,66,75,73,0,43
-Haiti,Jean-Kévin Duverne,LB,28,71,60,38,62,67,72,73,57,0,33
-Haiti,Carlens Arcus,RB,29,71,75,44,66,66,66,75,73,65,43
-Haiti,Jean-Kévin Duverne,LB,28,71,60,38,62,67,72,73,57,55,33
 Haiti,Danley Jean Jacques,CM,25,70,69,56,66,70,67,74,68,0,35
-Haiti,Danley Jean Jacques,CM,25,70,69,56,66,70,67,74,68,68,35
-Haiti,Johny Placide,GK,37,69,65,70,69,67,54,72,53,72,15
-Haiti,Fafà Picault,LW,34,69,87,66,62,71,38,49,90,0,59
-Haiti,Johny Placide,GK,38,69,65,70,69,67,54,72,53,11,15
-Haiti,Fafà Picault,LW,35,69,87,66,62,71,38,49,90,65,59
 Haiti,Derrick Etienne Jr.,LM,28,66,81,61,60,69,40,62,83,0,53
-Haiti,Derrick Etienne Jr.,LM,29,66,81,61,60,69,40,62,83,63,53
-Haiti,Don Deedson Louicius,RW,24,65,84,62,54,66,22,57,83,0,46
-Haiti,Don Deedson Louicius,RW,25,65,84,62,54,66,22,57,83,58,46
+Haiti,Frantzdy Pierrot,ST,30,72,65,72,56,62,32,82,59,0,60
+Haiti,Jean-Kévin Duverne,LB,28,71,60,38,62,67,72,73,57,0,33
+Haiti,Johny Placide,GK,37,69,65,70,69,67,54,72,53,72,15
 Haiti,Martin Expérience,LB,26,62,68,36,53,59,58,64,66,0,35
-Haiti,Martin Expérience,LB,27,62,68,36,53,59,58,64,66,41,35
-Haiti,Aleksandr Guboglo,RM,18,59,80,37,53,61,50,59,82,0,49
-Haiti,Aleksandr Guboglo,RM,19,59,80,37,53,61,50,59,82,49,49
-Haiti,Joseph Belmar,CM,20,56,64,49,51,56,50,48,66,0,39
-Haiti,Joseph Belmar,CM,20,56,64,49,51,56,50,48,66,59,39
-Haiti,Wilguens Paugain,RB,24,55,62,34,42,50,54,63,68,0,44
-Haiti,Wilguens Paugain,RB,24,55,62,34,42,50,54,63,68,56,44
-United States,Christian Pulisic,RW,27,84,88,82,80,86,46,65,90,0,80
-United States,Christian Pulisic,RW,27,84,88,82,80,86,46,65,90,84,80
-United States,Malik Tillman,CAM,23,82,84,76,77,83,65,77,83,0,60
+United States,Alex Freeman,RB,21,65,82,57,62,67,58,73,83,0,51
 United States,Antonee Robinson,LB,28,82,88,46,75,77,78,80,87,0,45
-United States,Malik Tillman,CAM,23,82,84,76,77,83,65,77,83,78,60
-United States,Antonee Robinson,LB,28,82,88,46,75,77,78,80,87,76,45
-United States,Johnny Cardoso,CDM,24,81,72,67,76,78,80,77,74,0,62
-United States,Johnny Cardoso,CDM,24,81,72,67,76,78,80,77,74,74,62
-United States,Sergiño Dest,RB,25,79,87,60,75,83,72,72,89,0,39
-United States,Tyler Adams,CDM,26,79,79,56,71,75,79,75,85,0,52
-United States,Cameron Carter-Vickers,CB,27,79,78,33,59,72,77,84,79,0,38
-United States,Sergiño Dest,RB,25,79,87,60,75,83,72,72,89,73,39
-United States,Tyler Adams,CDM,27,79,79,56,71,75,79,75,85,65,52
-United States,Cameron Carter-Vickers,CB,28,79,78,33,59,72,77,84,79,27,38
-United States,Weston McKennie,CM,27,78,77,71,77,77,80,80,75,0,61
-United States,Weston McKennie,CM,27,78,77,71,77,77,80,80,75,78,61
-United States,Timothy Weah,RM,25,77,87,75,72,78,68,65,86,0,60
-United States,Folarin Balogun,ST,24,77,84,77,62,77,23,68,82,0,71
+United States,Auston Trusty,CB,27,74,78,47,56,60,72,83,74,0,52
+United States,Brenden Aaronson,CAM,25,74,80,66,70,78,57,61,81,0,62
 United States,Chris Richards,CB,25,77,66,27,58,62,78,77,64,0,37
-United States,Timothy Weah,RM,26,77,87,75,72,78,68,65,86,75,60
-United States,Folarin Balogun,ST,24,77,84,77,62,77,23,68,82,78,71
-United States,Chris Richards,CB,26,77,66,27,58,62,78,77,64,38,37
+United States,Christian Pulisic,RW,27,84,88,82,80,86,46,65,90,0,80
+United States,Folarin Balogun,ST,24,77,84,77,62,77,23,68,82,0,71
+United States,Giovanni Reyna,RM,23,75,67,72,72,80,38,68,71,0,50
+United States,Haji Wright,ST,27,73,82,72,60,71,33,76,78,0,78
+United States,Joe Scally,RB,22,74,83,49,60,69,71,76,80,0,39
+United States,Malik Tillman,CAM,23,82,84,76,77,83,65,77,83,0,60
+United States,Mark McKenzie,CB,26,74,80,36,50,64,73,78,78,0,30
+United States,Matt Freese,GK,27,69,70,68,68,71,29,69,27,69,10
+United States,Matt Turner,GK,31,74,74,72,67,74,40,73,38,73,14
+United States,Max Arfsten,LM,24,67,75,61,60,69,60,65,73,0,56
+United States,Miles Robinson,CB,28,73,82,35,55,67,72,79,83,0,41
 United States,Ricardo Pepi,ST,22,76,73,78,60,72,46,73,74,0,70
-United States,Ricardo Pepi,ST,23,76,73,78,60,72,46,73,74,80,70
-United States,Darlington Nagbe,CM,35,75,72,65,72,80,63,73,72,0,61
-United States,Djordje Mihailovic,CAM,27,75,72,72,75,74,60,67,74,0,70
-Turkey,Hakan Çalhanoğlu,CDM,31,86,71,81,87,82,81,73,74,0,92
-Turkey,Hakan Çalhanoğlu,CDM,32,86,71,81,87,82,81,73,74,73,92
-Turkey,Orkun Kökçü,CM,24,82,72,80,84,80,70,79,75,0,81
-Turkey,Orkun Kökçü,CM,25,82,72,80,84,80,70,79,75,80,81
-Turkey,Arda Güler,RM,20,81,70,77,83,83,52,50,73,0,71
-Turkey,Arda Güler,RM,21,81,70,77,83,83,52,50,73,79,71
-Turkey,Barış Alper Yılmaz,LM,25,80,93,77,72,79,69,90,92,0,58
-Turkey,Uğurcan Çakır,GK,29,80,81,76,74,79,54,80,53,80,23
-Turkey,Kerem Aktürkoğlu,LW,27,80,85,75,74,81,41,58,87,0,64
+United States,Sebastian Berhalter,CM,24,67,71,54,66,67,65,71,72,0,53
+United States,Sergiño Dest,RB,25,79,87,60,75,83,72,72,89,0,39
+United States,Tim Ream,CB,38,72,39,44,69,60,74,73,38,0,50
+United States,Timothy Weah,RM,25,77,87,75,72,78,68,65,86,0,60
+United States,Tyler Adams,CDM,26,79,79,56,71,75,79,75,85,0,52
+United States,Weston McKennie,CM,27,78,77,71,77,77,80,80,75,0,61
 Turkey,Abdülkerim Bardakcı,CB,31,80,59,46,70,69,81,85,58,0,48
-Turkey,Barış Alper Yılmaz,LM,25,80,93,77,72,79,69,90,92,81,58
-Turkey,Uğurcan Çakır,GK,29,80,81,76,74,79,54,80,53,14,23
-Turkey,Kerem Aktürkoğlu,LW,27,80,85,75,74,81,41,58,87,82,64
-Turkey,Abdülkerim Bardakcı,CB,31,80,59,46,70,69,81,85,58,68,48
+Turkey,Arda Güler,RM,20,81,70,77,83,83,52,50,73,0,71
+Turkey,Barış Alper Yılmaz,LM,25,80,93,77,72,79,69,90,92,0,58
+Turkey,Can Uzun,CAM,20,74,62,75,66,77,25,62,75,0,66
+Turkey,Deniz Gül,ST,21,66,69,64,58,67,28,66,68,0,59
+Turkey,Eren Elmalı,LB,25,75,83,52,72,72,69,77,80,0,49
 Turkey,Ferdi Kadıoğlu,RB,26,79,82,68,74,80,76,67,88,0,52
+Turkey,Hakan Çalhanoğlu,CDM,31,86,71,81,87,82,81,73,74,0,92
+Turkey,Kaan Ayhan,RB,31,76,57,62,77,69,78,77,55,0,45
 Turkey,Kenan Yıldız,CAM,20,79,84,78,74,83,35,66,85,0,70
-Turkey,Ferdi Kadıoğlu,RB,26,79,82,68,74,80,76,67,88,73,52
-Turkey,Kenan Yıldız,CAM,20,79,84,78,74,83,35,66,85,78,70
-Turkey,Mert Günok,GK,36,78,76,76,79,78,56,77,55,77,16
-Turkey,İrfan Can Kahveci,RW,30,78,73,77,81,80,58,67,74,0,58
-Turkey,Yunus Akgün,RM,25,78,87,78,74,81,40,61,88,0,67
+Turkey,Kerem Aktürkoğlu,LW,27,80,85,75,74,81,41,58,87,0,64
 Turkey,Merih Demiral,CB,27,78,73,39,49,61,79,81,66,0,41
-Turkey,Mert Günok,GK,37,78,76,76,79,78,56,77,55,15,16
-Turkey,İrfan Can Kahveci,RW,30,78,73,77,81,80,58,67,74,76,58
-Turkey,Yunus Akgün,RM,25,78,87,78,74,81,40,61,88,70,67
-Turkey,Merih Demiral,CB,28,78,73,39,49,61,79,81,66,26,41
-Australia,Jackson Irvine,CM,32,75,67,68,71,70,72,80,64,0,55
-Australia,Jackson Irvine,CM,33,75,67,68,71,70,72,80,64,73,55
-Australia,Craig Goodwin,LM,33,73,81,74,72,70,59,73,81,0,78
-Australia,Cameron Burgess,CB,30,73,48,37,57,54,73,78,43,0,43
-Australia,Harry Souttar,CB,27,73,46,28,51,54,73,75,40,0,40
-Australia,Craig Goodwin,LM,34,73,81,74,72,70,59,73,81,70,78
-Australia,Cameron Burgess,CB,30,73,48,37,57,54,73,78,43,55,43
-Australia,Harry Souttar,CB,27,73,46,28,51,54,73,75,40,26,40
-Australia,Riley McGree,LM,27,72,78,67,69,73,63,73,80,0,63
-Australia,Massimo Luongo,CDM,33,72,52,65,67,69,70,71,53,0,52
-Australia,Riley McGree,LM,27,72,78,67,69,73,63,73,80,72,63
-Australia,Massimo Luongo,CDM,33,72,52,65,67,69,70,71,53,67,52
-Australia,Martin Boyle,ST,32,71,89,72,66,74,42,59,91,0,74
-Australia,Nicolas Milanović,LM,24,71,88,67,60,72,36,74,86,0,49
-Australia,Cameron Devlin,CDM,27,71,68,53,63,69,69,72,73,0,46
-Australia,Alex Grant,CB,31,71,53,46,54,56,69,83,48,0,40
-Australia,Alessandro Circati,CB,22,71,59,35,53,49,72,77,54,0,36
-Australia,Kye Rowles,CB,27,71,64,24,46,47,72,76,61,0,33
-Australia,Martin Boyle,ST,32,71,89,72,66,74,42,59,91,74,74
-Australia,Nicolas Milanović,LM,24,71,88,67,60,72,36,74,86,65,49
-Australia,Cameron Devlin,CDM,27,71,68,53,63,69,69,72,73,67,46
-Australia,Alex Grant,CB,32,71,53,46,54,56,69,83,48,48,40
-Australia,Alessandro Circati,CB,22,71,59,35,53,49,72,77,54,25,36
-Australia,Kye Rowles,CB,27,71,64,24,46,47,72,76,61,27,33
-Australia,Mathew Leckie,CM,34,70,79,68,67,74,63,76,76,0,64
+Turkey,Mert Müldür,RB,26,74,76,54,65,73,71,75,78,0,58
+Turkey,Orkun Kökçü,CM,24,82,72,80,84,80,70,79,75,0,81
+Turkey,Ozan Kabak,CB,25,75,60,37,59,66,74,79,52,0,51
+Turkey,Oğuz Aydın,LW,25,77,85,72,71,78,56,67,86,0,68
+Turkey,Salih Özcan,CDM,27,75,70,59,68,73,75,79,75,0,57
+Turkey,Uğurcan Çakır,GK,29,80,81,76,74,79,54,80,53,80,23
+Turkey,Yunus Akgün,RM,25,78,87,78,74,81,40,61,88,0,67
+Turkey,Zeki Çelik,RB,28,76,72,59,69,73,73,74,70,0,46
+Turkey,Çağlar Söyüncü,CB,29,77,69,47,58,65,77,80,64,0,52
+Turkey,İrfan Can Kahveci,RW,30,78,73,77,81,80,58,67,74,0,58
+Turkey,İsmail Yüksek,CDM,26,77,74,59,70,73,74,78,76,0,48
 Australia,Aiden O'Neill,CDM,27,70,76,61,65,68,66,77,74,0,53
-Paraguay,Kaku,CAM,30,79,81,73,81,80,52,64,82,0,74
-Paraguay,Kaku,CAM,31,79,81,73,81,80,52,64,82,73,74
-Paraguay,Omar Alderete,CB,28,78,60,61,62,69,79,78,56,0,45
-Paraguay,Omar Alderete,CB,29,78,60,61,62,69,79,78,56,62,45
-Paraguay,Miguel Almirón,RW,31,76,87,72,70,79,57,64,88,0,70
-Paraguay,Antonio Sanabria,ST,29,76,75,75,68,79,32,57,78,0,66
-Paraguay,Diego Viera,CB,34,76,35,27,44,50,77,84,35,0,35
-Paraguay,Miguel Almirón,RW,32,76,87,72,70,79,57,64,88,72,70
-Paraguay,Antonio Sanabria,ST,30,76,75,75,68,79,32,57,78,80,66
-Paraguay,Diego Viera,CB,34,76,35,27,44,50,77,84,35,27,35
-Paraguay,Richard Sánchez,CM,29,75,77,68,74,75,72,77,76,0,65
-Paraguay,Gabriel Ávalos,ST,35,75,67,75,63,73,45,84,69,0,80
-Paraguay,Alex Arce,ST,30,75,59,79,50,70,23,64,58,0,76
-Paraguay,Richard Sánchez,CM,30,75,77,68,74,75,72,77,76,65,65
-Paraguay,Gabriel Ávalos,ST,35,75,67,75,63,73,45,84,69,77,80
-Paraguay,Alex Arce,ST,30,75,59,79,50,70,23,64,58,82,76
-Paraguay,Lorenzo Melgarejo,LW,35,74,81,75,69,75,56,67,78,0,60
-Paraguay,Matías Rojas,RW,30,74,70,77,74,77,56,63,63,0,76
+Australia,Ajdin Hrustić,CM,29,67,50,67,69,70,56,66,66,0,65
+Australia,Alessandro Circati,CB,22,71,59,35,53,49,72,77,54,0,36
+Australia,Aziz Behich,LB,34,67,74,60,65,69,61,71,77,0,49
+Australia,Cameron Burgess,CB,30,73,48,37,57,54,73,78,43,0,43
+Australia,Connor Metcalfe,CM,26,69,72,60,66,70,62,75,75,0,50
+Australia,Harry Souttar,CB,27,73,46,28,51,54,73,75,40,0,40
+Australia,Jackson Irvine,CM,32,75,67,68,71,70,72,80,64,0,55
+Australia,Jacob Italiano,LB,24,63,76,56,59,69,58,56,79,0,50
+Australia,Jordan Bos,LB,23,69,87,58,60,68,61,79,83,0,48
+Australia,Lucas Herrington,CB,18,59,65,32,42,45,57,66,63,0,32
+Australia,Mathew Leckie,CM,34,70,79,68,67,74,63,76,76,0,64
+Australia,Mohamed Touré,ST,21,68,86,65,57,67,33,72,85,0,60
+Australia,Nestory Irankunda,RM,19,67,88,70,62,70,43,74,90,0,59
+Australia,Nishan Velupillay,LM,24,65,94,56,55,70,35,57,93,0,44
+Australia,Patrick Beach,GK,22,65,68,62,64,71,31,62,29,62,11
+Australia,Tete Yengi,ST,24,59,69,57,48,55,37,78,73,0,55
+Paraguay,Alexandro Maidana,LB,20,58,73,45,54,56,51,55,74,0,48
 Paraguay,Andrés Cubas,CDM,29,74,69,47,66,71,73,56,70,0,51
-Paraguay,Lorenzo Melgarejo,LW,35,74,81,75,69,75,56,67,78,76,60
-Paraguay,Matías Rojas,RW,30,74,70,77,74,77,56,63,63,74,76
-Paraguay,Andrés Cubas,CDM,29,74,69,47,66,71,73,56,70,50,51
-Paraguay,Santiago Arzamendia,LB,27,73,83,68,67,73,68,75,86,0,58
+Paraguay,Antonio Sanabria,ST,29,76,75,75,68,79,32,57,78,0,66
 Paraguay,Diego Gómez,CM,22,73,69,67,71,75,72,75,70,0,63
-Paraguay,Derlis González,ST,31,73,79,74,71,75,45,63,82,0,76
-Paraguay,Cecilio Domínguez,LM,31,73,79,71,69,74,44,70,80,0,73
-Germany,Joshua Kimmich,CDM,30,89,72,74,89,84,83,79,75,0,71
-Germany,Florian Wirtz,CAM,22,89,80,82,88,90,54,67,82,0,66
-Germany,Joshua Kimmich,CDM,31,89,72,74,89,84,83,79,75,78,71
-Germany,Florian Wirtz,CAM,22,89,80,82,88,90,54,67,82,85,66
-Germany,Jamal Musiala,CAM,22,88,80,82,80,90,66,65,85,0,61
-Germany,Jamal Musiala,CAM,23,88,80,82,80,90,66,65,85,88,61
-Germany,Jonathan Tah,CB,29,87,63,38,60,63,87,86,53,0,38
-Germany,Jonathan Tah,CB,30,87,63,38,60,63,87,86,53,36,38
-Germany,Antonio Rüdiger,CB,32,86,79,55,72,70,84,86,70,0,40
-Germany,Marc-André ter Stegen,GK,33,86,84,84,89,85,47,84,45,84,25
-Germany,Antonio Rüdiger,CB,33,86,79,55,72,70,84,86,70,54,40
-Germany,Marc-André ter Stegen,GK,33,86,84,84,89,85,47,84,45,11,25
-Germany,Nico Schlotterbeck,CB,25,85,74,60,75,73,85,82,77,0,38
-Germany,Nico Schlotterbeck,CB,26,85,74,60,75,73,85,82,77,58,38
-Germany,Manuel Neuer,GK,39,84,81,81,90,81,31,86,29,86,49
-Germany,Manuel Neuer,GK,40,84,81,81,90,81,31,86,29,12,49
-Germany,Oliver Baumann,GK,35,83,83,81,78,83,39,80,37,80,22
-Germany,İlkay Gündoğan,CM,35,83,54,79,83,80,74,67,54,0,79
-Germany,Julian Brandt,CAM,29,83,74,78,83,84,44,70,67,0,55
+Paraguay,Gabriel Ávalos,ST,35,75,67,75,63,73,45,84,69,0,80
+Paraguay,Gustavo Velázquez,CB,34,73,74,31,47,55,72,78,75,0,40
+Paraguay,José Canale,CB,29,69,63,32,49,49,69,73,68,0,38
+Paraguay,Julio César Enciso,CAM,21,73,74,72,70,78,33,51,77,0,63
+Paraguay,Kaku,CAM,30,79,81,73,81,80,52,64,82,0,74
+Paraguay,Matías Galarza,CM,23,73,63,73,70,76,65,58,59,0,54
+Paraguay,Miguel Almirón,RW,31,76,87,72,70,79,57,64,88,0,70
+Paraguay,Omar Alderete,CB,28,78,60,61,62,69,79,78,56,0,45
+Paraguay,Orlando Gill,GK,25,62,63,62,60,62,24,63,22,63,11
+Paraguay,Alex Arce,ST,30,75,59,79,50,70,23,64,58,0,76
+Germany,Aleksandar Pavlović,CDM,21,79,62,64,79,78,76,71,69,0,50
 Germany,Angelo Stiller,CDM,24,83,56,58,83,84,76,71,68,0,42
-Germany,Oliver Baumann,GK,35,83,83,81,78,83,39,80,37,10,22
-Germany,İlkay Gündoğan,CM,35,83,54,79,83,80,74,67,54,78,79
-Germany,Julian Brandt,CAM,29,83,74,78,83,84,44,70,67,82,55
-Germany,Angelo Stiller,CDM,24,83,56,58,83,84,76,71,68,65,42
-Germany,Leon Goretzka,CM,30,82,77,78,80,80,80,82,72,0,60
+Germany,Antonio Rüdiger,CB,32,86,79,55,72,70,84,86,70,0,40
+Germany,David Raum,LB,27,82,86,61,80,79,74,78,86,0,49
+Germany,Deniz Undav,ST,29,80,66,82,74,80,33,77,67,0,72
 Germany,Felix Nmecha,CDM,25,82,82,74,73,81,80,86,77,0,55
-Ivory Coast,Evan Ndicka,CB,26,81,74,53,69,69,81,82,69,0,33
-Ivory Coast,Evan Ndicka,CB,26,81,74,53,69,69,81,82,69,68,33
+Germany,Florian Wirtz,CAM,22,89,80,82,88,90,54,67,82,0,66
+Germany,Jamal Musiala,CAM,22,88,80,82,80,90,66,65,85,0,61
+Germany,Jamie Leweling,RM,24,75,83,71,65,78,46,72,81,0,55
+Germany,Jonathan Tah,CB,29,87,63,38,60,63,87,86,53,0,38
+Germany,Joshua Kimmich,CDM,30,89,72,74,89,84,83,79,75,0,71
+Germany,Kai Havertz,ST,26,82,72,79,78,81,48,74,71,0,83
+Germany,Leon Goretzka,CM,30,82,77,78,80,80,80,82,72,0,60
+Germany,Leroy Sané,RM,29,82,87,81,78,85,37,68,89,0,65
+Germany,Malick Thiaw,CB,24,78,72,47,69,72,78,80,72,0,64
+Germany,Manuel Neuer,GK,39,84,81,81,90,81,31,86,29,86,49
+Germany,Maximilian Beier,ST,23,79,86,79,68,80,43,62,86,0,65
+Germany,Nadiem Amiri,CM,29,81,65,79,82,82,62,72,76,0,67
+Germany,Nathaniel Brown,LB,22,77,83,53,71,77,71,51,87,0,33
+Germany,Nico Schlotterbeck,CB,25,85,74,60,75,73,85,82,77,0,38
+Germany,Pascal Groß,CDM,34,80,48,75,84,79,72,76,46,0,73
+Germany,Waldemar Anton,CB,29,82,69,47,67,66,84,84,64,0,48
+Ivory Coast,Bazoumana Touré,LM,19,70,91,59,62,71,28,51,90,0,46
+Ivory Coast,Christ Ravynel Inao Oulaï,CAM,19,64,74,50,61,69,58,49,76,0,54
+Ivory Coast,Christopher Operi,LB,28,74,78,61,70,72,68,72,74,0,60
+Ivory Coast,Emmanuel Agbadou,CB,28,79,80,48,63,66,78,83,69,0,46
+Ivory Coast,Evann Guessand,RW,24,79,83,76,73,79,36,77,79,0,61
 Ivory Coast,Franck Yannick Kessié,CDM,28,80,78,77,73,78,78,86,77,0,88
-Ivory Coast,Wilfried Singo,CB,24,80,80,59,70,73,79,84,72,0,46
+Ivory Coast,Ghislain Konan,LB,29,72,79,51,66,70,68,74,82,0,41
+Ivory Coast,Guéla Doué,RB,23,77,72,47,70,72,74,78,65,0,45
+Ivory Coast,Ibrahim Sangaré,CDM,27,77,58,65,72,71,77,79,62,0,64
 Ivory Coast,Nicolas Pépé,RM,30,80,88,77,76,82,36,67,87,0,85
 Ivory Coast,Odilon Kossounou,CB,24,80,80,32,64,67,81,78,74,0,32
+Ivory Coast,Oumar Diakité,ST,21,72,82,71,57,70,21,71,83,0,66
 Ivory Coast,Ousmane Diomande,CB,21,80,80,26,51,70,79,86,78,0,39
-Ivory Coast,Franck Yannick Kessié,CDM,29,80,78,77,73,78,78,86,77,76,88
-Ivory Coast,Wilfried Singo,CB,25,80,80,59,70,73,79,84,72,66,46
-Ivory Coast,Nicolas Pépé,RM,30,80,88,77,76,82,36,67,87,76,85
-Ivory Coast,Odilon Kossounou,CB,25,80,80,32,64,67,81,78,74,44,32
-Ivory Coast,Ousmane Diomande,CB,22,80,80,26,51,70,79,86,78,24,39
-Ivory Coast,Evann Guessand,RW,24,79,83,76,73,79,36,77,79,0,61
-Ivory Coast,Amad,CAM,23,79,85,74,75,83,54,52,88,0,63
-Ivory Coast,Emmanuel Agbadou,CB,28,79,80,48,63,66,78,83,69,0,46
-Ivory Coast,Evann Guessand,RW,24,79,83,76,73,79,36,77,79,81,61
-Ivory Coast,Amad,CAM,23,79,85,74,75,83,54,52,88,78,63
-Ivory Coast,Emmanuel Agbadou,CB,28,79,80,48,63,66,78,83,69,55,46
 Ivory Coast,Seko Fofana,CM,30,77,68,75,74,76,71,80,67,0,56
-Ivory Coast,Ibrahim Sangaré,CDM,27,77,58,65,72,71,77,79,62,0,64
-Ivory Coast,Hamed Junior Traoré,LM,25,77,78,70,72,80,57,61,80,0,64
-Ivory Coast,Wilfried Zaha,LW,33,77,82,75,72,79,37,72,81,0,77
-Ivory Coast,Jonathan Bamba,LM,29,77,83,73,73,78,39,67,84,0,76
-Ivory Coast,Guéla Doué,RB,23,77,72,47,70,72,74,78,65,0,45
-Ivory Coast,Sébastien Haller,ST,31,77,50,78,62,74,51,76,49,0,85
-Ivory Coast,Seko Fofana,CM,30,77,68,75,74,76,71,80,67,75,56
-Curacao,Tahith Chong,CAM,25,71,77,66,70,73,54,63,75,0,51
-Curacao,Tahith Chong,CAM,26,71,77,66,70,73,54,63,75,70,51
-Curacao,Juninho Bacuna,CDM,28,69,73,68,69,72,63,76,75,0,59
-Curacao,Daijiro Chirino,CB,23,69,78,39,61,64,69,73,78,0,46
-Curacao,Juninho Bacuna,CDM,28,69,73,68,69,72,63,76,75,68,59
-Curacao,Daijiro Chirino,CB,24,69,78,39,61,64,69,73,78,59,46
-Curacao,Shurandy Sambo,RB,24,68,78,45,59,67,63,72,77,0,39
-Curacao,Shurandy Sambo,RB,24,68,78,45,59,67,63,72,77,57,39
+Ivory Coast,Simon Adingra,RM,23,76,87,70,70,80,30,52,88,0,60
+Ivory Coast,Wilfried Singo,CB,24,80,80,59,70,73,79,84,72,0,46
+Ivory Coast,Yahia Fofana,GK,25,76,78,71,70,79,41,74,40,74,11
+Ivory Coast,Yan Diomande,LM,19,66,71,61,62,64,25,49,69,0,61
 Curacao,Brandley Kuwas,LM,33,67,71,69,65,70,33,62,70,0,56
-Curacao,Brandley Kuwas,LM,33,67,71,69,65,70,33,62,70,67,56
-Curacao,Sherel Floranus,RB,27,66,82,42,55,67,62,73,76,0,40
-Curacao,Sherel Floranus,RB,27,66,82,42,55,67,62,73,76,61,40
-Curacao,Ar'jany Martha,LB,22,64,82,49,60,67,56,54,86,0,49
-Curacao,Tyrique Mercera,RB,21,64,72,44,55,61,59,62,69,0,41
-Curacao,Ar'jany Martha,LB,22,64,82,49,60,67,56,54,86,57,49
-Curacao,Tyrique Mercera,RB,22,64,72,44,55,61,59,62,69,54,41
+Curacao,Juninho Bacuna,CDM,28,69,73,68,69,72,63,76,75,0,59
 Curacao,Livano Comenencia,RB,21,62,74,43,55,61,57,61,74,0,47
-Curacao,Livano Comenencia,RB,22,62,74,43,55,61,57,61,74,57,47
-Curacao,Rayvien Rosario,LM,21,60,74,53,54,63,31,54,71,0,56
-Curacao,Rayvien Rosario,LM,21,60,74,53,54,63,31,54,71,53,56
-Curacao,Isaiah Ahmed,CDM,19,58,61,44,52,58,56,61,63,0,46
-Curacao,Isaiah Ahmed,CDM,20,58,61,44,52,58,56,61,63,48,46
-Curacao,Giandro Sambo,LW,19,57,66,48,51,65,33,42,65,0,50
-Curacao,Giandro Sambo,LW,19,57,66,48,51,65,33,42,65,53,50
-Netherlands,Virgil van Dijk,CB,34,90,73,60,72,72,90,87,66,0,62
-Netherlands,Virgil van Dijk,CB,34,90,73,60,72,72,90,87,66,47,62
-Netherlands,Frenkie de Jong,CM,28,87,82,71,85,87,78,77,80,0,53
-Netherlands,Frenkie de Jong,CM,28,87,82,71,85,87,78,77,80,78,53
-Netherlands,Tijjani Reijnders,CM,27,86,79,79,82,85,77,77,83,0,59
-Netherlands,Tijjani Reijnders,CM,27,86,79,79,82,85,77,77,83,86,59
-Netherlands,Ryan Gravenberch,CDM,23,85,76,76,81,85,81,81,76,0,58
-Netherlands,Ryan Gravenberch,CDM,23,85,76,76,81,85,81,81,76,75,58
-Netherlands,Denzel Dumfries,RB,29,84,84,70,75,79,79,84,78,0,51
-Netherlands,Xavi Simons,CAM,22,84,77,77,80,87,61,70,83,0,61
+Curacao,Sherel Floranus,RB,27,66,82,42,55,67,62,73,76,0,40
+Curacao,Shurandy Sambo,RB,24,68,78,45,59,67,63,72,77,0,39
+Curacao,Tahith Chong,CAM,25,71,77,66,70,73,54,63,75,0,51
+Netherlands,Bart Verbruggen,GK,23,78,79,76,76,81,56,75,57,75,21
+Netherlands,Brian Brobbey,ST,23,77,84,73,56,72,30,80,82,0,62
 Netherlands,Cody Gakpo,LM,26,84,83,82,80,83,47,74,85,0,68
-Netherlands,Stefan de Vrij,CB,33,84,62,41,68,69,86,74,63,0,41
-Netherlands,Denzel Dumfries,RB,29,84,84,70,75,79,79,84,78,82,51
-Netherlands,Xavi Simons,CAM,22,84,77,77,80,87,61,70,83,79,61
-Netherlands,Cody Gakpo,LM,26,84,83,82,80,83,47,74,85,83,68
-Netherlands,Stefan de Vrij,CB,34,84,62,41,68,69,86,74,63,31,41
-Netherlands,Jeremie Frimpong,RB,24,83,94,62,74,84,72,63,95,0,43
-Netherlands,Nathan Aké,CB,30,83,72,53,72,75,84,74,73,0,53
-Netherlands,Jeremie Frimpong,RB,25,83,94,62,74,84,72,63,95,82,43
-Netherlands,Nathan Aké,CB,31,83,72,53,72,75,84,74,73,51,53
+Netherlands,Crysencio Summerville,LM,24,76,89,71,67,80,35,54,91,0,69
+Netherlands,Denzel Dumfries,RB,29,84,84,70,75,79,79,84,78,0,51
+Netherlands,Donyell Malen,RM,26,79,86,78,72,82,35,67,89,0,74
+Netherlands,Frenkie de Jong,CM,28,87,82,71,85,87,78,77,80,0,53
+Netherlands,Guus Til,CAM,27,77,79,76,72,74,64,74,75,0,66
+Netherlands,Jan Paul van Hecke,CB,25,80,67,46,72,70,80,78,66,0,55
+Netherlands,Justin Kluivert,CAM,26,79,87,78,76,81,38,62,89,0,84
 Netherlands,Micky van de Ven,CB,24,82,90,49,64,72,82,80,84,0,39
-Netherlands,Jurriën Timber,RB,24,82,76,48,72,77,82,80,76,0,42
-Netherlands,Matthijs de Ligt,CB,26,82,62,61,62,67,82,83,54,0,40
-Netherlands,Sven Botman,CB,25,82,56,37,62,65,83,82,48,0,37
-Netherlands,Micky van de Ven,CB,24,82,90,49,64,72,82,80,84,48,39
-Netherlands,Jurriën Timber,RB,24,82,76,48,72,77,82,80,76,70,42
-Japan,Kaoru Mitoma,LM,28,82,87,73,76,86,57,64,88,0,63
-Japan,Takefusa Kubo,RM,24,82,86,77,78,85,40,64,89,0,63
-Japan,Ritsu Doan,RM,27,82,82,71,78,85,41,64,86,0,59
-Japan,Kaoru Mitoma,LM,28,82,87,73,76,86,57,64,88,78,63
-Japan,Takefusa Kubo,RM,24,82,86,77,78,85,40,64,89,80,63
-Japan,Ritsu Doan,RM,27,82,82,71,78,85,41,64,86,81,59
-Japan,Daizen Maeda,LW,28,79,92,79,70,76,65,79,94,0,64
-Japan,Hidemasa Morita,CM,30,79,68,72,76,79,73,78,67,0,52
-Japan,Kaishū Sano,CDM,24,79,79,51,67,76,78,75,76,0,49
-Japan,Wataru Endo,CDM,32,79,58,68,71,77,79,73,66,0,62
-Japan,Daizen Maeda,LW,28,79,92,79,70,76,65,79,94,84,64
-Japan,Hidemasa Morita,CM,30,79,68,72,76,79,73,78,67,78,52
-Japan,Kaishū Sano,CDM,25,79,79,51,67,76,78,75,76,64,49
-Japan,Wataru Endo,CDM,33,79,58,68,71,77,79,73,66,68,62
-Japan,Hiroki Ito,CB,26,78,74,57,71,72,80,72,74,0,47
-Japan,Takumi Minamino,LM,30,78,77,74,75,81,40,64,84,0,72
-Japan,Hiroki Ito,CB,26,78,74,57,71,72,80,72,74,56,47
-Japan,Takumi Minamino,LM,31,78,77,74,75,81,40,64,84,77,72
-Japan,Junya Ito,RM,32,77,86,69,72,78,58,70,90,0,57
-Japan,Daichi Kamada,CM,29,77,71,72,77,78,64,66,74,0,78
-Japan,Ko Itakura,CB,28,77,75,59,61,74,77,76,77,0,38
-Japan,Junya Ito,RM,33,77,86,69,72,78,58,70,90,74,57
-Japan,Daichi Kamada,CM,29,77,71,72,77,78,64,66,74,75,78
-Japan,Ko Itakura,CB,29,77,75,59,61,74,77,76,77,53,38
-Japan,Reo Hatate,CM,28,76,70,75,74,78,65,70,77,0,72
+Netherlands,Nathan Aké,CB,30,83,72,53,72,75,84,74,73,0,53
+Netherlands,Noa Lang,LW,26,80,80,77,73,84,50,68,84,0,73
+Netherlands,Quinten Timber,CM,24,80,77,78,76,80,74,83,86,0,60
+Netherlands,Ryan Gravenberch,CDM,23,85,76,76,81,85,81,81,76,0,58
+Netherlands,Teun Koopmeiners,CAM,27,81,70,79,83,78,75,75,71,0,85
+Netherlands,Tijjani Reijnders,CM,27,86,79,79,82,85,77,77,83,0,59
+Netherlands,Virgil van Dijk,CB,34,90,73,60,72,72,90,87,66,0,62
 Japan,Ao Tanaka,CDM,27,76,70,68,72,77,73,71,72,0,60
+Japan,Ayase Ueda,ST,27,74,74,75,58,69,28,69,75,0,76
+Japan,Ayumu Seko,CB,25,68,64,36,54,58,68,74,63,0,42
+Japan,Daichi Kamada,CM,29,77,71,72,77,78,64,66,74,0,78
+Japan,Daizen Maeda,LW,28,79,92,79,70,76,65,79,94,0,64
+Japan,Hiroki Ito,CB,26,78,74,57,71,72,80,72,74,0,47
+Japan,Junnosuke Suzuki,CB,22,66,73,44,59,59,66,65,74,0,45
+Japan,Junya Ito,RM,32,77,86,69,72,78,58,70,90,0,57
+Japan,Kaishū Sano,CDM,24,79,79,51,67,76,78,75,76,0,49
+Japan,Keisuke Goto,ST,20,56,53,58,40,47,29,65,53,0,65
+Japan,Keito Nakamura,LM,25,76,79,74,71,77,41,74,83,0,59
+Japan,Kento Shiogai,ST,20,66,84,65,55,66,21,57,85,0,59
+Japan,Ko Itakura,CB,28,77,75,59,61,74,77,76,77,0,38
+Japan,Koki Ogawa,ST,28,68,51,69,57,65,29,67,50,0,60
+Japan,Ritsu Doan,RM,27,82,82,71,78,85,41,64,86,0,59
+Japan,Shogo Taniguchi,CB,34,69,58,45,59,57,70,72,48,0,45
+Japan,Takefusa Kubo,RM,24,82,86,77,78,85,40,64,89,0,63
+Japan,Tsuyoshi Watanabe,CB,28,75,76,39,52,59,76,78,76,0,40
+Japan,Yuito Suzuki,CAM,24,71,83,68,65,74,48,57,84,0,52
+Japan,Yukinari Sugawara,RB,25,74,75,54,73,72,69,70,75,0,49
+Japan,Zion Suzuki,GK,23,74,73,72,71,76,56,73,55,73,18
+Sweden,Alexander Bernhardsson,ST,27,72,81,70,64,74,48,69,87,0,56
 Sweden,Alexander Isak,ST,26,88,83,89,73,85,39,76,86,0,86
-Sweden,Alexander Isak,ST,26,88,83,89,73,85,39,76,86,89,86
-Sweden,Viktor Gyökeres,ST,27,87,90,86,73,81,36,91,88,0,88
-Sweden,Viktor Gyökeres,ST,27,87,90,86,73,81,36,91,88,88,88
-Sweden,Dejan Kulusevski,CM,25,83,74,79,84,85,62,81,77,0,70
-Sweden,Dejan Kulusevski,CM,25,83,74,79,84,85,62,81,77,83,70
 Sweden,Anthony Elanga,RW,23,81,92,72,76,82,39,70,93,0,56
-Sweden,Anthony Elanga,RW,23,81,92,72,76,82,39,70,93,80,56
-Sweden,Emil Forsberg,CAM,34,79,64,73,81,80,35,61,65,0,79
-Sweden,Emil Forsberg,CAM,34,79,64,73,81,80,35,61,65,77,79
-Sweden,Hugo Larsson,CM,21,78,77,73,71,78,71,77,72,0,53
+Sweden,Benjamin Nygren,CM,24,72,71,73,71,72,60,71,73,0,64
+Sweden,Besfort Zeneli,CM,23,72,71,65,68,70,56,67,74,0,54
 Sweden,Carl Starfelt,CB,30,78,74,31,56,68,78,78,68,0,39
-Sweden,Isak Hien,CB,26,78,69,37,49,58,79,82,63,0,45
-Sweden,Hugo Larsson,CM,21,78,77,73,71,78,71,77,72,76,53
-Sweden,Carl Starfelt,CB,30,78,74,31,56,68,78,78,68,32,39
-Sweden,Isak Hien,CB,27,78,69,37,49,58,79,82,63,39,45
-Sweden,Gabriel Gudmundsson,LB,26,77,87,64,71,75,70,75,85,0,46
-Sweden,Lucas Bergvall,CM,19,77,75,63,76,77,71,73,77,0,53
 Sweden,Daniel Svensson,LB,23,77,77,56,75,76,73,74,78,0,44
-Sweden,Gabriel Gudmundsson,LB,26,77,87,64,71,75,70,75,85,68,46
-Sweden,Lucas Bergvall,CM,20,77,75,63,76,77,71,73,77,73,53
-Sweden,Daniel Svensson,LB,24,77,77,56,75,76,73,74,78,71,44
+Sweden,Elliot Stroud,LB,23,71,79,65,64,67,65,73,76,0,57
+Sweden,Gabriel Gudmundsson,LB,26,77,87,64,71,75,70,75,85,0,46
+Sweden,Gustaf Lagerbielke,CB,25,70,50,32,57,58,70,74,40,0,37
+Sweden,Isak Hien,CB,26,78,69,37,49,58,79,82,63,0,45
+Sweden,Jacob Widell Zetterström,GK,27,71,75,70,59,74,38,67,36,67,12
+Sweden,Jesper Karlström,CDM,30,75,64,57,72,71,71,78,66,0,48
+Sweden,Kristoffer Nordfeldt,GK,36,72,70,69,72,70,50,71,51,71,13
+Sweden,Lucas Bergvall,CM,19,77,75,63,76,77,71,73,77,0,53
 Sweden,Mattias Svanberg,CM,26,76,73,70,74,76,66,73,77,0,57
-Sweden,Niclas Eliasson,RM,29,76,87,67,73,77,41,65,90,0,58
-Sweden,Sebastian Nanasi,CAM,23,76,70,65,74,80,32,64,77,0,59
-Sweden,Mattias Svanberg,CM,27,76,73,70,74,76,66,73,77,75,57
-Tunisia,Ellyes Skhiri,CDM,30,80,64,73,74,75,80,74,65,0,58
-Tunisia,Ellyes Skhiri,CDM,30,80,64,73,74,75,80,74,65,75,58
+Sweden,Taha Ali,LM,27,68,86,60,58,75,35,50,92,0,57
+Sweden,Viktor Gyökeres,ST,27,87,90,86,73,81,36,91,88,0,88
+Sweden,Yasin Ayari,CM,22,75,69,70,73,77,69,62,69,0,61
 Tunisia,Ali Abdi,LB,31,76,86,62,70,73,69,75,83,0,41
-Tunisia,Ali Abdi,LB,32,76,86,62,70,73,69,75,83,70,41
-Tunisia,Hannibal,CM,22,74,76,63,73,76,68,82,74,0,56
-Tunisia,Hannibal,CM,23,74,76,63,73,76,68,82,74,70,56
-Tunisia,Ismaël Gharbi,LM,21,73,78,67,69,79,41,56,81,0,60
-Tunisia,Montassar Talbi,CB,27,73,56,30,42,57,73,76,54,0,41
-Tunisia,Ismaël Gharbi,LM,21,73,78,67,69,79,41,56,81,65,60
-Tunisia,Montassar Talbi,CB,27,73,56,30,42,57,73,76,54,25,41
-Tunisia,Amor Layouni,RW,33,72,92,71,64,70,41,77,91,0,58
+Tunisia,Anis Slimane,CM,24,67,65,61,62,68,58,75,66,0,49
+Tunisia,Dylan Bronn,CB,30,68,60,61,64,61,68,76,62,0,63
 Tunisia,Elias Achouri,LM,26,72,85,64,65,74,32,58,86,0,62
 Tunisia,Elias Saad,LW,25,72,74,67,67,77,31,59,82,0,55
-Tunisia,Amor Layouni,RW,33,72,92,71,64,70,41,77,91,68,58
-Tunisia,Elias Achouri,LM,27,72,85,64,65,74,32,58,86,68,62
-Tunisia,Elias Saad,LW,26,72,74,67,67,77,31,59,82,68,55
-Tunisia,Yan Valery,RB,26,71,62,52,63,68,70,74,69,0,41
-Tunisia,Yan Valery,RB,27,71,62,52,63,68,70,74,69,59,41
-Tunisia,Saîf-Eddine Khaoui,CAM,30,70,50,68,71,71,49,59,64,0,55
-Tunisia,Saîf-Eddine Khaoui,CAM,30,70,50,68,71,71,49,59,64,68,55
+Tunisia,Ellyes Skhiri,CDM,30,80,64,73,74,75,80,74,65,0,58
+Tunisia,Ismaël Gharbi,LM,21,73,78,67,69,79,41,56,81,0,60
+Tunisia,Montassar Talbi,CB,27,73,56,30,42,57,73,76,54,0,41
 Tunisia,Mortadha Ben Ouanes,LB,31,69,72,60,68,68,66,65,73,0,63
-Tunisia,Sayfallah Ltaief,LM,25,69,84,61,61,72,32,63,83,0,58
 Tunisia,Sebastian Tounekti,LM,23,69,78,62,62,70,24,63,79,0,56
-Tunisia,Mortadha Ben Ouanes,LB,31,69,72,60,68,68,66,65,73,62,63
-Tunisia,Sayfallah Ltaief,LM,25,69,84,61,61,72,32,63,83,61,58
-Tunisia,Sebastian Tounekti,LM,23,69,78,62,62,70,24,63,79,65,56
-Belgium,Thibaut Courtois,GK,33,89,85,89,76,90,46,88,42,88,27
-Belgium,Thibaut Courtois,GK,33,89,85,89,76,90,46,88,42,13,27
-Belgium,Kevin De Bruyne,CM,34,87,66,83,92,84,65,72,65,0,83
-Belgium,Kevin De Bruyne,CM,34,87,66,83,92,84,65,72,65,81,83
-Belgium,Youri Tielemans,CM,28,85,54,79,85,80,75,72,51,0,75
-Belgium,Youri Tielemans,CM,28,85,54,79,85,80,75,72,51,77,75
-Belgium,Romelu Lukaku,ST,32,84,79,82,75,75,41,84,71,0,88
-Belgium,Romelu Lukaku,ST,32,84,79,82,75,75,41,84,71,88,88
-Belgium,Matz Sels,GK,33,83,82,80,79,83,36,83,37,83,22
-Belgium,Loïs Openda,ST,25,83,95,81,69,81,31,80,94,0,74
-Belgium,Leandro Trossard,LW,30,83,80,81,80,85,30,60,87,0,75
-Belgium,Matz Sels,GK,34,83,82,80,79,83,36,83,37,18,22
-Belgium,Loïs Openda,ST,26,83,95,81,69,81,31,80,94,83,74
-Belgium,Leandro Trossard,LW,31,83,80,81,80,85,30,60,87,83,75
-Belgium,Koen Casteels,GK,33,82,82,79,74,85,45,83,44,83,20
+Tunisia,Yan Valery,RB,26,71,62,52,63,68,70,74,69,0,41
+Belgium,Alexis Saelemaekers,RM,26,79,80,67,75,81,66,63,83,0,44
+Belgium,Amadou Onana,CDM,24,79,74,62,72,73,78,81,64,0,39
+Belgium,Arthur Theate,CB,25,80,67,40,70,71,80,82,66,0,32
+Belgium,Axel Witsel,CB,36,77,31,63,76,74,79,66,30,0,76
+Belgium,Brandon Mechele,CB,32,76,49,40,55,56,80,78,46,0,35
 Belgium,Charles De Ketelaere,CAM,24,82,70,79,80,83,56,68,71,0,69
 Belgium,Dodi Lukébakio,RM,28,82,87,81,76,83,31,64,86,0,80
-Belgium,Koen Casteels,GK,33,82,82,79,74,85,45,83,44,15,20
-Belgium,Charles De Ketelaere,CAM,25,82,70,79,80,83,56,68,71,82,69
-Belgium,Dodi Lukébakio,RM,28,82,87,81,76,83,31,64,86,81,80
-Belgium,Yannick Carrasco,LW,32,81,87,80,77,85,58,67,86,0,79
-Belgium,Yannick Carrasco,LW,32,81,87,80,77,85,58,67,86,77,79
-Belgium,Maxim De Cuyper,LB,24,80,76,73,80,79,75,75,78,0,78
 Belgium,Hans Vanaken,CAM,33,80,45,79,84,77,60,78,39,0,79
+Belgium,Joaquin Seys,RB,20,72,81,35,67,69,67,66,82,0,41
 Belgium,Jérémy Doku,LW,23,80,91,71,72,87,32,68,95,0,55
-Belgium,Arthur Theate,CB,25,80,67,40,70,71,80,82,66,0,32
+Belgium,Kevin De Bruyne,CM,34,87,66,83,92,84,65,72,65,0,83
+Belgium,Leandro Trossard,LW,30,83,80,81,80,85,30,60,87,0,75
+Belgium,Maxim De Cuyper,LB,24,80,76,73,80,79,75,75,78,0,78
+Belgium,Nathan Ngoy,CB,22,67,78,44,49,67,65,74,76,0,24
+Belgium,Nicolas Raskin,CDM,24,77,73,63,73,76,73,74,78,0,58
+Belgium,Romelu Lukaku,ST,32,84,79,82,75,75,41,84,71,0,88
+Belgium,Senne Lammens,GK,23,78,79,77,71,77,21,79,19,79,11
+Belgium,Thibaut Courtois,GK,33,89,85,89,76,90,46,88,42,88,27
+Belgium,Thomas Meunier,RB,34,76,63,74,72,71,75,81,60,0,65
+Belgium,Timothy Castagne,RB,29,76,68,57,70,72,74,71,67,0,47
+Belgium,Youri Tielemans,CM,28,85,54,79,85,80,75,72,51,0,75
 Iran,Mehdi Taremi,ST,33,78,74,78,74,78,38,68,77,0,85
-Iran,Mehdi Taremi,ST,33,78,74,78,74,78,38,68,77,82,85
-Iran,Allahyar Sayyadmanesh,LM,24,74,87,70,65,74,47,78,85,0,62
-Iran,Allahyar Sayyadmanesh,LM,24,74,87,70,65,74,47,78,85,65,62
-Iran,Ali Gholizadeh,RM,29,71,71,67,69,72,46,65,74,0,55
-Iran,Ali Gholizadeh,RM,30,71,71,67,69,72,46,65,74,68,55
-Iran,Amir Abedzadeh,GK,32,68,69,65,63,68,28,68,30,68,11
-Iran,Majid Hosseini,CB,29,68,56,30,46,50,69,75,52,0,40
-Iran,Amir Abedzadeh,GK,32,68,69,65,63,68,28,68,30,10,11
-Iran,Majid Hosseini,CB,29,68,56,30,46,50,69,75,52,30,40
-Iran,Ali Karimi,CDM,31,67,55,60,64,66,65,71,64,0,48
-Iran,Ali Karimi,CDM,32,67,55,60,64,66,65,71,64,64,48
-Egypt,Mohamed Salah,RM,33,91,89,88,86,90,45,76,88,0,88
-Egypt,Mohamed Salah,RM,33,91,89,88,86,90,45,76,88,93,88
-Egypt,Omar Marmoush,ST,26,84,89,85,76,86,34,71,87,0,79
-Egypt,Omar Marmoush,ST,27,84,89,85,76,86,34,71,87,87,79
-Egypt,Ahmed Hegazi,CB,34,75,33,26,50,54,75,77,34,0,30
-Egypt,Ahmed Hegazi,CB,35,75,33,26,50,54,75,77,34,30,30
 Egypt,Mohamed Abdelmonem,CB,26,74,62,40,63,61,74,74,63,0,44
-Egypt,Mohamed Abdelmonem,CB,27,74,62,40,63,61,74,74,63,48,44
-Egypt,Mostafa Mohamed,ST,27,73,70,74,58,67,37,78,68,0,72
-Egypt,Mostafa Mohamed,ST,28,73,70,74,58,67,37,78,68,77,72
-Egypt,Ahmed Hassan,ST,32,72,51,73,56,67,30,76,52,0,74
-Egypt,Ahmed Hassan,ST,33,72,51,73,56,67,30,76,52,74,74
+Egypt,Mohamed Salah,RM,33,91,89,88,86,90,45,76,88,0,88
+Egypt,Omar Marmoush,ST,26,84,89,85,76,86,34,71,87,0,79
 Egypt,Ramy Rabia,CB,32,67,60,49,55,55,67,72,58,0,43
-Egypt,Ramy Rabia,CB,32,67,60,49,55,55,67,72,58,45,43
-Egypt,Omar Fayed,CB,22,65,59,34,50,57,65,69,60,0,44
-Egypt,Omar Fayed,CB,22,65,59,34,50,57,65,69,60,35,44
-Egypt,Kareem Ashraf,ST,21,53,65,50,39,50,32,65,63,0,47
-Egypt,Kareem Ashraf,ST,22,53,65,50,39,50,32,65,63,51,47
-Spain,Rodri,CDM,29,90,65,80,86,84,86,85,65,0,62
-Spain,Rodri,CDM,29,90,65,80,86,84,86,85,65,76,62
-Spain,Lamine Yamal,RM,18,89,85,81,86,90,23,53,88,0,69
-Spain,Pedri,CM,22,89,77,73,85,91,78,77,79,0,53
-Spain,Lamine Yamal,RM,18,89,85,81,86,90,23,53,88,88,69
-Spain,Pedri,CM,23,89,77,73,85,91,78,77,79,86,53
-Spain,David Raya,GK,30,87,86,84,87,87,62,85,64,85,26
-Spain,David Raya,GK,30,87,86,84,87,87,62,85,64,15,26
-Spain,Nico Williams,LM,23,86,93,76,80,87,36,66,94,0,62
-Spain,Nico Williams,LM,23,86,93,76,80,87,36,66,94,80,62
-Spain,Carvajal,RB,33,85,80,58,79,81,81,79,81,0,45
-Spain,Unai Simón,GK,28,85,84,80,76,85,49,84,48,84,24
-Spain,De Gea,GK,35,85,85,78,71,87,46,84,47,84,29
-Spain,Fabián Ruiz,CM,29,85,61,77,80,81,75,72,61,0,67
-Spain,Iñigo Martínez,CB,34,85,71,57,72,68,85,80,70,0,39
+Spain,Aymeric Laporte,CB,31,82,51,50,74,70,83,77,46,0,44
+Spain,Borja Iglesias,ST,32,80,62,82,71,74,40,77,59,0,90
 Spain,Dani Olmo,CAM,27,85,73,79,83,87,50,56,78,0,66
-Spain,Carvajal,RB,34,85,80,58,79,81,81,79,81,75,45
-Spain,Unai Simón,GK,28,85,84,80,76,85,49,84,48,14,24
-Spain,De Gea,GK,35,85,85,78,71,87,46,84,47,9,29
-Spain,Fabián Ruiz,CM,29,85,61,77,80,81,75,72,61,84,67
-Spain,Iñigo Martínez,CB,34,85,71,57,72,68,85,80,70,52,39
-Spain,Dani Olmo,CAM,27,85,73,79,83,87,50,56,78,83,66
-Spain,Marcos Llorente,RB,30,84,89,79,78,81,78,82,87,0,65
-Spain,Sancet,CAM,25,84,76,83,80,85,70,82,74,0,77
+Spain,Fabián Ruiz,CM,29,85,61,77,80,81,75,72,61,0,67
+Spain,Ferran Torres,LW,25,83,83,81,79,83,35,68,86,0,74
+Spain,Gavi,CM,21,83,76,66,78,85,68,70,77,0,51
+Spain,Lamine Yamal,RM,18,89,85,81,86,90,23,53,88,0,69
 Spain,Marc Cucurella,LB,27,84,75,64,79,80,82,79,77,0,57
-Spain,Grimaldo,LM,30,84,72,73,87,85,74,67,76,0,54
-Cape Verde,Logan Costa,CB,24,77,60,40,59,67,77,78,59,0,39
-Cape Verde,Logan Costa,CB,25,77,60,40,59,67,77,78,59,28,39
-Cape Verde,Bruno Varela,GK,31,74,73,72,69,76,41,74,39,74,24
-Cape Verde,Nuno da Costa,ST,34,74,82,73,63,73,27,65,80,0,69
-Cape Verde,Bruno Varela,GK,31,74,73,72,69,76,41,74,39,14,24
-Cape Verde,Nuno da Costa,ST,35,74,82,73,63,73,27,65,80,75,69
-Cape Verde,Steven Moreira,CB,31,72,73,33,67,71,72,74,74,0,37
-Cape Verde,Leandro Andrade,RW,26,72,75,70,64,75,29,60,77,0,57
-Cape Verde,Steven Moreira,CB,31,72,73,33,67,71,72,74,74,63,37
-Cape Verde,Leandro Andrade,RW,26,72,75,70,64,75,29,60,77,71,57
-Cape Verde,Wagner Pina,RM,23,71,81,51,64,70,64,65,83,0,38
-Cape Verde,Telmo Arcanjo,RM,24,71,74,61,68,71,38,60,75,0,60
-Cape Verde,Ryan Mendes,LM,35,71,74,67,69,74,28,54,76,0,65
-Cape Verde,Wagner Pina,RM,23,71,81,51,64,70,64,65,83,70,38
-Cape Verde,Telmo Arcanjo,RM,24,71,74,61,68,71,38,60,75,74,60
-Cape Verde,Ryan Mendes,LM,36,71,74,67,69,74,28,54,76,68,65
-Cape Verde,Jovane Cabral,LW,27,70,77,71,68,72,38,68,78,0,76
+Spain,Marcos Llorente,RB,30,84,89,79,78,81,78,82,87,0,65
+Spain,Mikel Merino,CM,29,83,63,79,80,80,81,80,64,0,70
+Spain,Oyarzabal,ST,28,82,77,83,81,82,42,65,78,0,86
+Spain,Nico Williams,LM,23,86,93,76,80,87,36,66,94,0,62
+Spain,Pau Cubarsí,CB,18,82,70,42,66,77,84,76,67,0,41
+Spain,Pedri,CM,22,89,77,73,85,91,78,77,79,0,53
+Spain,Pedro Porro,RB,26,82,78,73,81,80,77,76,78,0,66
+Spain,Rodri,CDM,29,90,65,80,86,84,86,85,65,0,62
+Spain,Unai Simón,GK,28,85,84,80,76,85,49,84,48,84,24
+Spain,Yeremy Pino,RM,23,80,77,73,78,81,38,53,78,0,54
+Spain,Álex Baena,LM,24,84,79,76,84,82,65,68,79,0,68
 Cape Verde,Dailon Livramento,ST,24,70,82,71,56,68,34,64,79,0,70
-Cape Verde,Jovane Cabral,LW,27,70,77,71,68,72,38,68,78,66,76
-Cape Verde,Dailon Livramento,ST,24,70,82,71,56,68,34,64,79,67,70
 Cape Verde,Jamiro Monteiro,CAM,32,69,72,59,70,72,54,68,68,0,65
-Cape Verde,Jamiro Monteiro,CAM,32,69,72,59,70,72,54,68,68,71,65
-Cape Verde,Sidnei Tavares,CDM,24,68,66,56,66,66,63,68,67,0,52
-Cape Verde,Sidnei Tavares,CDM,24,68,66,56,66,66,63,68,67,64,52
-Cape Verde,Duk,ST,25,67,81,65,61,69,41,65,79,0,64
-Cape Verde,Vasco Lopes,RM,26,67,80,61,60,70,31,55,79,0,54
-Saudi Arabia,Salem Al Dawsari,LM,34,82,87,75,75,84,57,81,88,0,62
-Saudi Arabia,Salem Al Dawsari,LM,34,82,87,75,75,84,57,81,88,79,62
-Saudi Arabia,Musab Al Juwair,CM,22,75,68,67,79,74,56,70,69,0,65
-Saudi Arabia,Saud Abdulhamid,RB,26,75,86,46,66,71,69,70,86,0,48
-Saudi Arabia,Firas Al Birekan,LM,25,75,78,72,62,74,37,73,71,0,68
-Saudi Arabia,Musab Al Juwair,CM,22,75,68,67,79,74,56,70,69,67,65
-Saudi Arabia,Saud Abdulhamid,RB,26,75,86,46,66,71,69,70,86,70,48
-Saudi Arabia,Firas Al Birekan,LM,25,75,78,72,62,74,37,73,71,83,68
-Saudi Arabia,Mohammed Kanno,CM,31,72,72,69,70,71,69,76,61,0,66
-Saudi Arabia,Sultan Al Ghannam,RB,31,72,82,60,72,74,63,70,82,0,52
-Saudi Arabia,Nawaf Al Aqidi,GK,25,72,75,69,67,74,47,66,46,66,14
-Saudi Arabia,Hassan Tombakti,CB,26,72,83,35,57,64,73,74,80,0,44
-Saudi Arabia,Mohammed Kanno,CM,31,72,72,69,70,71,69,76,61,67,66
-Saudi Arabia,Sultan Al Ghannam,RB,31,72,82,60,72,74,63,70,82,73,52
-Saudi Arabia,Nawaf Al Aqidi,GK,25,72,75,69,67,74,47,66,46,8,14
-Saudi Arabia,Hassan Tombakti,CB,27,72,83,35,57,64,73,74,80,39,44
-Saudi Arabia,Hassan Kadish,LB,33,71,75,49,62,63,67,79,74,0,40
-Saudi Arabia,Ahmed Sharahili,CB,31,71,72,33,60,63,70,74,71,0,41
-Saudi Arabia,Hassan Kadish,LB,33,71,75,49,62,63,67,79,74,65,40
-Saudi Arabia,Ahmed Sharahili,CB,31,71,72,33,60,63,70,74,71,34,41
-Saudi Arabia,Mohammed Al Buraik,LB,33,70,71,56,73,69,63,66,66,0,55
+Cape Verde,Jovane Cabral,LW,27,70,77,71,68,72,38,68,78,0,76
+Cape Verde,Nuno da Costa,ST,34,74,82,73,63,73,27,65,80,0,69
+Cape Verde,Ryan Mendes,LM,35,71,74,67,69,74,28,54,76,0,65
+Cape Verde,Steven Moreira,CB,31,72,73,33,67,71,72,74,74,0,37
+Cape Verde,Telmo Arcanjo,RM,24,71,74,61,68,71,38,60,75,0,60
+Cape Verde,Wagner Pina,RM,23,71,81,51,64,70,64,65,83,0,38
 Saudi Arabia,Ali Lajami,CB,29,70,76,48,58,60,68,77,78,0,47
-Saudi Arabia,Abdulrahman Al Obud,RM,30,70,88,63,59,72,45,59,89,0,44
-Saudi Arabia,Muhannad Al Shanqeeti,RB,26,70,82,42,62,66,64,69,80,0,35
-Saudi Arabia,Ali Majrashi,RB,26,70,86,44,52,64,63,74,85,0,31
-Saudi Arabia,Abdulrahman Ghareeb,LM,28,70,84,62,64,74,25,57,86,0,56
-France,Kylian Mbappé,ST,26,91,97,90,81,92,37,76,97,0,82
-France,Kylian Mbappé,ST,27,91,97,90,81,92,37,76,97,91,82
-France,Ousmane Dembélé,ST,28,90,91,88,83,93,50,69,93,0,80
-France,Ousmane Dembélé,ST,28,90,91,88,83,93,50,69,93,95,80
-France,Jules Koundé,RB,27,87,84,47,74,79,86,84,85,0,43
-France,William Saliba,CB,24,87,77,39,68,72,87,83,76,0,47
-France,Mike Maignan,GK,30,87,84,83,85,88,64,84,65,84,15
-France,Jules Koundé,RB,27,87,84,47,74,79,86,84,85,69,43
-France,William Saliba,CB,25,87,77,39,68,72,87,83,76,54,47
-France,Mike Maignan,GK,30,87,84,83,85,88,64,84,65,15,15
-France,Michael Olise,RM,23,86,78,80,84,87,50,66,83,0,72
-France,Ibrahima Konaté,CB,26,86,77,34,63,69,86,85,69,0,41
-France,Michael Olise,RM,24,86,78,80,84,87,50,66,83,84,72
-France,Ibrahima Konaté,CB,26,86,77,34,63,69,86,85,69,44,41
-France,Antoine Griezmann,ST,34,85,77,86,85,88,59,73,80,0,79
-France,N'Golo Kanté,CDM,34,85,77,65,73,80,85,79,80,0,54
-France,Désiré Doué,RW,20,85,83,80,77,90,55,74,85,0,71
-France,Marcus Thuram,ST,28,85,86,83,76,82,50,80,84,0,70
-France,Karim Benzema,ST,37,85,75,84,81,83,38,77,74,0,68
+Saudi Arabia,Mohammed Abu Al Shamat,RB,23,67,75,46,61,70,59,58,77,0,40
+Saudi Arabia,Nawaf Boushal,LB,26,67,82,39,51,64,62,73,80,0,47
+Saudi Arabia,Saud Abdulhamid,RB,26,75,86,46,66,71,69,70,86,0,48
+Saudi Arabia,Sultan Mandash,RW,31,67,82,58,59,71,25,61,81,0,62
+France,Adrien Rabiot,CAM,30,83,81,79,81,80,77,84,75,0,69
+France,Aurélien Tchouaméni,CDM,25,84,71,69,79,78,81,82,73,0,55
+France,Bradley Barcola,LW,23,84,90,77,78,84,39,66,88,0,66
 France,Dayot Upamecano,CB,27,85,77,45,64,73,84,84,76,0,39
-France,Antoine Griezmann,ST,35,85,77,86,85,88,59,73,80,87,79
-France,N'Golo Kanté,CDM,35,85,77,65,73,80,85,79,80,72,54
-France,Désiré Doué,RW,20,85,83,80,77,90,55,74,85,81,71
-France,Marcus Thuram,ST,28,85,86,83,76,82,50,80,84,86,70
-France,Karim Benzema,ST,38,85,75,84,81,83,38,77,74,88,68
-France,Dayot Upamecano,CB,27,85,77,45,64,73,84,84,76,47,39
-Norway,Erling Haaland,ST,25,90,86,91,70,80,45,88,79,0,90
-Norway,Erling Haaland,ST,25,90,86,91,70,80,45,88,79,95,90
-Norway,Martin Ødegaard,CM,26,87,68,79,88,87,67,65,68,0,68
-Norway,Martin Ødegaard,CM,27,87,68,79,88,87,67,65,68,78,68
+France,Désiré Doué,RW,20,85,83,80,77,90,55,74,85,0,71
+France,Ibrahima Konaté,CB,26,86,77,34,63,69,86,85,69,0,41
+France,Jean-Philippe Mateta,ST,28,82,75,84,70,77,41,81,69,0,83
+France,Jules Koundé,RB,27,87,84,47,74,79,86,84,85,0,43
+France,Kylian Mbappé,ST,26,91,97,90,81,92,37,76,97,0,82
+France,Lucas Digne,LB,32,80,69,68,79,76,77,74,70,0,60
+France,Maghnes Akliouche,RM,23,80,74,70,78,83,48,62,75,0,70
+France,Malo Gusto,RB,22,79,84,45,75,78,73,74,87,0,45
+France,Marcus Thuram,ST,28,85,86,83,76,82,50,80,84,0,70
+France,Maxence Lacroix,CB,25,79,88,40,57,67,80,82,82,0,38
+France,Michael Olise,RM,23,86,78,80,84,87,50,66,83,0,72
+France,Mike Maignan,GK,30,87,84,83,85,88,64,84,65,84,15
+France,Ousmane Dembélé,ST,28,90,91,88,83,93,50,69,93,0,80
+France,Rayan Cherki,RW,22,81,75,75,80,88,21,65,75,0,66
+France,Theo Hernández,LB,28,84,90,76,78,83,79,83,88,0,74
+France,Warren Zaïre-Emery,CM,19,80,79,68,76,79,75,79,80,0,59
+France,William Saliba,CB,24,87,77,39,68,72,87,83,76,0,47
 Norway,Alexander Sørloth,ST,29,84,77,82,71,76,36,85,72,0,70
-Norway,Alexander Sørloth,ST,30,84,77,82,71,76,36,85,72,84,70
-Norway,Fredrik Aursnes,CM,29,80,74,71,78,80,77,82,73,0,66
-Norway,Fredrik Aursnes,CM,30,80,74,71,78,80,77,82,73,79,66
-Norway,Julian Ryerson,RB,28,79,74,63,71,76,77,82,77,0,44
-Norway,Sander Berge,CDM,27,79,55,65,74,71,75,84,54,0,54
-Norway,Julian Ryerson,RB,28,79,74,63,71,76,77,82,77,63,44
-Norway,Sander Berge,CDM,28,79,55,65,74,71,75,84,54,70,54
-Norway,Jørgen Strand Larsen,ST,25,78,75,79,62,70,32,83,72,0,69
-Norway,Jørgen Strand Larsen,ST,26,78,75,79,62,70,32,83,72,82,69
-Norway,Patrick Berg,CDM,28,77,73,67,75,73,71,78,72,0,58
-Norway,Patrick Berg,CDM,28,77,73,67,75,73,71,78,72,68,58
-Norway,Zlatko Tripić,RW,32,76,84,76,74,75,56,83,83,0,81
-Norway,Mohamed Elyounoussi,RM,31,76,76,72,71,78,59,73,76,0,62
-Norway,Ørjan Nyland,GK,35,76,76,75,77,75,47,74,47,74,25
+Norway,Andreas Schjelderup,LW,21,74,80,68,68,80,35,57,83,0,69
 Norway,Antonio Nusa,LM,20,76,89,72,68,81,41,63,92,0,54
-Norway,Zlatko Tripić,RW,33,76,84,76,74,75,56,83,83,76,81
-Norway,Mohamed Elyounoussi,RM,31,76,76,72,71,78,59,73,76,75,62
-Norway,Ørjan Nyland,GK,35,76,76,75,77,75,47,74,47,13,25
-Norway,Antonio Nusa,LM,20,76,89,72,68,81,41,63,92,72,54
+Norway,David Møller Wolfe,LB,23,73,78,53,65,69,67,77,77,0,48
+Norway,Egil Selvik,GK,28,70,70,69,66,70,19,69,20,69,19
+Norway,Erling Haaland,ST,25,90,86,91,70,80,45,88,79,0,90
+Norway,Fredrik Bjørkan,LB,27,74,81,53,65,72,68,75,81,0,44
+Norway,Fredrik Aursnes,CM,29,80,74,71,78,80,77,82,73,0,66
+Norway,Henrik Falchener,CB,22,65,64,46,53,56,62,73,62,0,48
+Norway,Jens Petter Hauge,LW,26,74,80,69,69,75,40,64,83,0,65
+Norway,Julian Ryerson,RB,28,79,74,63,71,76,77,82,77,0,44
+Norway,Jørgen Strand Larsen,ST,25,78,75,79,62,70,32,83,72,0,69
 Norway,Kristian Thorstvedt,CM,26,75,61,71,74,73,67,82,55,0,62
-Norway,Jonas Svensson,RB,32,75,74,59,69,72,73,79,76,0,48
-Senegal,Sadio Mané,LM,33,83,82,81,78,85,44,75,81,0,75
-Senegal,Sadio Mané,LM,33,83,82,81,78,85,44,75,81,83,75
-Senegal,Kalidou Koulibaly,CB,34,82,74,48,62,65,82,84,61,0,50
-Senegal,Kalidou Koulibaly,CB,34,82,74,48,62,65,82,84,61,50,50
-Senegal,Boulaye Dia,ST,29,80,84,81,67,78,43,73,81,0,81
-Senegal,Édouard Mendy,GK,33,80,78,77,75,81,34,79,33,79,13
-Senegal,Nicolas Jackson,ST,24,80,82,77,69,79,40,77,81,0,60
-Senegal,Boulaye Dia,ST,29,80,84,81,67,78,43,73,81,81,81
-Senegal,Édouard Mendy,GK,34,80,78,77,75,81,34,79,33,6,13
-Senegal,Nicolas Jackson,ST,24,80,82,77,69,79,40,77,81,83,60
-Senegal,Pape Matar Sarr,CM,23,79,68,66,76,78,77,76,71,0,54
-Senegal,Ismaïla Sarr,CAM,27,79,91,78,76,78,28,69,89,0,68
-Senegal,Iliman Ndiaye,LM,25,79,84,76,70,84,40,63,83,0,80
-Senegal,Idrissa Gueye,CDM,36,79,60,59,70,73,80,70,66,0,55
-Senegal,Pape Matar Sarr,CM,23,79,68,66,76,78,77,76,71,73,54
-Senegal,Ismaïla Sarr,CAM,28,79,91,78,76,78,28,69,89,80,68
-Senegal,Iliman Ndiaye,LM,26,79,84,76,70,84,40,63,83,79,80
-Senegal,Idrissa Gueye,CDM,36,79,60,59,70,73,80,70,66,58,55
-Senegal,Pape Gueye,CM,26,78,67,65,75,75,76,79,66,0,52
-Senegal,Yehvann Diouf,GK,26,78,78,75,76,80,50,76,52,76,11
-Senegal,Pape Gueye,CM,27,78,67,65,75,75,76,79,66,75,52
-Senegal,Yehvann Diouf,GK,26,78,78,75,76,80,50,76,52,6,11
-Senegal,Lamine Camara,CM,21,77,79,66,78,77,71,69,82,0,55
+Norway,Kristoffer Ajer,RB,27,75,67,56,65,68,74,81,63,0,49
+Norway,Leo Østigård,CB,25,73,60,37,50,61,71,79,63,0,42
+Norway,Marcus Pedersen,RB,25,72,89,49,68,71,64,66,88,0,53
+Norway,Martin Ødegaard,CM,26,87,68,79,88,87,67,65,68,0,68
+Norway,Morten Thorsby,CM,29,72,55,62,69,71,72,75,62,0,49
+Norway,Oscar Bobb,RW,22,72,79,65,71,77,33,41,84,0,63
+Norway,Patrick Berg,CDM,28,77,73,67,75,73,71,78,72,0,58
+Norway,Sander Berge,CDM,27,79,55,65,74,71,75,84,54,0,54
+Norway,Sondre Langås,CB,24,71,86,38,56,63,68,85,87,0,37
+Norway,Thelo Aasgaard,CM,23,68,67,68,68,71,46,63,65,0,55
+Norway,Torbjørn L. Heggem,CB,26,73,73,46,61,66,73,79,70,0,42
+Norway,Ørjan Nyland,GK,35,76,76,75,77,75,47,74,47,74,25
+Senegal,Assane Diao,LM,20,76,90,74,67,77,36,60,90,0,61
+Senegal,Bamba Dieng,ST,25,71,78,72,60,68,33,60,79,0,72
+Senegal,El Hadji Malick Diouf,LB,20,75,80,67,68,74,70,77,78,0,59
 Senegal,Habib Diarra,CM,21,77,70,68,71,77,71,71,74,0,59
-Senegal,Pathé Ciss,CDM,31,77,63,57,64,65,76,87,64,0,40
+Senegal,Idrissa Gueye,CDM,36,79,60,59,70,73,80,70,66,0,55
+Senegal,Iliman Ndiaye,LM,25,79,84,76,70,84,40,63,83,0,80
+Senegal,Ismail Jakobs,LB,26,75,90,60,65,74,70,68,90,0,55
+Senegal,Ismaïla Sarr,CAM,27,79,91,78,76,78,28,69,89,0,68
+Senegal,Kalidou Koulibaly,CB,34,82,74,48,62,65,82,84,61,0,50
+Senegal,Krépin Diatta,RM,26,74,88,69,67,76,57,67,90,0,59
+Senegal,Lamine Camara,CM,21,77,79,66,78,77,71,69,82,0,55
+Senegal,Mory Diaw,GK,32,70,70,70,71,72,43,70,44,70,29
 Senegal,Moussa Niakhaté,CB,29,77,68,48,63,64,77,80,55,0,74
-Iraq,Ali Adnan,LB,31,72,74,66,68,70,69,80,73,0,64
-Iraq,Ali Adnan,LB,32,72,74,66,68,70,69,80,73,68,64
-Iraq,Ibrahim Bayesh,LM,25,68,79,67,60,69,58,75,78,0,57
-Iraq,Mohanad Jeahze,LB,28,68,80,53,65,68,60,69,81,0,42
-Iraq,Merchas Doski,LB,25,68,75,54,65,71,62,62,76,0,51
-Iraq,Zidane Iqbal,CDM,22,68,64,60,64,73,63,62,68,0,52
-Iraq,Ibrahim Bayesh,LM,25,68,79,67,60,69,58,75,78,63,57
-Iraq,Mohanad Jeahze,LB,28,68,80,53,65,68,60,69,81,59,42
-Iraq,Merchas Doski,LB,26,68,75,54,65,71,62,62,76,62,51
-Iraq,Zidane Iqbal,CDM,22,68,64,60,64,73,63,62,68,60,52
+Senegal,Nicolas Jackson,ST,24,80,82,77,69,79,40,77,81,0,60
+Senegal,Pape Gueye,CM,26,78,67,65,75,75,76,79,66,0,52
+Senegal,Pape Matar Sarr,CM,23,79,68,66,76,78,77,76,71,0,54
+Senegal,Pathé Ciss,CDM,31,77,63,57,64,65,76,87,64,0,40
+Senegal,Sadio Mané,LM,33,83,82,81,78,85,44,75,81,0,75
+Senegal,Édouard Mendy,GK,33,80,78,77,75,81,34,79,33,79,13
 Iraq,Aimar Sher,CDM,22,67,62,47,61,69,61,66,72,0,44
-Iraq,Aimar Sher,CDM,23,67,62,47,61,69,61,66,72,53,44
+Iraq,Ali Jasim,LM,21,62,67,62,57,63,22,59,68,0,58
+Iraq,Amir Al-Ammari,CM,28,65,68,57,66,63,60,70,66,0,55
+Iraq,Ibrahim Bayesh,LM,25,68,79,67,60,69,58,75,78,0,57
 Iraq,Kevin Yakob,CM,25,66,66,61,66,68,59,64,68,0,55
 Iraq,Marko Farji,LW,21,66,81,60,60,66,32,65,82,0,52
-Iraq,Montader Madjed,RM,20,66,75,65,63,70,25,50,76,0,58
-Iraq,Ali Al Hamadi,ST,23,66,79,63,47,64,18,73,80,0,59
-Iraq,Kevin Yakob,CM,25,66,66,61,66,68,59,64,68,64,55
-Iraq,Marko Farji,LW,22,66,81,60,60,66,32,65,82,61,52
-Iraq,Montader Madjed,RM,20,66,75,65,63,70,25,50,76,63,58
-Iraq,Ali Al Hamadi,ST,24,66,79,63,47,64,18,73,80,67,59
-Iraq,Amir Al-Ammari,CM,28,65,68,57,66,63,60,70,66,0,55
-Iraq,Danilo Al Saed,LM,26,65,82,61,55,68,26,54,84,0,51
-Iraq,Amir Al-Ammari,CM,28,65,68,57,66,63,60,70,66,57,55
-Iraq,Danilo Al Saed,LM,27,65,82,61,55,68,26,54,84,67,51
-Iraq,Ali Jasim,LM,21,62,67,62,57,63,22,59,68,0,58
-Iraq,Ali Jasim,LM,22,62,67,62,57,63,22,59,68,58,58
-Argentina,Lautaro Martínez,ST,28,88,81,88,75,84,51,83,83,0,74
-Argentina,Lautaro Martínez,ST,28,88,81,88,75,84,51,83,83,93,74
-Argentina,Julián Alvarez,ST,25,87,85,87,81,87,57,79,86,0,78
+Iraq,Merchas Doski,LB,25,68,75,54,65,71,62,62,76,0,51
+Iraq,Zidane Iqbal,CDM,22,68,64,60,64,73,63,62,68,0,52
 Argentina,Alexis Mac Allister,CM,26,87,66,82,85,85,78,76,68,0,86
-Argentina,Julián Alvarez,ST,26,87,85,87,81,87,57,79,86,88,78
-Argentina,Alexis Mac Allister,CM,27,87,66,82,85,85,78,76,68,78,86
-Argentina,Paulo Dybala,CAM,32,86,80,85,84,87,41,64,84,0,88
-Argentina,Lionel Messi,RW,38,86,78,85,85,90,33,64,84,0,75
-Argentina,Paulo Dybala,CAM,32,86,80,85,84,87,41,64,84,83,88
-Argentina,Lionel Messi,RW,38,86,78,85,85,90,33,64,84,86,75
+Argentina,Cristian Romero,CB,27,82,66,48,62,65,83,81,63,0,40
 Argentina,Emiliano Martínez,GK,33,85,83,82,82,85,56,85,55,85,43
-Argentina,Emiliano Martínez,GK,33,85,83,82,82,85,56,85,55,12,43
-Argentina,Rodrigo De Paul,CM,31,84,75,78,83,83,76,83,74,0,66
 Argentina,Enzo Fernández,CM,24,84,68,75,85,81,73,75,68,0,73
 Argentina,Exequiel Palacios,CM,27,84,62,76,80,82,81,71,72,0,72
-Argentina,Rodrigo De Paul,CM,31,84,75,78,83,83,76,83,74,79,66
-Argentina,Enzo Fernández,CM,25,84,68,75,85,81,73,75,68,78,73
-Argentina,Exequiel Palacios,CM,27,84,62,76,80,82,81,71,72,79,72
-Argentina,Gerónimo Rulli,GK,33,82,82,77,80,83,54,81,56,81,24
+Argentina,Facundo Medina,CB,26,79,74,44,70,72,79,81,67,0,44
 Argentina,Giovani Lo Celso,CAM,29,82,68,81,82,84,68,71,67,0,65
-Argentina,Ángel Di María,RW,37,82,73,80,85,85,43,62,72,0,83
+Argentina,Giuliano Simeone,RM,22,81,91,73,72,81,45,81,92,0,62
+Argentina,Gonzalo Montiel,RB,28,78,81,63,71,77,74,80,80,0,84
+Argentina,Julián Alvarez,ST,25,87,85,87,81,87,57,79,86,0,78
+Argentina,Lautaro Martínez,ST,28,88,81,88,75,84,51,83,83,0,74
+Argentina,Leandro Paredes,CM,31,78,62,70,82,79,72,74,62,0,85
+Argentina,Lionel Messi,RW,38,86,78,85,85,90,33,64,84,0,75
+Argentina,Lisandro Martínez,CB,27,81,67,59,75,75,81,80,70,0,55
+Argentina,Marcos Senesi,CB,28,78,56,42,70,72,79,75,62,0,40
+Argentina,Nahuel Molina,RB,27,79,82,67,73,76,75,71,79,0,45
+Argentina,Nico Paz,CAM,21,79,78,71,77,82,51,64,76,0,53
 Argentina,Nicolás Otamendi,CB,37,82,60,57,64,62,83,85,54,0,45
-Argentina,Cristian Romero,CB,27,82,66,48,62,65,83,81,63,0,40
-Argentina,Gerónimo Rulli,GK,33,82,82,77,80,83,54,81,56,12,24
-Argentina,Giovani Lo Celso,CAM,29,82,68,81,82,84,68,71,67,81,65
-Argentina,Ángel Di María,RW,38,82,73,80,85,85,43,62,72,80,83
-Austria,Konrad Laimer,RB,28,82,82,69,76,75,81,76,82,0,54
+Argentina,Nicolás Tagliafico,LB,33,78,67,56,70,76,77,76,74,0,46
+Argentina,Rodrigo De Paul,CM,31,84,75,78,83,83,76,83,74,0,66
+Argentina,Thiago Almada,CAM,24,79,79,74,79,83,51,58,86,0,75
+Argentina,Valentín Barco,LB,21,75,76,50,75,78,68,61,77,0,67
+Austria,Alexander Prass,LB,24,74,74,65,74,75,69,74,76,0,57
+Austria,Alexander Schlager,GK,29,73,72,71,69,76,46,73,46,73,22
 Austria,David Alaba,CB,33,82,68,71,82,79,82,75,64,0,79
-Austria,Konrad Laimer,RB,28,82,82,69,76,75,81,76,82,73,54
-Austria,David Alaba,CB,33,82,68,71,82,79,82,75,64,71,79
-Austria,Marcel Sabitzer,CDM,31,80,74,80,80,80,76,76,76,0,80
-Austria,Xaver Schlager,CDM,28,80,69,70,74,78,75,78,74,0,56
-Austria,Marcel Sabitzer,CDM,32,80,74,80,80,80,76,76,76,78,80
-Austria,Xaver Schlager,CDM,28,80,69,70,74,78,75,78,74,75,56
-Austria,Stefan Posch,RB,28,79,75,55,68,66,80,74,71,0,38
+Austria,Florian Grillitsch,CM,30,75,63,59,74,74,72,66,55,0,50
 Austria,Kevin Danso,CB,27,79,73,32,57,62,78,83,65,0,42
-Austria,Philipp Lienhart,CB,29,79,67,28,59,64,81,78,62,0,41
-Austria,Stefan Posch,RB,28,79,75,55,68,66,80,74,71,71,38
-Austria,Kevin Danso,CB,27,79,73,32,57,62,78,83,65,43,42
-Austria,Philipp Lienhart,CB,29,79,67,28,59,64,81,78,62,35,41
-Austria,Romano Schmid,CAM,25,78,77,67,78,83,56,58,78,0,52
-Austria,Romano Schmid,CAM,26,78,77,67,78,83,56,58,78,77,52
+Austria,Konrad Laimer,RB,28,82,82,69,76,75,81,76,82,0,54
+Austria,Marcel Sabitzer,CDM,31,80,74,80,80,80,76,76,76,0,80
+Austria,Marco Friedl,CB,27,77,75,44,64,69,79,77,67,0,45
+Austria,Michael Gregoritsch,ST,31,75,37,77,68,68,42,76,36,0,64
 Austria,Nicolas Seiwald,CDM,24,77,72,62,74,74,74,76,74,0,54
 Austria,Patrick Wimmer,CAM,24,77,84,69,72,81,49,73,83,0,52
-Austria,Marco Friedl,CB,27,77,75,44,64,69,79,77,67,0,45
-Austria,Christoph Baumgartner,CAM,26,77,74,72,72,79,47,63,81,0,65
-Austria,Nicolas Seiwald,CDM,24,77,72,62,74,74,74,76,74,68,54
-Austria,Patrick Wimmer,CAM,24,77,84,69,72,81,49,73,83,76,52
-Austria,Marco Friedl,CB,28,77,75,44,64,69,79,77,67,56,45
-Austria,Christoph Baumgartner,CAM,26,77,74,72,72,79,47,63,81,77,65
-Austria,Valentino Lazaro,RM,29,76,71,67,76,76,71,65,77,0,66
+Austria,Philipp Lienhart,CB,29,79,67,28,59,64,81,78,62,0,41
 Austria,Phillipp Mwene,LB,31,76,78,55,69,75,70,70,83,0,42
-Algeria,Riyad Mahrez,RM,34,84,78,80,81,88,39,63,81,0,73
-Algeria,Riyad Mahrez,RM,35,84,78,80,81,88,39,63,81,83,73
-Algeria,Rayan Aït-Nouri,LB,24,81,84,53,76,84,77,70,85,0,42
-Algeria,Rayan Aït-Nouri,LB,24,81,84,53,76,84,77,70,85,75,42
-Algeria,Ismaël Bennacer,CDM,27,80,76,72,80,83,76,74,79,0,72
-Algeria,Mohamed Amoura,ST,25,80,90,81,71,86,47,61,94,0,74
-Algeria,Ismaël Bennacer,CDM,28,80,76,72,80,83,76,74,79,71,72
-Algeria,Mohamed Amoura,ST,25,80,90,81,71,86,47,61,94,85,74
-Algeria,Ramy Bensebaini,LB,30,79,73,70,70,77,78,79,72,0,85
+Austria,Romano Schmid,CAM,25,78,77,67,78,83,56,58,78,0,52
+Austria,Saša Kalajdžić,ST,28,74,50,72,67,68,45,64,51,0,57
+Austria,Stefan Posch,RB,28,79,75,55,68,66,80,74,71,0,38
+Austria,Xaver Schlager,CDM,28,80,69,70,74,78,75,78,74,0,56
 Algeria,Amine Gouiri,ST,25,79,77,82,76,80,45,71,79,0,78
-Algeria,Ramy Bensebaini,LB,30,79,73,70,70,77,78,79,72,66,85
-Algeria,Amine Gouiri,ST,26,79,77,82,76,80,45,71,79,83,78
-Algeria,Adem Zorgane,CDM,25,78,54,70,77,75,71,83,59,0,66
-Algeria,Adem Zorgane,CDM,26,78,54,70,77,75,71,83,59,65,66
+Algeria,Aïssa Mandi,CB,34,75,57,46,71,67,75,73,59,0,35
+Algeria,Farès Chaïbi,CAM,22,74,69,68,75,76,68,69,70,0,61
 Algeria,Hicham Boudaoui,CM,26,77,73,67,74,77,74,76,74,0,54
 Algeria,Houssem Aouar,CAM,27,77,66,72,75,82,65,65,68,0,79
+Algeria,Ibrahim Maza,CAM,20,71,75,66,66,79,40,62,74,0,60
+Algeria,Jaouen Hadjam,LB,22,69,79,54,59,69,65,72,77,0,52
+Algeria,Mohamed Amoura,ST,25,80,90,81,71,86,47,61,94,0,74
 Algeria,Nabil Bentaleb,CDM,31,77,50,72,77,79,71,73,51,0,83
-Algeria,Saïd Benrahma,LW,30,77,75,75,74,80,42,61,78,0,75
-Algeria,Hicham Boudaoui,CM,26,77,73,67,74,77,74,76,74,74,54
-Algeria,Houssem Aouar,CAM,27,77,66,72,75,82,65,65,68,76,79
-Algeria,Nabil Bentaleb,CDM,31,77,50,72,77,79,71,73,51,65,83
-Algeria,Saïd Benrahma,LW,30,77,75,75,74,80,42,61,78,75,75
-Algeria,Himad Abdelli,CAM,26,76,61,69,76,79,60,74,66,0,75
-Algeria,Anis Hadj-Moussa,RW,23,76,80,69,67,84,29,52,83,0,50
-Algeria,Himad Abdelli,CAM,26,76,61,69,76,79,60,74,66,74,75
-Algeria,Anis Hadj-Moussa,RW,24,76,80,69,67,84,29,52,83,69,50
+Algeria,Rafik Belghali,RB,23,66,81,60,61,66,61,62,79,0,55
+Algeria,Ramiz Zerrouki,CDM,27,73,62,66,69,72,68,80,65,0,57
+Algeria,Ramy Bensebaini,LB,30,79,73,70,70,77,78,79,72,0,85
+Algeria,Rayan Aït-Nouri,LB,24,81,84,53,76,84,77,70,85,0,42
+Algeria,Riyad Mahrez,RM,34,84,78,80,81,88,39,63,81,0,73
 Jordan,Musa Al Tamari,RM,28,75,89,69,67,80,38,63,88,0,62
 Jordan,Yazan Al Arab,CB,29,75,79,29,46,52,73,83,70,0,34
 Jordan,Musa Al Tamari,RM,28,75,89,69,67,80,38,63,88,73,62
 Jordan,Yazan Al Arab,CB,30,75,79,29,46,52,73,83,70,32,34
-Portugal,Vitinha,CM,25,89,72,80,86,90,75,70,75,0,88
-Portugal,Vitinha,CM,26,89,72,80,86,90,75,70,75,81,88
-Portugal,Bruno Fernandes,CAM,31,87,67,83,89,83,65,75,68,0,91
-Portugal,Bruno Fernandes,CAM,31,87,67,83,89,83,65,75,68,86,91
-Portugal,Nuno Mendes,LB,23,86,95,65,76,82,80,77,94,0,45
-Portugal,Rúben Dias,CB,28,86,59,39,69,69,86,84,55,0,45
-Portugal,Nuno Mendes,LB,23,86,95,65,76,82,80,77,94,77,45
-Portugal,Rúben Dias,CB,28,86,59,39,69,69,86,84,55,39,45
-Portugal,João Neves,CM,21,85,74,69,80,84,82,83,77,0,60
-Portugal,Cristiano Ronaldo,ST,40,85,76,88,76,80,34,76,73,0,91
-Portugal,João Neves,CM,21,85,74,69,80,84,82,83,77,77,60
-Portugal,Cristiano Ronaldo,ST,41,85,76,88,76,80,34,76,73,89,91
-Portugal,João Cancelo,RB,31,84,83,73,84,84,78,74,88,0,52
-Portugal,Rúben Neves,CDM,28,84,57,75,87,77,77,76,58,0,84
 Portugal,Bernardo Silva,CM,31,84,61,78,83,89,71,65,68,0,64
+Portugal,Bruno Fernandes,CAM,31,87,67,83,89,83,65,75,68,0,91
+Portugal,Cristiano Ronaldo,ST,40,85,76,88,76,80,34,76,73,0,91
 Portugal,Diogo Costa,GK,26,84,83,78,82,86,35,83,33,83,14
+Portugal,Diogo Dalot,RB,26,79,85,63,74,77,76,78,84,0,47
+Portugal,Francisco Conceição,RM,22,79,87,68,73,85,36,50,88,0,59
+Portugal,Gonçalo Ramos,ST,24,80,73,79,64,77,48,79,73,0,75
+Portugal,João Cancelo,RB,31,84,83,73,84,84,78,74,88,0,52
+Portugal,João Félix,CAM,26,79,77,78,77,82,45,66,79,0,70
+Portugal,João Neves,CM,21,85,74,69,80,84,82,83,77,0,60
+Portugal,Matheus Nunes,RB,27,79,85,70,76,79,73,76,78,0,62
+Portugal,Nuno Mendes,LB,23,86,95,65,76,82,80,77,94,0,45
+Portugal,Nélson Semedo,RB,32,77,79,56,69,77,73,73,79,0,38
+Portugal,Pedro Neto,RM,25,80,91,76,74,82,40,68,92,0,65
 Portugal,Rafael Leão,LW,26,84,93,78,80,86,28,75,93,0,63
-Portugal,João Cancelo,RB,31,84,83,73,84,84,78,74,88,81,52
-Portugal,Rúben Neves,CDM,29,84,57,75,87,77,77,76,58,62,84
-Portugal,Bernardo Silva,CM,31,84,61,78,83,89,71,65,68,80,64
-Portugal,Diogo Costa,GK,26,84,83,78,82,86,35,83,33,18,14
-Portugal,Rafael Leão,LW,26,84,93,78,80,86,28,75,93,76,63
-Portugal,Pedro Gonçalves,CAM,27,83,77,82,83,84,63,68,79,0,82
-Portugal,Palhinha,CDM,30,83,56,68,70,72,84,85,54,0,57
-Portugal,Pedro Gonçalves,CAM,27,83,77,82,83,84,63,68,79,85,82
-Portugal,Palhinha,CDM,30,83,56,68,70,72,84,85,54,69,57
-Colombia,Luis Díaz,LM,28,85,88,81,76,87,45,75,88,0,63
-Colombia,Luis Díaz,LM,29,85,88,81,76,87,45,75,88,84,63
-Colombia,Davinson Sánchez,CB,29,82,82,58,63,73,82,88,80,0,44
-Colombia,Duván Zapata,ST,34,82,74,81,64,77,35,82,72,0,75
-Colombia,Davinson Sánchez,CB,29,82,82,58,63,73,82,88,80,68,44
-Colombia,Duván Zapata,ST,35,82,74,81,64,77,35,82,72,86,75
+Portugal,Renato Veiga,CB,22,76,73,60,73,72,75,82,67,0,60
+Portugal,Rúben Dias,CB,28,86,59,39,69,69,86,84,55,0,45
+Portugal,Rúben Neves,CDM,28,84,57,75,87,77,77,76,58,0,84
+Portugal,Samú Costa,CDM,24,78,61,65,70,71,75,79,65,0,54
+Portugal,Tomás Araújo,CB,23,78,82,30,69,72,77,79,81,0,39
+Portugal,Vitinha,CM,25,89,72,80,86,90,75,70,75,0,88
 Colombia,Daniel Muñoz,RB,29,81,75,69,72,76,79,81,76,0,58
-Colombia,Daniel Muñoz,RB,29,81,75,69,72,76,79,81,76,76,58
-Colombia,Richard Ríos,CM,25,79,81,70,77,82,72,82,83,0,53
-Colombia,Jhon Durán,ST,21,79,81,81,63,75,32,80,76,0,68
-Colombia,Richard Ríos,CM,25,79,81,70,77,82,72,82,83,62,53
-Colombia,Jhon Durán,ST,22,79,81,81,63,75,32,80,76,79,68
-Colombia,Johan Mojica,LB,33,78,88,65,73,73,74,70,86,0,60
-Colombia,Cucho,ST,26,78,81,77,75,81,42,78,84,0,70
-Colombia,Jhon Arias,RW,28,78,85,75,74,79,42,68,86,0,70
-Colombia,Cristian Arango,ST,30,78,75,79,71,77,36,74,77,0,70
-Colombia,Johan Mojica,LB,33,78,88,65,73,73,74,70,86,71,60
-Colombia,Cucho,ST,26,78,81,77,75,81,42,78,84,78,70
-Colombia,Jhon Arias,RW,28,78,85,75,74,79,42,68,86,75,70
-Colombia,Cristian Arango,ST,31,78,75,79,71,77,36,74,77,80,70
-Colombia,Kevin Castaño,CM,25,77,76,68,76,76,72,75,74,0,63
+Colombia,Davinson Sánchez,CB,29,82,82,58,63,73,82,88,80,0,44
+Colombia,Deiver Machado,LB,32,76,84,69,71,76,71,76,83,0,57
+Colombia,Gustavo Puerta,CM,22,68,61,60,68,72,62,67,66,0,49
+Colombia,Jaminton Campaz,LM,25,76,85,72,72,77,30,57,86,0,50
 Colombia,Jefferson Lerma,CDM,31,77,68,71,70,74,76,79,65,0,58
-Colombia,Luis Javier Suárez,ST,27,77,83,77,66,75,38,78,82,0,72
+Colombia,Jhon Arias,RW,28,78,85,75,74,79,42,68,86,0,70
+Colombia,Jhon Lucumí,CB,27,76,65,38,62,61,77,78,63,0,36
+Colombia,Johan Mojica,LB,33,78,88,65,73,73,74,70,86,0,60
 Colombia,Juan Fernando Quintero,CAM,32,77,62,76,79,81,41,54,69,0,78
+Colombia,Kevin Castaño,CM,25,77,76,68,76,76,72,75,74,0,63
+Colombia,Luis Díaz,LM,28,85,88,81,76,87,45,75,88,0,63
+Colombia,Luis Javier Suárez,ST,27,77,83,77,66,75,38,78,82,0,72
+Colombia,Richard Ríos,CM,25,79,81,70,77,82,72,82,83,0,53
 Colombia,Yerry Mina,CB,31,77,34,50,52,55,77,84,33,0,69
-Colombia,Kevin Castaño,CM,25,77,76,68,76,76,72,75,74,73,63
-DR Congo,Yoane Wissa,ST,29,82,85,82,70,80,31,71,83,0,79
-DR Congo,Yoane Wissa,ST,29,82,85,82,70,80,31,71,83,85,79
-DR Congo,Simon Banza,ST,29,81,79,81,62,77,36,79,76,0,76
-DR Congo,Simon Banza,ST,29,81,79,81,62,77,36,79,76,85,76
 DR Congo,Aaron Wan-Bissaka,RB,27,80,80,51,69,77,78,73,79,0,44
-DR Congo,Aaron Wan-Bissaka,RB,28,80,80,51,69,77,78,73,79,72,44
-DR Congo,Cédric Bakambu,ST,34,77,78,78,68,72,40,68,77,0,78
-DR Congo,Cédric Bakambu,ST,34,77,78,78,68,72,40,68,77,84,78
 DR Congo,Arthur Masuaku,LB,32,75,79,62,74,78,68,79,77,0,49
-DR Congo,Arthur Masuaku,LB,32,75,79,62,74,78,68,79,77,65,49
-DR Congo,Noah Sadiki,CM,20,74,77,65,68,76,68,76,81,0,52
-DR Congo,Joris Kayembe,LB,31,74,79,60,71,74,66,74,76,0,41
-DR Congo,Silas,RM,27,74,90,69,61,79,52,71,87,0,80
-DR Congo,Ngal'ayel Mukau,CDM,21,74,69,57,65,71,70,75,71,0,40
-DR Congo,Samuel Essende,ST,27,74,73,72,50,67,26,81,74,0,64
-DR Congo,Noah Sadiki,CM,21,74,77,65,68,76,68,76,81,60,52
-DR Congo,Joris Kayembe,LB,31,74,79,60,71,74,66,74,76,67,41
-DR Congo,Silas,RM,27,74,90,69,61,79,52,71,87,77,80
-DR Congo,Ngal'ayel Mukau,CDM,21,74,69,57,65,71,70,75,71,70,40
-DR Congo,Samuel Essende,ST,28,74,73,72,50,67,26,81,74,78,64
 DR Congo,Axel Tuanzebe,RB,28,73,76,36,64,68,73,75,74,0,50
-DR Congo,Axel Tuanzebe,RB,28,73,76,36,64,68,73,75,74,55,50
-DR Congo,Afimico Pululu,ST,26,72,85,70,58,73,27,75,84,0,68
-DR Congo,Afimico Pululu,ST,27,72,85,70,58,73,27,75,84,74,68
-DR Congo,Edo Kayembe,CM,27,71,72,66,69,70,67,78,70,0,66
+DR Congo,Brian Cipenga,LM,27,66,81,58,59,66,33,63,80,0,52
 DR Congo,Charles Pickel,CM,28,71,63,63,68,69,67,80,65,0,59
+DR Congo,Cédric Bakambu,ST,34,77,78,78,68,72,40,68,77,0,78
+DR Congo,Edo Kayembe,CM,27,71,72,66,69,70,67,78,70,0,66
+DR Congo,Joris Kayembe,LB,31,74,79,60,71,74,66,74,76,0,41
+DR Congo,Lionel Mpasi,GK,31,67,67,66,66,65,45,66,45,66,32
+DR Congo,Nathanaël Mbuku,RM,23,70,73,63,68,74,35,53,78,0,64
+DR Congo,Ngal'ayel Mukau,CDM,21,74,69,57,65,71,70,75,71,0,40
+DR Congo,Noah Sadiki,CM,20,74,77,65,68,76,68,76,81,0,52
+DR Congo,Simon Banza,ST,29,81,79,81,62,77,36,79,76,0,76
+DR Congo,Steve Kapuadi,CB,27,71,65,33,45,50,70,83,63,0,35
+DR Congo,Yoane Wissa,ST,29,82,85,82,70,80,31,71,83,0,79
 Uzbekistan,Abdukodir Khusanov,CB,21,77,85,39,59,64,77,76,78,0,46
-Uzbekistan,Abdukodir Khusanov,CB,22,77,85,39,59,64,77,76,78,44,46
 Uzbekistan,Eldor Shomurodov,ST,30,74,79,71,64,75,40,66,82,0,65
-Uzbekistan,Eldor Shomurodov,ST,30,74,79,71,64,75,40,66,82,77,65
-Uzbekistan,Khusniddin Alikulov,CB,26,68,63,33,48,49,69,69,60,0,39
-Uzbekistan,Khusniddin Alikulov,CB,26,68,63,33,48,49,69,69,60,26,39
-Uzbekistan,Mukhammadali Urinboev,RW,20,63,60,68,62,66,31,52,60,0,72
-Uzbekistan,Mukhammadali Urinboev,RW,20,63,60,68,62,66,31,52,60,60,72
-England,Jude Bellingham,CAM,22,90,80,86,83,90,78,85,81,0,74
-England,Jude Bellingham,CAM,22,90,80,86,83,90,78,85,81,91,74
-England,Harry Kane,ST,32,89,64,92,83,82,48,82,62,0,95
-England,Harry Kane,ST,32,89,64,92,83,82,48,82,62,94,95
-England,Bukayo Saka,RW,24,88,84,82,85,88,60,73,87,0,87
-England,Bukayo Saka,RW,24,88,84,82,85,88,60,73,87,86,87
-England,Cole Palmer,CAM,23,87,75,83,87,87,50,65,76,0,90
-England,Declan Rice,CDM,26,87,72,73,84,80,83,83,71,0,71
-England,Cole Palmer,CAM,23,87,75,83,87,87,50,65,76,87,90
-England,Declan Rice,CDM,27,87,72,73,84,80,83,83,71,77,71
-England,Trent Alexander-Arnold,RB,27,86,76,72,89,80,80,74,72,0,66
-England,Trent Alexander-Arnold,RB,27,86,76,72,89,80,80,74,72,79,66
-England,Phil Foden,RW,25,85,81,81,82,89,57,57,83,0,64
-England,Phil Foden,RW,25,85,81,81,82,89,57,57,83,83,64
-England,Jordan Pickford,GK,31,84,84,78,88,87,53,81,57,81,48
-England,Ollie Watkins,ST,29,84,77,83,73,80,50,80,77,0,74
-England,James Maddison,CM,29,84,67,81,86,85,58,64,70,0,77
-England,Jordan Pickford,GK,32,84,84,78,88,87,53,81,57,18,48
-England,Ollie Watkins,ST,30,84,77,83,73,80,50,80,77,87,74
-England,James Maddison,CM,29,84,67,81,86,85,58,64,70,83,77
 England,Anthony Gordon,LW,24,83,91,79,78,83,50,71,89,0,70
+England,Bukayo Saka,RW,24,88,84,82,85,88,60,73,87,0,87
+England,Dan Burn,CB,33,79,42,36,67,64,79,85,34,0,48
+England,Declan Rice,CDM,26,87,72,73,84,80,83,83,71,0,71
+England,Djed Spence,RB,25,78,88,44,71,79,74,72,87,0,37
 England,Eberechi Eze,CAM,27,83,74,80,81,87,50,68,73,0,76
-England,Jarrod Bowen,RM,28,83,76,81,78,82,46,70,78,0,75
-England,Benjamin White,RB,28,83,70,35,75,75,83,78,68,0,24
-England,Anthony Gordon,LW,25,83,91,79,78,83,50,71,89,82,70
-England,Eberechi Eze,CAM,27,83,74,80,81,87,50,68,73,80,76
-Croatia,Joško Gvardiol,LB,23,84,78,71,75,78,84,82,77,0,61
-Croatia,Joško Gvardiol,LB,24,84,78,71,75,78,84,82,77,69,61
-Croatia,Mateo Kovačić,CM,31,83,67,74,81,83,73,72,70,0,59
-Croatia,Luka Modrić,CM,40,83,68,74,86,86,70,62,72,0,83
-Croatia,Mateo Kovačić,CM,31,83,67,74,81,83,73,72,70,76,59
-Croatia,Luka Modrić,CM,40,83,68,74,86,86,70,62,72,76,83
-Croatia,Ante Budimir,ST,34,82,59,84,63,76,35,80,54,0,86
-Croatia,Ante Budimir,ST,34,82,59,84,63,76,35,80,54,85,86
-Croatia,Ivan Perišić,RW,36,81,75,80,81,79,69,75,74,0,77
-Croatia,Marcelo Brozović,CDM,33,81,63,73,78,79,78,80,62,0,69
+England,Elliot Anderson,CDM,23,80,71,68,79,81,77,78,75,0,65
+England,Ezri Konsa,CB,28,82,75,53,71,75,84,78,72,0,38
+England,Harry Kane,ST,32,89,64,92,83,82,48,82,62,0,95
+England,Jarell Quansah,CB,22,75,70,34,59,68,74,75,66,0,45
+England,John Stones,CB,31,82,64,58,74,75,84,72,65,0,52
+England,Jordan Henderson,CDM,35,79,65,71,80,74,75,77,62,0,67
+England,Jordan Pickford,GK,31,84,84,78,88,87,53,81,57,81,48
+England,Jude Bellingham,CAM,22,90,80,86,83,90,78,85,81,0,74
+England,Marc Guéhi,CB,25,82,69,39,69,73,83,78,68,0,38
+England,Marcus Rashford,LM,28,80,87,82,77,80,33,63,87,0,85
+England,Morgan Rogers,CAM,23,82,77,77,79,84,67,79,74,0,60
+England,Nico O'Reilly,LB,20,73,73,66,72,73,69,70,71,0,59
+England,Noni Madueke,RW,23,80,88,75,74,83,45,69,89,0,75
+England,Ollie Watkins,ST,29,84,77,83,73,80,50,80,77,0,74
+England,Reece James,RB,25,81,76,71,82,77,81,81,75,0,65
 Croatia,Andrej Kramarić,CAM,34,81,67,82,78,84,33,73,70,0,92
-Croatia,Ivan Perišić,RW,37,81,75,80,81,79,69,75,74,84,77
-Croatia,Marcelo Brozović,CDM,33,81,63,73,78,79,78,80,62,65,69
-Croatia,Andrej Kramarić,CAM,34,81,67,82,78,84,33,73,70,84,92
-Croatia,Mario Pašalić,CM,30,80,69,78,77,81,67,76,68,0,61
+Croatia,Ante Budimir,ST,34,82,59,84,63,76,35,80,54,0,86
 Croatia,Dominik Livaković,GK,30,80,80,76,71,83,56,80,57,80,15
-Croatia,Mario Pašalić,CM,31,80,69,78,77,81,67,76,68,85,61
-Croatia,Dominik Livaković,GK,31,80,80,76,71,83,56,80,57,11,15
-Croatia,Nikola Vlašić,CAM,28,79,74,76,76,81,57,70,77,0,66
-Croatia,Marko Livaja,ST,32,79,63,82,77,79,43,82,60,0,84
-Croatia,Nikola Vlašić,CAM,28,79,74,76,76,81,57,70,77,76,66
-Croatia,Marko Livaja,ST,32,79,63,82,77,79,43,82,60,77,84
-Croatia,Luka Sučić,CM,23,78,76,76,78,77,68,72,80,0,65
-Croatia,Lovro Majer,CM,27,78,70,73,80,83,60,70,76,0,80
-Croatia,Martin Baturina,CAM,22,78,77,70,78,83,59,66,77,0,70
+Croatia,Igor Matanović,ST,22,71,68,69,55,67,34,74,62,0,59
+Croatia,Ivan Perišić,RW,36,81,75,80,81,79,69,75,74,0,77
 Croatia,Josip Stanišić,CB,25,78,73,44,65,69,79,74,68,0,37
-Ghana,Iñaki Williams,RM,31,83,94,81,74,80,45,84,93,0,68
-Ghana,Thomas Partey,CDM,32,83,59,71,80,77,80,82,53,0,49
-Ghana,Iñaki Williams,RM,31,83,94,81,74,80,45,84,93,85,68
-Ghana,Thomas Partey,CDM,32,83,59,71,80,77,80,82,53,70,49
-Ghana,Mohammed Kudus,RW,25,80,89,76,72,86,60,74,91,0,64
-Ghana,Antoine Semenyo,RM,25,80,80,78,73,81,40,79,78,0,69
-Ghana,Mohammed Kudus,RW,25,80,89,76,72,86,60,74,91,77,64
-Ghana,Antoine Semenyo,RM,26,80,80,78,73,81,40,79,78,81,69
-Ghana,Abdul Mumin,CB,27,77,76,49,61,69,77,76,75,0,35
-Ghana,Abdul Mumin,CB,27,77,76,49,61,69,77,76,75,43,35
-Ghana,Rahman Baba,LB,31,76,77,66,69,74,72,78,74,0,60
+Croatia,Josip Šutalo,CB,25,78,77,32,62,72,78,80,75,0,39
+Croatia,Joško Gvardiol,LB,23,84,78,71,75,78,84,82,77,0,61
+Croatia,Luka Modrić,CM,40,83,68,74,86,86,70,62,72,0,83
+Croatia,Luka Sučić,CM,23,78,76,76,78,77,68,72,80,0,65
+Croatia,Luka Vušković,CB,18,72,58,59,57,58,70,77,53,0,50
+Croatia,Marco Pašalić,RM,25,71,76,72,67,75,35,56,78,0,63
+Croatia,Marin Pongračić,CB,28,74,61,26,52,62,74,76,56,0,30
+Croatia,Mario Pašalić,CM,30,80,69,78,77,81,67,76,68,0,61
+Croatia,Martin Baturina,CAM,22,78,77,70,78,83,59,66,77,0,70
+Croatia,Mateo Kovačić,CM,31,83,67,74,81,83,73,72,70,0,59
+Croatia,Nikola Vlašić,CAM,28,79,74,76,76,81,57,70,77,0,66
+Croatia,Petar Musa,ST,27,76,82,75,61,71,41,81,81,0,64
+Croatia,Petar Sučić,CM,22,74,69,68,72,77,61,74,70,0,57
 Ghana,Abdul Fatawu,RM,21,76,83,73,74,78,46,64,87,0,64
-Ghana,Joseph Paintsil,LM,27,76,90,70,68,80,35,67,92,0,68
-Ghana,Mohammed Salisu,CB,26,76,59,36,50,54,77,80,55,0,40
-Ghana,Rahman Baba,LB,31,76,77,66,69,74,72,78,74,75,60
-Ghana,Abdul Fatawu,RM,22,76,83,73,74,78,46,64,87,70,64
-Ghana,Joseph Paintsil,LM,28,76,90,70,68,80,35,67,92,73,68
-Ghana,Mohammed Salisu,CB,26,76,59,36,50,54,77,80,55,35,40
+Ghana,Rahman Baba,LB,31,76,77,66,69,74,72,78,74,0,60
+Ghana,Antoine Semenyo,RM,25,80,80,78,73,81,40,79,78,0,69
+Ghana,Brandon Thomas-Asante,ST,26,69,83,67,59,69,34,76,84,0,56
+Ghana,Caleb Yirenkyi,CM,19,67,66,59,59,67,63,70,66,0,43
+Ghana,Elisha Owusu,CDM,28,73,55,54,68,70,70,70,62,0,54
 Ghana,Ernest Nuamah,RM,22,75,82,70,69,78,24,58,85,0,49
-Ghana,Joseph Aidoo,CB,30,75,69,27,46,50,74,80,66,0,31
-Ghana,Ernest Nuamah,RM,22,75,82,70,69,78,24,58,85,71,49
-Ghana,Joseph Aidoo,CB,30,75,69,27,46,50,74,80,66,25,31
 Ghana,Gideon Mensah,LB,27,74,76,57,65,72,68,67,77,0,46
-Ghana,Emmanuel Gyasi,RM,31,74,79,64,67,74,48,68,81,0,61
-Ghana,Alidu Seidu,CB,25,74,61,43,61,70,75,67,64,0,37
-Ghana,Gideon Mensah,LB,27,74,76,57,65,72,68,67,77,66,46
-South Korea,Heung Min Son,LW,33,85,84,84,81,83,42,73,85,0,75
-South Korea,Heung Min Son,LW,33,85,84,84,81,83,42,73,85,85,75
-South Korea,Kim Min Jae,CB,29,82,73,33,58,63,83,84,73,0,30
-South Korea,Kim Min Jae,CB,29,82,73,33,58,63,83,84,73,48,30
-South Korea,Lee Kang In,RW,24,79,72,75,80,82,50,64,75,0,70
-South Korea,Lee Kang In,RW,25,79,72,75,80,82,50,64,75,78,70
-South Korea,Lee Jae Sung,CAM,33,77,72,71,72,81,63,66,74,0,50
-South Korea,Hwang In Beom,CM,29,77,62,70,76,77,63,65,64,0,42
-South Korea,Lee Jae Sung,CAM,33,77,72,71,72,81,63,66,74,81,50
-South Korea,Hwang In Beom,CM,29,77,62,70,76,77,63,65,64,72,42
-South Korea,Lee Dong Kyeong,CAM,28,75,77,75,73,75,59,76,75,0,68
-South Korea,Jo Hyeon Woo,GK,34,75,79,72,62,77,51,73,52,73,19
-South Korea,Hwang Hee Chan,ST,29,75,81,75,70,75,39,68,86,0,72
-South Korea,Lee Dong Kyeong,CAM,28,75,77,75,73,75,59,76,75,76,68
-South Korea,Jo Hyeon Woo,GK,34,75,79,72,62,77,51,73,52,12,19
-South Korea,Hwang Hee Chan,ST,30,75,81,75,70,75,39,68,86,77,72
-South Korea,Lee Chang Geun,GK,32,74,73,74,67,77,45,72,45,72,24
-South Korea,Joo Min Kyu,ST,35,74,62,75,56,69,46,79,60,0,75
-South Korea,Song Bum Keun,GK,28,74,76,69,67,76,25,72,24,72,15
-South Korea,Lee Chang Geun,GK,32,74,73,74,67,77,45,72,45,13,24
-South Korea,Joo Min Kyu,ST,35,74,62,75,56,69,46,79,60,78,75
-South Korea,Song Bum Keun,GK,28,74,76,69,67,76,25,72,24,17,15
-South Korea,Hong Hyeon Seok,CAM,26,73,72,70,72,76,66,65,77,0,58
-South Korea,Jeong Woo Yeong,CAM,26,73,76,62,68,78,36,60,78,0,50
-South Korea,Hong Hyeon Seok,CAM,26,73,72,70,72,76,66,65,77,72,58
-South Korea,Jeong Woo Yeong,CAM,26,73,76,62,68,78,36,60,78,72,50
-South Africa,Siyabonga Ngezana,CB,28,73,75,37,48,60,74,79,75,0,37
-South Africa,Siyabonga Ngezana,CB,28,73,75,37,48,60,74,79,75,27,37
-South Africa,Gift Links,LB,27,72,87,56,67,74,64,68,89,0,54
-South Africa,Lyle Foster,ST,25,72,81,72,61,69,36,73,79,0,65
-South Africa,Gift Links,LB,27,72,87,56,67,74,64,68,89,65,54
-South Africa,Lyle Foster,ST,25,72,81,72,61,69,36,73,79,73,65
-South Africa,Bongokuhle Hlongwane,RB,25,71,80,67,60,72,66,70,79,0,68
-South Africa,Bongokuhle Hlongwane,RB,25,71,80,67,60,72,66,70,79,70,68
-South Africa,Kobamelo Kodisang,RM,26,68,84,67,61,70,28,47,83,0,60
-South Africa,Kobamelo Kodisang,RM,26,68,84,67,61,70,28,47,83,65,60
-South Africa,Yusuf Maart,CM,30,67,73,57,67,67,53,51,75,0,58
+Ghana,Iñaki Williams,RM,31,83,94,81,74,80,45,84,93,0,68
+Ghana,Jerome Opoku,CB,27,72,59,43,54,59,73,80,63,0,39
+Ghana,Jonas Adjetey,CB,21,70,70,23,47,50,71,71,72,0,37
+Ghana,Jordan Ayew,RM,34,73,66,73,70,75,56,71,68,0,82
+Ghana,Kamaldeen Sulemana,LM,23,71,88,63,63,76,28,59,90,0,55
+Ghana,Kojo Peprah Oppong,CB,21,65,74,25,44,54,64,71,73,0,20
+Ghana,Kwasi Sibo,CDM,27,69,63,54,58,65,67,79,59,0,52
+Ghana,Prince Kwabena Adu,ST,22,70,73,69,57,67,26,66,70,0,61
+Ghana,Thomas Partey,CDM,32,83,59,71,80,77,80,82,53,0,49
+South Korea,Jens Castrop,CM,22,70,80,54,67,74,62,69,79,0,40
 South Africa,Ime Okon,CB,21,67,77,30,44,59,68,70,79,0,34
-South Africa,Yusuf Maart,CM,30,67,73,57,67,67,53,51,75,56,58
-South Africa,Ime Okon,CB,22,67,77,30,44,59,68,70,79,35,34
-South Africa,Luke Le Roux,CM,25,66,62,59,62,67,60,71,73,0,55
-South Africa,Luke Le Roux,CM,26,66,62,59,62,67,60,71,73,61,55
+South Africa,Lyle Foster,ST,25,72,81,72,61,69,36,73,79,0,65
 South Africa,Sphephelo Sithole,CDM,26,65,64,53,59,61,64,74,63,0,51
-South Africa,Shandre Campbell,LW,20,65,80,59,57,71,22,51,83,0,52
-South Africa,Sphephelo Sithole,CDM,27,65,64,53,59,61,64,74,63,66,51
-South Africa,Shandre Campbell,LW,20,65,80,59,57,71,22,51,83,55,52
-South Africa,Samukele Kabini,LB,21,63,71,29,54,60,59,60,70,0,40
-South Africa,Samukele Kabini,LB,22,63,71,29,54,60,59,60,70,51,40
-South Africa,Kegs Chauke,CM,22,61,71,56,58,64,56,62,74,0,55
-South Africa,Antonio van Wyk,LW,23,61,76,59,56,60,31,54,78,0,55
-South Africa,Kegs Chauke,CM,23,61,71,56,58,64,56,62,74,58,55
-South Africa,Antonio van Wyk,LW,24,61,76,59,56,60,31,54,78,62,55
-Czech Republic,Patrik Schick,ST,29,85,72,83,71,81,38,77,72,0,61
-Czech Republic,Patrik Schick,ST,30,85,72,83,71,81,38,77,72,87,61
-Czech Republic,Lukáš Provod,CAM,29,78,76,75,78,78,64,82,71,0,69
-Czech Republic,Ladislav Krejčí,CB,26,78,72,68,68,69,76,84,68,0,76
-Czech Republic,Tomáš Souček,CDM,30,78,45,72,71,68,78,82,42,0,70
-Czech Republic,Lukáš Provod,CAM,29,78,76,75,78,78,64,82,71,78,69
-Czech Republic,Ladislav Krejčí,CB,26,78,72,68,68,69,76,84,68,73,76
-Czech Republic,Tomáš Souček,CDM,31,78,45,72,71,68,78,82,42,76,70
 Czech Republic,Adam Hložek,ST,23,77,78,78,72,77,31,79,78,0,66
-Czech Republic,Václav Černý,RM,28,77,85,72,69,77,39,64,87,0,51
-Czech Republic,Pavel Šulc,CAM,24,77,71,73,74,77,39,64,72,0,60
-Czech Republic,Adam Hložek,ST,23,77,78,78,72,77,31,79,78,75,66
-Czech Republic,Václav Černý,RM,28,77,85,72,69,77,39,64,87,72,51
-Czech Republic,Pavel Šulc,CAM,25,77,71,73,74,77,39,64,72,80,60
-Czech Republic,Tomáš Holeš,CB,32,76,74,58,69,69,75,80,74,0,54
-Czech Republic,Jindřich Staněk,GK,29,76,74,71,78,78,36,76,36,76,37
-Czech Republic,Michal Sadílek,CDM,26,76,53,58,75,71,72,79,74,0,62
-Czech Republic,Tomáš Holeš,CB,33,76,74,58,69,69,75,80,74,64,54
-Czech Republic,Jindřich Staněk,GK,29,76,74,71,78,78,36,76,36,12,37
-Czech Republic,Michal Sadílek,CDM,26,76,53,58,75,71,72,79,74,64,62
-Czech Republic,Antonín Barák,CM,30,75,69,74,76,75,64,73,70,0,70
-Czech Republic,Pavel Bucha,CM,27,75,71,70,74,76,69,71,76,0,70
+Czech Republic,David Douděra,RM,27,74,89,66,65,72,65,67,88,0,45
+Czech Republic,David Zima,CB,25,74,76,38,54,62,75,75,72,0,44
+Czech Republic,Denis Višinský,LW,22,68,76,61,65,69,47,59,77,0,58
+Czech Republic,Jaroslav Zelený,CB,33,72,74,62,69,70,71,75,72,0,51
+Czech Republic,Ladislav Krejčí,CB,26,78,72,68,68,69,76,84,68,0,76
+Czech Republic,Lukáš Provod,CAM,29,78,76,75,78,78,64,82,71,0,69
+Czech Republic,Lukáš Červ,CDM,24,74,69,65,67,69,71,78,69,0,68
 Czech Republic,Matěj Kovář,GK,25,75,74,75,78,75,30,77,26,77,15
-Czech Republic,Martin Jedlička,GK,27,75,74,76,70,77,35,73,33,73,12
-Czech Republic,Antonín Kinský,GK,22,75,76,76,76,75,25,74,25,74,15
+Czech Republic,Michal Sadílek,CDM,26,76,53,58,75,71,72,79,74,0,62
+Czech Republic,Mojmír Chytil,ST,26,74,73,72,55,68,29,81,71,0,66
+Czech Republic,Patrik Schick,ST,29,85,72,83,71,81,38,77,72,0,61
+Czech Republic,Pavel Šulc,CAM,24,77,71,73,74,77,39,64,72,0,60
+Czech Republic,Robin Hranáč,CB,25,71,75,38,51,52,70,76,65,0,42
 Czech Republic,Tomáš Chorý,ST,30,75,57,75,60,64,32,88,47,0,73
-Bosnia and Herzegovina,Edin Džeko,ST,39,81,55,82,74,77,40,72,53,0,67
-Bosnia and Herzegovina,Edin Džeko,ST,40,81,55,82,74,77,40,72,53,83,67
-Bosnia and Herzegovina,Ermedin Demirović,ST,27,80,72,81,73,78,42,78,68,0,62
-Bosnia and Herzegovina,Ermedin Demirović,ST,28,80,72,81,73,78,42,78,68,83,62
-Bosnia and Herzegovina,Sead Kolašinac,CB,32,79,61,63,68,69,79,82,54,0,54
-Bosnia and Herzegovina,Sead Kolašinac,CB,32,79,61,63,68,69,79,82,54,69,54
-Bosnia and Herzegovina,Edin Višća,RM,35,78,82,76,75,80,47,65,83,0,77
-Bosnia and Herzegovina,Edin Višća,RM,36,78,82,76,75,80,47,65,83,78,77
-Bosnia and Herzegovina,Nikola Vasilj,GK,29,77,77,72,65,79,34,77,36,77,16
-Bosnia and Herzegovina,Nikola Vasilj,GK,30,77,77,72,65,79,34,77,36,8,16
-Bosnia and Herzegovina,Haris Hajradinović,CM,31,76,73,74,79,76,56,69,74,0,73
-Bosnia and Herzegovina,Haris Hajradinović,CM,32,76,73,74,79,76,56,69,74,76,73
-Bosnia and Herzegovina,Miroslav Stevanović,RM,35,75,78,70,75,73,39,71,77,0,72
-Bosnia and Herzegovina,Miroslav Stevanović,RM,35,75,78,70,75,73,39,71,77,77,72
-Bosnia and Herzegovina,Anel Ahmedhodžić,CB,26,74,72,41,59,61,74,78,66,0,45
-Bosnia and Herzegovina,Anel Ahmedhodžić,CB,27,74,72,41,59,61,74,78,66,37,45
+Czech Republic,Tomáš Holeš,CB,32,76,74,58,69,69,75,80,74,0,54
+Czech Republic,Tomáš Souček,CDM,30,78,45,72,71,68,78,82,42,0,70
+Czech Republic,Vladimír Coufal,RB,33,73,58,56,70,70,74,71,62,0,49
+Czech Republic,Štěpán Chaloupek,CB,22,70,69,34,52,57,68,76,65,0,38
 Bosnia and Herzegovina,Amar Dedić,RB,23,73,83,58,68,74,66,74,83,0,44
-Bosnia and Herzegovina,Amir Hadžiahmetović,CDM,28,73,65,60,73,72,70,73,66,0,55
-Bosnia and Herzegovina,Haris Tabaković,ST,31,73,60,73,52,65,29,80,50,0,72
-Bosnia and Herzegovina,Amar Dedić,RB,23,73,83,58,68,74,66,74,83,64,44
-Bosnia and Herzegovina,Amir Hadžiahmetović,CDM,29,73,65,60,73,72,70,73,66,69,55
-Bosnia and Herzegovina,Haris Tabaković,ST,31,73,60,73,52,65,29,80,50,79,72
-Bosnia and Herzegovina,Armin Gigović,CM,23,72,65,61,70,74,60,74,69,0,54
-Bosnia and Herzegovina,Denis Huseinbašić,CM,24,72,67,62,65,73,64,71,67,0,43
 Bosnia and Herzegovina,Amar Memić,RM,24,72,81,69,68,73,48,61,84,0,60
-Bosnia and Herzegovina,Adrian Barišić,CB,24,72,56,27,45,41,74,77,58,0,34
+Bosnia and Herzegovina,Amir Hadžiahmetović,CDM,28,73,65,60,73,72,70,73,66,0,55
+Bosnia and Herzegovina,Arjan Malić,RB,20,63,62,29,50,51,62,67,59,0,34
+Bosnia and Herzegovina,Armin Gigović,CM,23,72,65,61,70,74,60,74,69,0,54
+Bosnia and Herzegovina,Benjamin Tahirović,CDM,22,67,51,50,62,66,62,71,51,0,56
+Bosnia and Herzegovina,Dženis Burnić,CM,27,68,76,58,66,71,62,67,75,0,55
+Bosnia and Herzegovina,Edin Džeko,ST,39,81,55,82,74,77,40,72,53,0,67
+Bosnia and Herzegovina,Ermedin Demirović,ST,27,80,72,81,73,78,42,78,68,0,62
+Bosnia and Herzegovina,Esmir Bajraktarević,RW,20,67,77,54,65,76,40,59,79,0,51
+Bosnia and Herzegovina,Jovo Lukić,ST,26,64,61,64,47,59,27,69,58,0,59
+Bosnia and Herzegovina,Kerim Alajbegović,LM,18,61,70,58,55,64,36,53,69,0,50
+Bosnia and Herzegovina,Nikola Katić,CB,29,69,51,35,45,53,68,79,44,0,33
+Bosnia and Herzegovina,Nikola Vasilj,GK,29,77,77,72,65,79,34,77,36,77,16
+Bosnia and Herzegovina,Samed Baždar,ST,21,69,70,66,70,74,40,63,69,0,56
+Bosnia and Herzegovina,Sead Kolašinac,CB,32,79,61,63,68,69,79,82,54,0,54
+Bosnia and Herzegovina,Tarik Muharemović,CB,22,70,59,23,47,56,73,67,54,0,25

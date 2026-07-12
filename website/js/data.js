@@ -4,12 +4,12 @@
 //         QF3/QF4 simulated — retrained Jul 11 2026
 // flag:   ISO 3166-1 alpha-2 code for flagcdn.com
 const TEAMS = {
-  "Spain":                 { group:"H", rank:2,  winner:53.07, flag:"es"     },
-  "France":                { group:"I", rank:1,  winner:17.57, flag:"fr"     },
-  "Argentina":             { group:"J", rank:3,  winner:13.80, flag:"ar"     },
-  "England":               { group:"L", rank:4,  winner:11.57, flag:"gb-eng" },
-  "Switzerland":           { group:"B", rank:19, winner:2.99,  flag:"ch"     },
-  "Norway":                { group:"I", rank:31, winner:1.00,  flag:"no"     },
+  "Spain":                 { group:"H", rank:2,  winner:54.13, flag:"es"     },
+  "France":                { group:"I", rank:1,  winner:16.04, flag:"fr"     },
+  "Argentina":             { group:"J", rank:3,  winner:14.82, flag:"ar"     },
+  "England":               { group:"L", rank:4,  winner:8.82, flag:"gb-eng" },
+  "Switzerland":           { group:"B", rank:19, winner:4.22,  flag:"ch"     },
+  "Norway":                { group:"I", rank:31, winner:1.97,  flag:"no"     },
   "Morocco":               { group:"C", rank:8,  winner:0.00,  flag:"ma"     },
   "Brazil":                { group:"C", rank:6,  winner:0.00,  flag:"br"     },
   "Portugal":              { group:"K", rank:5,  winner:0.00,  flag:"pt"     },
@@ -178,6 +178,6 @@ const R16_FIXTURES = [
 const QF_FIXTURES = [
   { id:97,  date:"Jul 9",  home:"France",       away:"Morocco",      venue:"Gillette Stadium",    result: { homeScore:2, awayScore:0 },              preMatchProbs: { home:58.4, draw:21.2, away:20.4 } },
   { id:98,  date:"Jul 10", home:"Spain",        away:"Belgium",      venue:"MetLife Stadium",     result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:61.7, draw:20.3, away:18.0 } },
-  { id:99,  date:"Jul 11", home:"Norway",       away:"England",      venue:"AT&T Stadium",        result: null,                                     preMatchProbs: { home:35.7, draw:24.2, away:40.1 } },
-  { id:100, date:"Jul 11", home:"Argentina",    away:"Switzerland",  venue:"SoFi Stadium",        result: null,                                     preMatchProbs: { home:73.2, draw:16.4, away:10.4 } }
+  { id:99,  date:"Jul 11", home:"Norway",       away:"England",      venue:"AT&T Stadium",        result: null,                                     preMatchProbs: { home:24.7, draw:26.4, away:48.9 } },
+  { id:100, date:"Jul 11", home:"Argentina",    away:"Switzerland",  venue:"SoFi Stadium",        result: null,                                     preMatchProbs: { home:44.6, draw:27.2, away:28.2 } }
 ];
