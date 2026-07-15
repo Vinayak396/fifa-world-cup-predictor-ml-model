@@ -1,14 +1,14 @@
 // ─── TEAM DATA ───────────────────────────────────────────────────────────────
 // winner: overall tournament winner probability (%) — XGBoost model
-//         QF complete · SF1 Spain 2-0 France (Jul 14) · SF2 upcoming Jul 15
-//         Retrained Jul 11 2026
+//         SF1 Spain 2-0 France ✓ · SF2 England vs Argentina (Jul 15)
+//         France & Switzerland eliminated → winner set to 0.00
 // flag:   ISO 3166-1 alpha-2 code for flagcdn.com
 const TEAMS = {
   "Spain":                 { group:"H", rank:2,  winner:54.13, flag:"es"     },
-  "France":                { group:"I", rank:1,  winner:16.04, flag:"fr"     },
+  "France":                { group:"I", rank:1,  winner:0.00,  flag:"fr"     },
   "Argentina":             { group:"J", rank:3,  winner:14.82, flag:"ar"     },
   "England":               { group:"L", rank:4,  winner:8.82, flag:"gb-eng" },
-  "Switzerland":           { group:"B", rank:19, winner:4.22,  flag:"ch"     },
+  "Switzerland":           { group:"B", rank:19, winner:0.00,  flag:"ch"     },
   "Norway":                { group:"I", rank:31, winner:1.97,  flag:"no"     },
   "Morocco":               { group:"C", rank:8,  winner:0.00,  flag:"ma"     },
   "Brazil":                { group:"C", rank:6,  winner:0.00,  flag:"br"     },
