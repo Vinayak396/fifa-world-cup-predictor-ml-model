@@ -17,14 +17,15 @@
     <a href="#winner">Winner</a>
     <a href="#contenders">Contenders</a>
     <a href="#knockout">Bracket</a>
+    <a href="#sf">Semi-Finals</a>
     <a href="#qf">Quarter-Finals</a>
     <a href="#r16">Round of 16</a>
     <a href="#r32">Round of 32</a>
     <a href="#groups">Group Stage</a>
   </div>
   <div class="nav-badge">XGBoost · Poisson</div>
-  <div class="nav-badge" style="background:linear-gradient(90deg,#16a34a,#15803d);margin-left:0.5rem">✅ R16 Complete</div>
-  <div class="nav-badge" style="background:linear-gradient(90deg,#dc2626,#b91c1c);margin-left:0.5rem">🔥 Quarter-Finals</div>
+  <div class="nav-badge" style="background:linear-gradient(90deg,#16a34a,#15803d);margin-left:0.5rem">✅ QF Complete</div>
+  <div class="nav-badge" style="background:linear-gradient(90deg,#7c3aed,#6d28d9);margin-left:0.5rem">🏟️ Semi-Finals</div>
 </nav>
 
 <!-- ── HERO ────────────────────────────────────────────────────────────────── -->
@@ -47,7 +48,7 @@
 <section id="winner">
   <div class="section-inner">
     <div class="section-title"><span>🥇</span> Predicted Champion</div>
-    <div class="section-sub">Pure data-driven model · R16 complete · QF1 France 2–0 Morocco · QF2 Spain 2–1 Belgium · 10,000 Monte Carlo simulations · Retrained Jul 11 2026</div>
+    <div class="section-sub">Pure data-driven model · QF complete · SF1 Spain 2–0 France ✅ · SF2 England vs Argentina today · 10,000 Monte Carlo simulations · Retrained Jul 11 2026</div>
     <div class="winner-card">
       <div class="winner-flag">
         <img id="winner-flag" src="" alt="Winner">
@@ -82,11 +83,20 @@
   </div>
 </section>
 
+<!-- ── SEMI-FINALS ──────────────────────────────────────────────────────────── -->
+<section id="sf">
+  <div class="section-inner">
+    <div class="section-title"><span>🏟️</span> Semi-Finals</div>
+    <div class="section-sub">SF1: Spain 2–0 France ✅ (Jul 14, AT&amp;T Stadium, Dallas) · SF2: England vs Argentina 🔴 LIVE (Jul 15)</div>
+    <div class="r32-grid" id="sf-list"></div>
+  </div>
+</section>
+
 <!-- ── QUARTER-FINALS ─────────────────────────────────────────────────────── -->
 <section id="qf">
   <div class="section-inner">
-    <div class="section-title"><span>🔥</span> Quarter-Finals</div>
-    <div class="section-sub">QF1 France 2–0 Morocco · QF2 Spain 2–1 Belgium · QF3 &amp; QF4 ongoing today · AI odds shown for live matches</div>
+    <div class="section-title"><span>🔥</span> Quarter-Finals — Results</div>
+    <div class="section-sub">All 4 QF matches completed (Jul 9–11) · AI pre-match odds shown alongside final scores</div>
     <div class="r32-grid" id="qf-list"></div>
   </div>
 </section>
@@ -125,8 +135,8 @@
   <p style="margin-top:0.5rem;opacity:0.5">Predictions are probabilistic estimates, not guarantees. Data as of June 2026.</p>
 </footer>
 
-<script src="js/data.js?v=1.2"></script>
-<script src="js/bracket.js?v=1.2"></script>
-<script src="js/app.js?v=1.2"></script>
+<script src="js/data.js?v=1.3"></script>
+<script src="js/bracket.js?v=1.3"></script>
+<script src="js/app.js?v=1.3"></script>
 </body>
 </html>

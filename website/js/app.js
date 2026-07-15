@@ -346,6 +346,9 @@ function buildR16() {
 function buildQF() {
   if (typeof QF_FIXTURES !== 'undefined') buildKnockoutRound(QF_FIXTURES, 'qf-list');
 }
+function buildSF() {
+  if (typeof SF_FIXTURES !== 'undefined') buildKnockoutRound(SF_FIXTURES, 'sf-list');
+}
 
 // -- INIT ------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -353,6 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildWinner();
   buildContenders();
   if (typeof buildKnockoutBracket === 'function') buildKnockoutBracket();
+  buildSF();
   buildQF();
   buildR16();
   buildR32();

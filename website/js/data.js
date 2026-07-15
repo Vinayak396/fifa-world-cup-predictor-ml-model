@@ -1,7 +1,7 @@
 // ─── TEAM DATA ───────────────────────────────────────────────────────────────
 // winner: overall tournament winner probability (%) — XGBoost model
-//         R16 complete + QF1 France 2-0 Morocco + QF2 Spain 2-1 Belgium locked
-//         QF3/QF4 simulated — retrained Jul 11 2026
+//         QF complete · SF1 Spain 2-0 France (Jul 14) · SF2 upcoming Jul 15
+//         Retrained Jul 11 2026
 // flag:   ISO 3166-1 alpha-2 code for flagcdn.com
 const TEAMS = {
   "Spain":                 { group:"H", rank:2,  winner:54.13, flag:"es"     },
@@ -178,6 +178,12 @@ const R16_FIXTURES = [
 const QF_FIXTURES = [
   { id:97,  date:"Jul 9",  home:"France",       away:"Morocco",      venue:"Gillette Stadium",    result: { homeScore:2, awayScore:0 },              preMatchProbs: { home:58.4, draw:21.2, away:20.4 } },
   { id:98,  date:"Jul 10", home:"Spain",        away:"Belgium",      venue:"MetLife Stadium",     result: { homeScore:2, awayScore:1 },              preMatchProbs: { home:61.7, draw:20.3, away:18.0 } },
-  { id:99,  date:"Jul 11", home:"Norway",       away:"England",      venue:"AT&T Stadium",        result: null,                                     preMatchProbs: { home:24.7, draw:26.4, away:48.9 } },
-  { id:100, date:"Jul 11", home:"Argentina",    away:"Switzerland",  venue:"SoFi Stadium",        result: null,                                     preMatchProbs: { home:44.6, draw:27.2, away:28.2 } }
+  { id:99,  date:"Jul 11", home:"Norway",       away:"England",      venue:"AT&T Stadium",        result: { homeScore:1, awayScore:2 },              preMatchProbs: { home:24.7, draw:26.4, away:48.9 } },
+  { id:100, date:"Jul 11", home:"Argentina",    away:"Switzerland",  venue:"SoFi Stadium",        result: { homeScore:3, awayScore:1 },              preMatchProbs: { home:44.6, draw:27.2, away:28.2 } }
+];
+
+// ─── SEMI-FINAL FIXTURES ─────────────────────────────────────────────────────
+const SF_FIXTURES = [
+  { id:101, date:"Jul 14", home:"France",    away:"Spain",    venue:"AT&T Stadium, Dallas",   result: { homeScore:0, awayScore:2 }, preMatchProbs: { home:22.8, draw:24.6, away:52.6 } },
+  { id:102, date:"Jul 15", home:"England",   away:"Argentina", venue:"Mercedes-Benz Stadium, Atlanta",                               preMatchProbs: { home:38.8, draw:25.9, away:35.3 } }
 ];

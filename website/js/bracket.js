@@ -67,12 +67,12 @@ const R16 = [
 ];
 const QF = [
   { id:97, src:[89,90], date:"Jul 9",  result:{ hg:2, ag:0, winner:"France" } },
-  { id:99, src:[91,92], date:"Jul 11", result:null },
+  { id:99, src:[91,92], date:"Jul 11", result:{ hg:1, ag:2, winner:"England" } },
   { id:98, src:[93,94], date:"Jul 10", result:{ hg:2, ag:1, winner:"Spain" } },
-  { id:100,src:[95,96], date:"Jul 11", result:null },
+  { id:100,src:[95,96], date:"Jul 11", result:{ hg:3, ag:1, winner:"Argentina" } },
 ];
 const SF = [
-  { id:101, src:[97,98],  date:"Jul 14" },
+  { id:101, src:[97,98],  date:"Jul 14", result:{ hg:2, ag:0, winner:"Spain" } },
   { id:102, src:[99,100], date:"Jul 15" },
 ];
 const FINAL = { id:104, src:[101,102], date:"Jul 19" };
