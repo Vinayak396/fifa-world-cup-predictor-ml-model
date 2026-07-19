@@ -72,10 +72,12 @@ const QF = [
   { id:100,src:[95,96], date:"Jul 11", result:{ hg:3, ag:1, winner:"Argentina" } },
 ];
 const SF = [
-  { id:101, src:[97,98],  date:"Jul 14", result:{ hg:2, ag:0, winner:"Spain" } },
-  { id:102, src:[99,100], date:"Jul 15" },
+  { id:101, src:[97,98],  date:"Jul 14", result:{ hg:0, ag:2, winner:"Spain" } },
+  { id:102, src:[99,100], date:"Jul 15", result:{ hg:1, ag:2, winner:"Argentina" } },
 ];
-const FINAL = { id:104, src:[101,102], date:"Jul 19" };
+const THIRD_PLACE = { id:103, src:[101,102], date:"Jul 18",
+  result:{ hg:4, ag:6, winner:"England" } }; // France 4-6 England (losers bracket)
+const FINAL = { id:104, src:[101,102], date:"Jul 19 🏆" };
 
 // ── BRACKET RENDERER ─────────────────────────────────────────────────────────
 function flagUrl2(code) {

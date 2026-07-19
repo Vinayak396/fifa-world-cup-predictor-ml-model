@@ -1,15 +1,15 @@
 // ─── TEAM DATA ───────────────────────────────────────────────────────────────
-// winner: overall tournament winner probability (%) — XGBoost model
-//         SF1 Spain 2-0 France ✓ · SF2 England vs Argentina (Jul 15)
-//         France & Switzerland eliminated → winner set to 0.00
+// winner: overall tournament winner probability (%) — XGBoost model retrained Jul 19 2026
+//         SF1 Spain 2-0 France ✓ · SF2 Argentina 2-1 England ✓ · 3rd Place England 6-4 France ✓
+//         FINAL: Spain vs Argentina — TODAY Jul 19 2026 · MetLife Stadium, New York
 // flag:   ISO 3166-1 alpha-2 code for flagcdn.com
 const TEAMS = {
-  "Spain":                 { group:"H", rank:2,  winner:54.13, flag:"es"     },
+  "Spain":                 { group:"H", rank:2,  winner:59.40, flag:"es"     },
   "France":                { group:"I", rank:1,  winner:0.00,  flag:"fr"     },
-  "Argentina":             { group:"J", rank:3,  winner:14.82, flag:"ar"     },
-  "England":               { group:"L", rank:4,  winner:8.82, flag:"gb-eng" },
+  "Argentina":             { group:"J", rank:3,  winner:40.60, flag:"ar"     },
+  "England":               { group:"L", rank:4,  winner:0.00, flag:"gb-eng" },
   "Switzerland":           { group:"B", rank:19, winner:0.00,  flag:"ch"     },
-  "Norway":                { group:"I", rank:31, winner:1.97,  flag:"no"     },
+  "Norway":                { group:"I", rank:31, winner:0.00,  flag:"no"     },
   "Morocco":               { group:"C", rank:8,  winner:0.00,  flag:"ma"     },
   "Brazil":                { group:"C", rank:6,  winner:0.00,  flag:"br"     },
   "Portugal":              { group:"K", rank:5,  winner:0.00,  flag:"pt"     },
@@ -184,6 +184,16 @@ const QF_FIXTURES = [
 
 // ─── SEMI-FINAL FIXTURES ─────────────────────────────────────────────────────
 const SF_FIXTURES = [
-  { id:101, date:"Jul 14", home:"France",    away:"Spain",    venue:"AT&T Stadium, Dallas",   result: { homeScore:0, awayScore:2 }, preMatchProbs: { home:22.8, draw:24.6, away:52.6 } },
-  { id:102, date:"Jul 15", home:"England",   away:"Argentina", venue:"Mercedes-Benz Stadium, Atlanta",                               preMatchProbs: { home:38.8, draw:25.9, away:35.3 } }
+  { id:101, date:"Jul 14", home:"France",    away:"Spain",     venue:"AT&T Stadium, Dallas",           result: { homeScore:0, awayScore:2 }, preMatchProbs: { home:22.8, draw:24.6, away:52.6 } },
+  { id:102, date:"Jul 15", home:"England",   away:"Argentina", venue:"Mercedes-Benz Stadium, Atlanta",  result: { homeScore:1, awayScore:2 }, preMatchProbs: { home:38.8, draw:25.9, away:35.3 } }
+];
+
+// ─── 3RD PLACE PLAY-OFF ──────────────────────────────────────────────────────
+const THIRD_PLACE_FIXTURE = [
+  { id:103, date:"Jul 18", home:"France",  away:"England", venue:"Hard Rock Stadium, Miami", result: { homeScore:4, awayScore:6 }, preMatchProbs: { home:40.2, draw:24.8, away:35.0 } }
+];
+
+// ─── FINAL FIXTURE ───────────────────────────────────────────────────────────
+const FINAL_FIXTURE = [
+  { id:104, date:"Jul 19", home:"Spain", away:"Argentina", venue:"MetLife Stadium, New York", preMatchProbs: { home:59.4, draw:0.0, away:40.6 } }
 ];

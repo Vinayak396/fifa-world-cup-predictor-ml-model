@@ -853,24 +853,27 @@ def simulate_tournament():
     # Match 98 (Jul 10): Spain 2-1 Belgium — COMPLETED
     ko_winners[98] = 'Spain'
     
-    # Match 99 (Jul 11): Norway vs England — ONGOING TODAY (simulated)
-    g99_h, g99_a = simulate_match(ko_winners[91], ko_winners[92], neutral=1, is_knockout=True)
-    ko_winners[99] = ko_winners[91] if g99_h > g99_a else ko_winners[92]
+    # Match 99 (Jul 11): England 2-1 Norway — COMPLETED
+    ko_winners[99] = 'England'
     
-    # Match 100 (Jul 11): Argentina vs Switzerland — ONGOING TODAY (simulated)
-    g100_h, g100_a = simulate_match(ko_winners[95], ko_winners[96], neutral=1, is_knockout=True)
-    ko_winners[100] = ko_winners[95] if g100_h > g100_a else ko_winners[96]
+    # Match 100 (Jul 11): Argentina 3-1 Switzerland — COMPLETED
+    ko_winners[100] = 'Argentina'
     
-    # 5. SEMIFINALS
-    # Match 101: Winner 97 vs Winner 98
-    g101_h, g101_a = simulate_match(ko_winners[97], ko_winners[98], neutral=1, is_knockout=True)
-    ko_winners[101] = ko_winners[97] if g101_h > g101_a else ko_winners[98]
+    # 5. SEMIFINALS — ALL COMPLETED ─────────────────────────────────────────────
+    # Match 101 (Jul 14): Spain 2-0 France — COMPLETED
+    ko_winners[101] = 'Spain'
     
-    # Match 102: Winner 99 vs Winner 100
-    g102_h, g102_a = simulate_match(ko_winners[99], ko_winners[100], neutral=1, is_knockout=True)
-    ko_winners[102] = ko_winners[99] if g102_h > g102_a else ko_winners[100]
+    # Match 102 (Jul 15): Argentina 2-1 England — COMPLETED
+    # (Gordon 55' / Fernández 85', Martínez 90+2')
+    ko_winners[102] = 'Argentina'
     
-    # 6. FINAL
+    # 3RD PLACE PLAY-OFF — COMPLETED ────────────────────────────────────────────
+    # Match 103 (Jul 18): England 6-4 France — COMPLETED (Bronze Medal)
+    # (Saka hat-trick, Rice, Konsa, Bellingham / Mbappé 2, Barcola, Dembélé)
+    ko_winners[103] = 'England'
+    
+    # 6. FINAL — UPCOMING TODAY (Jul 19) ────────────────────────────────────────
+    # Match 104: Spain vs Argentina — THE FINAL (simulated)
     g104_h, g104_a = simulate_match(ko_winners[101], ko_winners[102], neutral=1, is_knockout=True)
     winner = ko_winners[101] if g104_h > g104_a else ko_winners[102]
     

@@ -16,7 +16,9 @@
   <div class="nav-links">
     <a href="#winner">Winner</a>
     <a href="#contenders">Contenders</a>
+    <a href="#final">THE FINAL</a>
     <a href="#knockout">Bracket</a>
+    <a href="#third-place">3rd Place</a>
     <a href="#sf">Semi-Finals</a>
     <a href="#qf">Quarter-Finals</a>
     <a href="#r16">Round of 16</a>
@@ -24,8 +26,8 @@
     <a href="#groups">Group Stage</a>
   </div>
   <div class="nav-badge">XGBoost · Poisson</div>
-  <div class="nav-badge" style="background:linear-gradient(90deg,#16a34a,#15803d);margin-left:0.5rem">✅ QF Complete</div>
-  <div class="nav-badge" style="background:linear-gradient(90deg,#7c3aed,#6d28d9);margin-left:0.5rem">🏟️ Semi-Finals</div>
+  <div class="nav-badge" style="background:linear-gradient(90deg,#16a34a,#15803d);margin-left:0.5rem">✅ SF Complete</div>
+  <div class="nav-badge" style="background:linear-gradient(90deg,#dc2626,#b91c1c);margin-left:0.5rem">🏆 THE FINAL TODAY</div>
 </nav>
 
 <!-- ── HERO ────────────────────────────────────────────────────────────────── -->
@@ -48,7 +50,7 @@
 <section id="winner">
   <div class="section-inner">
     <div class="section-title"><span>🥇</span> Predicted Champion</div>
-    <div class="section-sub">Pure data-driven model · QF complete · SF1 Spain 2–0 France ✅ · SF2 England vs Argentina today · 10,000 Monte Carlo simulations · Retrained Jul 11 2026</div>
+    <div class="section-sub">Pure data-driven model · SF1 Spain 2–0 France ✅ · SF2 Argentina 2–1 England ✅ · 3rd Place England 6–4 France ✅ · 10,000 Monte Carlo simulations · Retrained Jul 19 2026</div>
     <div class="winner-card">
       <div class="winner-flag">
         <img id="winner-flag" src="" alt="Winner">
@@ -83,11 +85,20 @@
   </div>
 </section>
 
+<!-- ── THE FINAL ─────────────────────────────────────────────────────────────── -->
+<section id="final" style="background:linear-gradient(135deg,#1a0a2e 0%,#0f172a 100%)">
+  <div class="section-inner">
+    <div class="section-title"><span>🏆</span> THE FINAL — Spain vs Argentina</div>
+    <div class="section-sub">Jul 19 2026 · MetLife Stadium, New York · Model: Spain 59.4% · Argentina 40.6%</div>
+    <div class="r32-grid" id="final-list"></div>
+  </div>
+</section>
+
 <!-- ── SEMI-FINALS ──────────────────────────────────────────────────────────── -->
 <section id="sf">
   <div class="section-inner">
     <div class="section-title"><span>🏟️</span> Semi-Finals</div>
-    <div class="section-sub">SF1: Spain 2–0 France ✅ (Jul 14, AT&amp;T Stadium, Dallas) · SF2: England vs Argentina 🔴 LIVE (Jul 15)</div>
+    <div class="section-sub">SF1: Spain 2–0 France ✅ (Jul 14, AT&amp;T Stadium, Dallas) · SF2: Argentina 2–1 England ✅ (Jul 15, Mercedes-Benz Stadium, Atlanta)</div>
     <div class="r32-grid" id="sf-list"></div>
   </div>
 </section>
@@ -98,6 +109,15 @@
     <div class="section-title"><span>🔥</span> Quarter-Finals — Results</div>
     <div class="section-sub">All 4 QF matches completed (Jul 9–11) · AI pre-match odds shown alongside final scores</div>
     <div class="r32-grid" id="qf-list"></div>
+  </div>
+</section>
+
+<!-- ── 3RD PLACE PLAY-OFF ─────────────────────────────────────────────────── -->
+<section id="third-place">
+  <div class="section-inner">
+    <div class="section-title"><span>🥉</span> 3rd Place Play-Off — Results</div>
+    <div class="section-sub">England 6–4 France ✅ (Jul 18, Hard Rock Stadium, Miami) · Bukayo Saka hat-trick · Mbappé all-time WC top scorer (22 goals)</div>
+    <div class="r32-grid" id="third-place-list"></div>
   </div>
 </section>
 
@@ -135,8 +155,8 @@
   <p style="margin-top:0.5rem;opacity:0.5">Predictions are probabilistic estimates, not guarantees. Data as of June 2026.</p>
 </footer>
 
-<script src="js/data.js?v=1.3"></script>
-<script src="js/bracket.js?v=1.3"></script>
-<script src="js/app.js?v=1.3"></script>
+<script src="js/data.js?v=1.4"></script>
+<script src="js/bracket.js?v=1.4"></script>
+<script src="js/app.js?v=1.4"></script>
 </body>
 </html>

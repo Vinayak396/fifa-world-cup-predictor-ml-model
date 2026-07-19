@@ -349,6 +349,12 @@ function buildQF() {
 function buildSF() {
   if (typeof SF_FIXTURES !== 'undefined') buildKnockoutRound(SF_FIXTURES, 'sf-list');
 }
+function buildThirdPlace() {
+  if (typeof THIRD_PLACE_FIXTURE !== 'undefined') buildKnockoutRound(THIRD_PLACE_FIXTURE, 'third-place-list');
+}
+function buildFinal() {
+  if (typeof FINAL_FIXTURE !== 'undefined') buildKnockoutRound(FINAL_FIXTURE, 'final-list');
+}
 
 // -- INIT ------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -356,6 +362,8 @@ document.addEventListener('DOMContentLoaded', () => {
   buildWinner();
   buildContenders();
   if (typeof buildKnockoutBracket === 'function') buildKnockoutBracket();
+  buildFinal();
+  buildThirdPlace();
   buildSF();
   buildQF();
   buildR16();
