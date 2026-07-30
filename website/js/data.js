@@ -1,12 +1,12 @@
 // ─── TEAM DATA ───────────────────────────────────────────────────────────────
 // winner: overall tournament winner probability (%) — XGBoost model retrained Jul 19 2026
 //         SF1 Spain 2-0 France ✓ · SF2 Argentina 2-1 England ✓ · 3rd Place England 6-4 France ✓
-//         FINAL: Spain vs Argentina — TODAY Jul 19 2026 · MetLife Stadium, New York
+//         FINAL: Spain 1–0 Argentina ✅ — Jul 19 2026 · MetLife Stadium, New York — SPAIN ARE WORLD CHAMPIONS!
 // flag:   ISO 3166-1 alpha-2 code for flagcdn.com
 const TEAMS = {
-  "Spain":                 { group:"H", rank:2,  winner:59.40, flag:"es"     },
-  "France":                { group:"I", rank:1,  winner:0.00,  flag:"fr"     },
-  "Argentina":             { group:"J", rank:3,  winner:40.60, flag:"ar"     },
+  "Spain":                 { group:"H", rank:2,  winner:100.00, flag:"es"     },
+  "France":                { group:"I", rank:1,  winner:0.00,   flag:"fr"     },
+  "Argentina":             { group:"J", rank:3,  winner:0.00,   flag:"ar"     },
   "England":               { group:"L", rank:4,  winner:0.00, flag:"gb-eng" },
   "Switzerland":           { group:"B", rank:19, winner:0.00,  flag:"ch"     },
   "Norway":                { group:"I", rank:31, winner:0.00,  flag:"no"     },
@@ -52,6 +52,60 @@ const TEAMS = {
   "Haiti":                 { group:"C", rank:83, winner:0.00,  flag:"ht"     },
   "Panama":                { group:"L", rank:33, winner:0.00,  flag:"pa"     },
   "Sweden":                { group:"F", rank:38, winner:0.00,  flag:"se"     }
+};
+
+// \u2500\u2500\u2500 PRE-TOURNAMENT WIN PROBABILITIES \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// Original XGBoost model predictions before any match was played (10,000 Monte Carlo sims)
+// Source: commit 0457a4e \u2014 "feat: add FIFA 2026 World Cup predictor website"
+const PRE_TOURNAMENT_WINNER = {
+  "England":               9.32,
+  "France":                9.02,
+  "Argentina":             8.04,
+  "Spain":                 7.24,
+  "Morocco":               6.56,
+  "Brazil":                5.73,
+  "Portugal":              4.12,
+  "Germany":               4.05,
+  "Belgium":               3.48,
+  "Uruguay":               3.46,
+  "Ecuador":               3.22,
+  "Netherlands":           3.11,
+  "Colombia":              3.01,
+  "Japan":                 2.61,
+  "USA":                   2.58,
+  "Mexico":                2.33,
+  "Croatia":               2.29,
+  "Switzerland":           2.00,
+  "South Korea":           1.50,
+  "Norway":                1.20,
+  "Senegal":               0.98,
+  "Iran":                  0.72,
+  "Turkey":                0.65,
+  "Austria":               0.60,
+  "Australia":             0.58,
+  "Algeria":               0.55,
+  "Egypt":                 0.50,
+  "Saudi Arabia":          0.42,
+  "DR Congo":              0.38,
+  "Paraguay":              0.35,
+  "Panama":                0.30,
+  "Sweden":                0.28,
+  "Scotland":              0.22,
+  "Tunisia":               0.20,
+  "Jordan":                0.18,
+  "Ivory Coast":           0.17,
+  "Ghana":                 0.15,
+  "Uzbekistan":            0.14,
+  "Cape Verde":            0.12,
+  "Iraq":                  0.10,
+  "Qatar":                 0.08,
+  "Bosnia and Herzegovina":0.07,
+  "New Zealand":           0.06,
+  "Czech Republic":        0.05,
+  "South Africa":          0.04,
+  "Haiti":                 0.03,
+  "Curacao":               0.02,
+  "Canada":                0.01,
 };
 
 // ─── FIXTURES (Group Stage only — 72 matches) ────────────────────────────────
@@ -195,5 +249,5 @@ const THIRD_PLACE_FIXTURE = [
 
 // ─── FINAL FIXTURE ───────────────────────────────────────────────────────────
 const FINAL_FIXTURE = [
-  { id:104, date:"Jul 19", home:"Spain", away:"Argentina", venue:"MetLife Stadium, New York", preMatchProbs: { home:59.4, draw:0.0, away:40.6 } }
+  { id:104, date:"Jul 19", home:"Spain", away:"Argentina", venue:"MetLife Stadium, New York", result: { homeScore:1, awayScore:0 }, preMatchProbs: { home:59.4, draw:0.0, away:40.6 } }
 ];

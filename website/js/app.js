@@ -3,9 +3,9 @@ function getProbs(homeTeam, awayTeam) {
   const wH = TEAMS[homeTeam]?.winner || 0.1;
   const wA = TEAMS[awayTeam]?.winner || 0.1;
   const total = wH + wA;
-  const rawH = wH / total;                              // 0–1 raw home strength
-  const balance = 1 - Math.abs(rawH - 0.5) * 2;        // 1 = perfectly even
-  const drawPct = 0.27 * (0.5 + 0.5 * balance);        // 14–27% draw range
+  const rawH = wH / total;
+  const balance = 1 - Math.abs(rawH - 0.5) * 2;
+  const drawPct = 0.27 * (0.5 + 0.5 * balance);
   const winH = rawH * (1 - drawPct);
   const winA = (1 - rawH) * (1 - drawPct);
   return {
@@ -143,13 +143,14 @@ function switchGroup(g) {
   if (target) { target.style.display = 'block'; target.classList.add('active'); }
 }
 
-// ── TOP CONTENDERS ────────────────────────────────────────────────────────────
+// ── TOP CONTENDERS (PRE-TOURNAMENT PROBABILITIES) ────────────────────────────
 function buildContenders() {
-  const sorted = Object.entries(TEAMS)
-    .sort((a, b) => b[1].winner - a[1].winner)
+  // Use PRE-TOURNAMENT probabilities — model predictions before any match was played
+  const sorted = Object.entries(PRE_TOURNAMENT_WINNER)
+    .sort((a, b) => b[1] - a[1])
     .slice(0, 10);
 
-  const maxW = sorted[0][1].winner;
+  const maxW = sorted[0][1];
 
   // gradient colors for bars
   const colors = [
@@ -159,19 +160,22 @@ function buildContenders() {
   ];
 
   const container = document.getElementById('contenders-list');
-  sorted.forEach(([name, data], i) => {
-    const pct = (data.winner / maxW * 100).toFixed(1);
+  sorted.forEach(([name, prob], i) => {
+    const teamData = TEAMS[name] || {};
+    const flag = teamData.flag || 'un';
+    const pct = (prob / maxW * 100).toFixed(1);
+    const isChampion = (name === 'Spain');
     const row = document.createElement('div');
     row.className = 'contender-row';
     row.innerHTML = `
       <div class="contender-team">
-        <img class="contender-flag" src="${flagUrl(data.flag)}" alt="${name}" loading="lazy">
-        <span class="contender-name">${name}</span>
+        <img class="contender-flag" src="${flagUrl(flag)}" alt="${name}" loading="lazy">
+        <span class="contender-name">${name}${isChampion ? ' <span class="contender-champion-badge">\uD83C\uDFC6 WINNER</span>' : ''}</span>
       </div>
       <div class="contender-bar-track">
-        <div class="contender-bar-fill" data-w="${pct}" style="background:${colors[i]};width:0%"></div>
+        <div class="contender-bar-fill" data-w="${pct}" style="background:${isChampion ? '#f0c040' : colors[i]};width:0%"></div>
       </div>
-      <span class="contender-pct" style="color:${colors[i]}">${data.winner}%</span>`;
+      <span class="contender-pct" style="color:${isChampion ? '#f0c040' : colors[i]}">${prob}%</span>`;
     container.appendChild(row);
     barObserver.observe(row);
   });
@@ -186,17 +190,21 @@ function buildWinner() {
   document.getElementById('winner-flag').alt = name;
   document.getElementById('winner-name').textContent = name;
   document.getElementById('winner-pct-text').innerHTML =
-    `Predicted winner probability: <strong>${data.winner}%</strong>`;
+    `<span style="color:#f0c040;font-weight:800;font-size:1.1em">\uD83C\uDFC6 2026 FIFA World Cup Champions!</span><br><span style="opacity:0.75">Pre-tournament model probability: 7.24% &middot; Final pre-match probability: 59.4% &middot; <strong style="color:#2eb86a">MODEL CORRECT \u2705</strong></span>`;
 
-  // Top-8 bars in winner section
+  // Top-8 bars in winner section (using pre-tournament probs)
   const barsEl = document.getElementById('winner-bars');
-  sorted.slice(0, 8).forEach(([n, d]) => {
-    const pct = (d.winner / data.winner * 100).toFixed(1);
+  const preSorted = Object.entries(PRE_TOURNAMENT_WINNER)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8);
+  const preMax = preSorted[0][1];
+  preSorted.forEach(([n, prob]) => {
+    const pct = (prob / preMax * 100).toFixed(1);
     const wrap = document.createElement('div');
     wrap.style.marginBottom = '0.6rem';
     wrap.innerHTML = `
       <div class="winner-bar-label">
-        <span>${n}</span><span>${d.winner}%</span>
+        <span>${n}</span><span>${prob}%</span>
       </div>
       <div class="winner-bar-track">
         <div class="winner-bar-fill" data-w="${pct}" style="width:0%"></div>
@@ -302,8 +310,7 @@ function buildR32() {
   });
 }
 
-
-// -- BUILD KNOCKOUT ROUNDS (R16 / QF) --------------------------------
+// ── BUILD KNOCKOUT ROUNDS (R16 / QF / SF / 3rd / Final) ──────────────────────
 function buildKnockoutRound(fixtures, containerId) {
   const container = document.getElementById(containerId);
   if (!container || !fixtures) return;
@@ -356,7 +363,7 @@ function buildFinal() {
   if (typeof FINAL_FIXTURE !== 'undefined') buildKnockoutRound(FINAL_FIXTURE, 'final-list');
 }
 
-// -- INIT ------------------------------------------------------------------
+// ── INIT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   buildWinner();

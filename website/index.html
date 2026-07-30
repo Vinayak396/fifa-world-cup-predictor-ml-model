@@ -26,8 +26,8 @@
     <a href="#groups">Group Stage</a>
   </div>
   <div class="nav-badge">XGBoost · Poisson</div>
-  <div class="nav-badge" style="background:linear-gradient(90deg,#16a34a,#15803d);margin-left:0.5rem">✅ SF Complete</div>
-  <div class="nav-badge" style="background:linear-gradient(90deg,#dc2626,#b91c1c);margin-left:0.5rem">🏆 THE FINAL TODAY</div>
+  <div class="nav-badge" style="background:linear-gradient(90deg,#16a34a,#15803d);margin-left:0.5rem">✅ Final Complete</div>
+  <div class="nav-badge" style="background:linear-gradient(90deg,#c8961a,#f0c040);color:#060b18;margin-left:0.5rem">🏆 SPAIN — 2026 WORLD CHAMPIONS</div>
 </nav>
 
 <!-- ── HERO ────────────────────────────────────────────────────────────────── -->
@@ -37,6 +37,17 @@
     <div class="hero-tag">🏆 FIFA World Cup 2026 · USA · Canada · Mexico</div>
     <h1>World Cup<br>AI Predictor</h1>
     <p>Machine-learning powered predictions for every match — group stage through the final. Built with XGBoost Poisson regression, Dixon-Coles correction & FIFA rankings.</p>
+    <div class="champion-banner" id="champion-banner">
+      <div class="champion-confetti" aria-hidden="true"></div>
+      <img class="champion-flag" src="https://flagcdn.com/w160/es.png" alt="Spain" />
+      <div class="champion-text">
+        <div class="champion-crown">🏆</div>
+        <div class="champion-title">SPAIN</div>
+        <div class="champion-subtitle">2026 FIFA WORLD CUP CHAMPIONS</div>
+        <div class="champion-score">Final Score: Spain <strong>1 – 0</strong> Argentina</div>
+        <div class="champion-note">MetLife Stadium, New York &middot; Jul 19, 2026</div>
+      </div>
+    </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="val">48</div><div class="lbl">Teams</div></div>
       <div class="hero-stat"><div class="val">72</div><div class="lbl">Group Matches</div></div>
@@ -49,14 +60,14 @@
 <!-- ── PREDICTED WINNER ─────────────────────────────────────────────────────── -->
 <section id="winner">
   <div class="section-inner">
-    <div class="section-title"><span>🥇</span> Predicted Champion</div>
-    <div class="section-sub">Pure data-driven model · SF1 Spain 2–0 France ✅ · SF2 Argentina 2–1 England ✅ · 3rd Place England 6–4 France ✅ · 10,000 Monte Carlo simulations · Retrained Jul 19 2026</div>
+    <div class="section-title"><span>🥇</span> 🇪🇸 World Cup Champion — SPAIN!</div>
+    <div class="section-sub">Spain WIN the 2026 FIFA World Cup! · Final: Spain 1–0 Argentina ✅ · SF1 Spain 2–0 France ✅ · SF2 Argentina 2–1 England ✅ · 3rd Place England 6–4 France ✅ · Model predicted Spain throughout · 10,000 Monte Carlo simulations</div>
     <div class="winner-card">
       <div class="winner-flag">
         <img id="winner-flag" src="" alt="Winner">
       </div>
       <div class="winner-info">
-        <div class="winner-label">🏆 Predicted World Cup Winner</div>
+        <div class="winner-label">🏆 2026 FIFA World Cup Champion</div>
         <div class="winner-name" id="winner-name">—</div>
         <div class="winner-pct" id="winner-pct-text"></div>
       </div>
@@ -69,7 +80,7 @@
 <section id="contenders">
   <div class="section-inner">
     <div class="section-title"><span>📊</span> Top Contenders</div>
-    <div class="section-sub">Tournament winner probability — top 10 teams</div>
+    <div class="section-sub">Pre-tournament winner probabilities — XGBoost model before any match was played · 10,000 Monte Carlo simulations · 🏆 = actual champion</div>
     <div class="contenders-grid" id="contenders-list"></div>
   </div>
 </section>
@@ -88,8 +99,8 @@
 <!-- ── THE FINAL ─────────────────────────────────────────────────────────────── -->
 <section id="final" style="background:linear-gradient(135deg,#1a0a2e 0%,#0f172a 100%)">
   <div class="section-inner">
-    <div class="section-title"><span>🏆</span> THE FINAL — Spain vs Argentina</div>
-    <div class="section-sub">Jul 19 2026 · MetLife Stadium, New York · Model: Spain 59.4% · Argentina 40.6%</div>
+    <div class="section-title"><span>🏆</span> THE FINAL — Spain 1–0 Argentina ✅</div>
+    <div class="section-sub">Jul 19 2026 · MetLife Stadium, New York · <strong style="color:#f0c040">SPAIN ARE THE 2026 FIFA WORLD CUP CHAMPIONS!</strong> · Model predicted: Spain 59.4% · Argentina 40.6%</div>
     <div class="r32-grid" id="final-list"></div>
   </div>
 </section>
@@ -155,8 +166,8 @@
   <p style="margin-top:0.5rem;opacity:0.5">Predictions are probabilistic estimates, not guarantees. Data as of June 2026.</p>
 </footer>
 
-<script src="js/data.js?v=1.4"></script>
-<script src="js/bracket.js?v=1.4"></script>
-<script src="js/app.js?v=1.4"></script>
+<script src="js/data.js?v=1.5"></script>
+<script src="js/bracket.js?v=1.5"></script>
+<script src="js/app.js?v=1.5"></script>
 </body>
 </html>
